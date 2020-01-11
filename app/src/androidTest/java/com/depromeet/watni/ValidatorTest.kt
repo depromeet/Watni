@@ -33,13 +33,4 @@ class ValidatorTest {
         assertFalse(InputValidator.isPwdValid("kadkaw219231ldj2109"))
         assertFalse(InputValidator.isPwdValid("jdiwa"))
     }
-
-    @Test
-    fun testPhoneNumberValidation() {
-        assertTrue(InputValidator.isPhoneNumberValid("010-1234-5678"))
-        assertFalse(InputValidator.isPhoneNumberValid("01012345678"))
-        assertFalse(InputValidator.isPhoneNumberValid("010-123-567"))
-        assertFalse(InputValidator.isPhoneNumberValid("010-12355678"))
-        assertFalse(InputValidator.isPhoneNumberValid(""))
-    }
 }

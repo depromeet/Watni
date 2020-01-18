@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitBuilder {
-    private const val BASE_URL = "https://"
+    private const val BASE_URL = "http://ec2-52-78-36-242.ap-northeast-2.compute.amazonaws.com"
     private const val TIME_OUT_SEC = 5L
 
     val service: ServiceApi by lazy {

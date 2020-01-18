@@ -13,7 +13,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        setProperty("archivesBaseName", "app-v${versionName}c${versionCode}") //apk 파일명에 version 정보 포함
+        setProperty("archivesBaseName", "app-v${versionName}c${versionCode}")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {

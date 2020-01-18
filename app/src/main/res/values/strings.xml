@@ -1,6 +1,9 @@
 <resources>
   <string name="app_name">왔니</string>
 
+  <string name="close">닫기</string>
+  <string name="back">뒤로가기</string>
+
   <string name="join_title">회원가입</string>
   <string name="join_name">이름</string>
   <string name="join_email">이메일</string>

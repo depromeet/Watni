@@ -10,11 +10,11 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        decideFirstScreen()
+        launchFirstScreen()
         finish()
     }
 
-    private fun decideFirstScreen() {
+    private fun launchFirstScreen() {
         when {
             SharedPrefUtil.isFirstLaunch() -> startActivity(OnboardingActivity.getIntent(this))
             SharedPrefUtil.isLoggedIn() -> startActivity(MainActivity.getIntent(this))

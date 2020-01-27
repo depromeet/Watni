@@ -22,4 +22,23 @@
   <string name="login_fail_pwd">비밀번호가 일치하지 않습니다.</string>
 
   <string name="msg_network_err">네트워크 에러가 발생했습니다. 다시 시도해주세요.</string>
+
+  <string-array name="profile_icon_random">
+    <item>😊️</item>
+    <item>😍</item>
+    <item>😎</item>
+    <item>🐶</item>
+    <item>🐰</item>
+    <item>🐹</item>
+    <item>🐻</item>
+    <item>🐨</item>
+    <item>🐵</item>
+  </string-array>
+
+  <string-array name="msg_welcome_random">
+    <item>%s님 보고 싶었어요! ☺️</item>
+    <item>%s님 오늘도 홧팅! 💪</item>
+    <item>%s님 최고! 👍</item>
+    <item>%s님 반가워요! 😉</item>
+  </string-array>
 </resources>

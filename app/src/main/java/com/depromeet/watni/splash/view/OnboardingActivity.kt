@@ -29,7 +29,7 @@ class OnboardingActivity :
             pagerOnboarding.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
-                    binding.indicatorOnboarding.changePosition(position)
+                    indicatorOnboarding.changePosition(position)
                 }
             })
             btnStart.setOnClickListener { /* TODO: 로그인 페이지 이동 */ }

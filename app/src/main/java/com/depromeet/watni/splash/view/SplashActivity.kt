@@ -17,10 +17,10 @@ class SplashActivity : AppCompatActivity() {
     private fun decideFirstScreen() {
         when {
             SharedPrefUtil.isFirstLaunch() -> startActivity(OnboardingActivity.getIntent(this))
-            SharedPrefUtil.getUserInfo() == null -> {
+            SharedPrefUtil.isLoggedIn() -> startActivity(MainActivity.getIntent(this))
+            else -> {
                 /* TODO: 로그인 페이지 이동 */
             }
-            else -> startActivity(MainActivity.getIntent(this))
         }
     }
 }

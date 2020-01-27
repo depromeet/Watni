@@ -30,6 +30,8 @@ object SharedPrefUtil {
         sharedPref.edit { putString(KEY_USER_INFO, Gson().toJson(user)) }
     }
 
+    fun isLoggedIn() = getUserInfo() != null
+
     fun getUserInfo(): User? = Gson().fromJson<User>(
         sharedPref.getString(KEY_USER_INFO, ""), User::class.java
     )

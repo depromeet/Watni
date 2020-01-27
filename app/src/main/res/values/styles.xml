@@ -1,6 +1,6 @@
 <resources>
 
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
     <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
     <item name="android:textViewStyle">@style/TextViewStyle</item>
     <item name="android:buttonStyle">@style/ButtonStyle</item>
@@ -9,6 +9,10 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:windowBackground">@drawable/back_splash</item>
   </style>
 
   <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">

@@ -1,18 +1,26 @@
 package com.depromeet.watni.splash.view
 
 import android.os.Bundle
-import com.depromeet.watni.R
-import com.depromeet.watni.base.BaseActivity
-import com.depromeet.watni.databinding.ActivitySplashBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.depromeet.watni.util.SharedPrefUtil
+import com.depromeet.watni.view.MainActivity
 
-class SplashActivity :
-    BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initView()
+
+        decideFirstScreen()
+        finish()
     }
 
-    private fun initView() {
+    private fun decideFirstScreen() {
+        when {
+            SharedPrefUtil.isFirstLaunch() -> startActivity(OnboardingActivity.getIntent(this))
+            SharedPrefUtil.isLoggedIn() -> startActivity(MainActivity.getIntent(this))
+            else -> {
+                /* TODO: 로그인 페이지 이동 */
+            }
+        }
     }
 }

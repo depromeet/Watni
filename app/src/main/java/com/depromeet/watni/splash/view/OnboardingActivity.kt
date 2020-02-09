@@ -8,6 +8,7 @@ import com.depromeet.watni.BR
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityOnboardingBinding
+import com.depromeet.watni.sign.view.LoginActivity
 import com.depromeet.watni.splash.adapter.OnboardingViewPagerAdapter
 
 
@@ -32,7 +33,10 @@ class OnboardingActivity :
                     indicatorOnboarding.changePosition(position)
                 }
             })
-            btnStart.setOnClickListener { /* TODO: 로그인 페이지 이동 */ }
+            btnStart.setOnClickListener {
+                startActivity(LoginActivity.getIntent(this@OnboardingActivity))
+                finish()
+            }
         }
     }
 

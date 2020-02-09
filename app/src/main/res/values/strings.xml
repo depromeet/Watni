@@ -18,6 +18,7 @@
   <string name="join_fail_empty">입력이 필요합니다.</string>
 
   <string name="login_title">로그인</string>
+  <string name="login_forgot_pwd">비밀번호를 잊으셨나요?</string>
   <string name="login_fail_email">가입되지 않은 이메일입니다.</string>
   <string name="login_fail_pwd">비밀번호가 일치하지 않습니다.</string>
 

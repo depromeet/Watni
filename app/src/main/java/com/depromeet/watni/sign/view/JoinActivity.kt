@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityLoginBinding
-import com.depromeet.watni.sign.LoginViewModel
+import com.depromeet.watni.sign.JoinViewModel
 
 /**
  * Created by yunji on 2020-01-28
  */
-class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
+class JoinActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_join) {
     private val viewModel by lazy {
-        ViewModelProvider(this)[LoginViewModel::class.java]
+        ViewModelProvider(this)[JoinViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +23,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     private fun initView() {
-        with(binding) {
-            btnJoin.setOnClickListener { startActivity(JoinActivity.getIntent(this@LoginActivity)) }
-        }
     }
 
     companion object {
-        fun getIntent(context: Context?): Intent? = Intent(context, LoginActivity::class.java)
+        fun getIntent(context: Context?): Intent? = Intent(context, JoinActivity::class.java)
     }
 }

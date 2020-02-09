@@ -24,6 +24,7 @@
     <activity android:name=".splash.view.OnboardingActivity" />
     <activity android:name=".view.MainActivity" />
     <activity android:name=".sign.view.LoginActivity" />
+    <activity android:name=".sign.view.JoinActivity" />
   </application>
 
 </manifest>

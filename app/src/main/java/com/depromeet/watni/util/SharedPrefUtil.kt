@@ -9,8 +9,6 @@ import com.google.gson.Gson
 
 
 object SharedPrefUtil {
-    const val NEED_TOKEN = "token_is_not_exist"
-
     private const val KEY_USER_INFO = "key_user_info"
     private const val KEY_IS_FIRST_LAUNCH = "key_is_first_launch"
     private const val KEY_ACCESS_TOKEN = "key_access_token"

@@ -1,20 +1,21 @@
 package com.depromeet.watni.network
 
+import com.depromeet.watni.model.request.IssueToken
 import com.depromeet.watni.model.request.RefreshToken
-import com.depromeet.watni.model.request.User
+import com.depromeet.watni.model.request.UserJoin
 import com.depromeet.watni.model.response.IssueTokenResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface ServiceApi {
+interface SignApi {
 
     @POST("/oauth/token")
-    fun issueToken(@Body user: User): Call<IssueTokenResponse>
+    fun issueToken(@Body user: IssueToken): Call<IssueTokenResponse>
 
     @POST("/oauth/token")
     fun refreshToken(@Body token: RefreshToken): Call<IssueTokenResponse>
 
     @POST("/sign-up")
-    fun userJoin(@Body user: User): Call<Void>
+    fun userJoin(@Body user: UserJoin): Call<Void>
 }

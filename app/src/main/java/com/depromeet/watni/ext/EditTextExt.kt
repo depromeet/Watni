@@ -2,6 +2,13 @@ package com.depromeet.watni.ext
 
 import com.google.android.material.textfield.TextInputLayout
 
+fun TextInputLayout.updateStatus(messageVisibility: Boolean, strResId: Int) {
+    if (messageVisibility) {
+        this.showMessage(strResId)
+    } else {
+        this.hideMessage()
+    }
+}
 
 fun TextInputLayout.showMessage(strResId: Int) {
     this.apply {

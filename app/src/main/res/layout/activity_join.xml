@@ -2,6 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.depromeet.watni.sign.JoinViewModel" />
+  </data>
+
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -45,6 +54,7 @@
         android:text="@string/join_name" />
 
       <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_join_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -54,6 +64,7 @@
           android:layout_height="wrap_content"
           android:importantForAutofill="no"
           android:inputType="text"
+          android:text="@{viewModel.emailText}"
           android:labelFor="@id/tv_join_name"
           android:maxLines="1"
           android:singleLine="true" />
@@ -68,6 +79,7 @@
         android:text="@string/join_email" />
 
       <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_join_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -76,6 +88,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:importantForAutofill="no"
+          android:text="@{viewModel.emailText}"
           android:inputType="textEmailAddress"
           android:maxLines="1"
           android:singleLine="true" />
@@ -90,12 +103,14 @@
         android:text="@string/join_pwd" />
 
       <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_join_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
           android:id="@+id/et_join_password"
           android:layout_width="match_parent"
+          android:text="@{viewModel.pwdText}"
           android:layout_height="wrap_content"
           android:importantForAutofill="no"
           android:inputType="textPassword"
@@ -112,6 +127,7 @@
         android:text="@string/join_pwd_confirm" />
 
       <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_join_password_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -119,6 +135,7 @@
           android:id="@+id/et_join_password_confirm"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:text="@{viewModel.pwdConfirmText}"
           android:importantForAutofill="no"
           android:inputType="textPassword"
           android:maxLines="1"
@@ -135,8 +152,8 @@
         android:text="@string/join_title"
         android:fontFamily="@font/spoqa_han_sans_bold"
         android:padding="10dp"
-        android:textColor="@color/color_gray"
-        android:textStyle="bold" />
+        app:onSingleClick="@{() -> viewModel.attemptLogin()}"
+        app:setEnable="@{viewModel.joinAvailable}" />
 
     </LinearLayout>
   </ScrollView>
@@ -145,8 +162,8 @@
     android:id="@+id/join_progress"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:visibility="gone"
     android:progressTint="@color/colorPrimary"
+    android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.INVISIBLE}"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

@@ -15,22 +15,22 @@ class ValidatorTest {
 
     @Test
     fun testEmailValidation() {
-        assertTrue(InputValidator.isEmailValid("abc@abc.com"))
-        assertFalse(InputValidator.isEmailValid("a.a"))
-        assertFalse(InputValidator.isEmailValid(""))
+        assertTrue(InputValidator.isValidEmail("abc@abc.com"))
+        assertFalse(InputValidator.isValidEmail("a.a"))
+        assertFalse(InputValidator.isValidEmail(""))
     }
 
     @Test
     fun testNameValidation() {
-        assertTrue(InputValidator.isNameValid("yunji"))
-        assertFalse(InputValidator.isNameValid("aldlkwandwa"))
-        assertFalse(InputValidator.isNameValid(" "))
+        assertTrue(InputValidator.isValidName("yunji"))
+        assertFalse(InputValidator.isValidName("aldlkwandwa"))
+        assertFalse(InputValidator.isValidName(" "))
     }
 
     @Test
     fun testPwdValidation() {
-        assertTrue(InputValidator.isPwdValid("adkAx123"))
-        assertFalse(InputValidator.isPwdValid("kadkaw219231ldj2109"))
-        assertFalse(InputValidator.isPwdValid("jdiwa"))
+        assertTrue(InputValidator.isValidPwd("adkAx123"))
+        assertFalse(InputValidator.isValidPwd("kadkaw219231ldj2109"))
+        assertFalse(InputValidator.isValidPwd("jdiwa"))
     }
 }

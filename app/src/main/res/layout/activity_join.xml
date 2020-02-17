@@ -12,6 +12,7 @@
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -75,7 +76,7 @@
         android:id="@+id/tv_join_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="@string/join_email" />
 
       <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +100,7 @@
         android:id="@+id/tv_join_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="@string/join_pwd" />
 
       <com.google.android.material.textfield.TextInputLayout
@@ -123,7 +124,7 @@
         android:id="@+id/tv_join_password_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="@string/join_pwd_confirm" />
 
       <com.google.android.material.textfield.TextInputLayout
@@ -147,13 +148,12 @@
         android:id="@+id/join_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape_rect_stroke_gray"
         android:text="@string/join_title"
         android:fontFamily="@font/spoqa_han_sans_bold"
         android:padding="10dp"
-        app:onSingleClick="@{() -> viewModel.attemptJoin()}"
-        app:setEnable="@{() -> viewModel.joinAvailable}" />
+        app:onSingleClick="@{() -> viewModel.attemptJoin()}" />
 
     </LinearLayout>
   </ScrollView>

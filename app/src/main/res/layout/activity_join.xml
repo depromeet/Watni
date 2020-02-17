@@ -6,6 +6,8 @@
 
     <import type="android.view.View" />
 
+    <import type="android.app.Activity" />
+
     <variable
       name="viewModel"
       type="com.depromeet.watni.sign.JoinViewModel" />
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:contentDescription="@string/back"
+        android:onClick="@{(view) -> ((Activity)(view.getContext())).finish()}"
         android:src="@drawable/ic_back" />
 
       <ImageView
@@ -65,7 +68,8 @@
           android:layout_height="wrap_content"
           android:importantForAutofill="no"
           android:inputType="text"
-          android:text="@{viewModel.emailText}"
+          android:text="@={viewModel.nameText}"
+          android:textSize="14sp"
           android:labelFor="@id/tv_join_name"
           android:maxLines="1"
           android:singleLine="true" />
@@ -89,7 +93,8 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:importantForAutofill="no"
-          android:text="@{viewModel.emailText}"
+          android:text="@={viewModel.emailText}"
+          android:textSize="14sp"
           android:inputType="textEmailAddress"
           android:maxLines="1"
           android:singleLine="true" />
@@ -111,8 +116,9 @@
         <EditText
           android:id="@+id/et_join_password"
           android:layout_width="match_parent"
-          android:text="@{viewModel.pwdText}"
+          android:text="@={viewModel.pwdText}"
           android:layout_height="wrap_content"
+          android:textSize="14sp"
           android:importantForAutofill="no"
           android:inputType="textPassword"
           android:maxLines="1"
@@ -136,9 +142,10 @@
           android:id="@+id/et_join_password_confirm"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="@{viewModel.pwdConfirmText}"
+          android:text="@={viewModel.pwdConfirmText}"
           android:importantForAutofill="no"
           android:inputType="textPassword"
+          android:textSize="14sp"
           android:maxLines="1"
           android:singleLine="true" />
 
@@ -153,6 +160,7 @@
         android:text="@string/join_title"
         android:fontFamily="@font/spoqa_han_sans_bold"
         android:padding="10dp"
+        app:setEnable="@{viewModel.joinAvailable}"
         app:onSingleClick="@{() -> viewModel.attemptJoin()}" />
 
     </LinearLayout>

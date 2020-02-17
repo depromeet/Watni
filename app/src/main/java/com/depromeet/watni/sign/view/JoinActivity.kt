@@ -39,7 +39,7 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>(R.layout.activity_join) {
                 updateJoinAvailable()
             })
             nameText.observe(this@JoinActivity, Observer {
-                binding.layoutJoinEmail.updateStatus(
+                binding.layoutJoinName.updateStatus(
                     InputValidator.isValidName(it),
                     R.string.join_fail_name
                 )

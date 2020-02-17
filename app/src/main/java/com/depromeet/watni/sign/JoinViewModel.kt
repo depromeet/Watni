@@ -16,10 +16,10 @@ class JoinViewModel : ViewModel() {
     private val _joinStatus = MutableLiveData<Boolean>()
     private val _isLoading = MutableLiveData<Boolean>()
     private val _joinAvailable = MutableLiveData<Boolean>()
-    private val _emailText = MutableLiveData<String>()
-    private val _pwdText = MutableLiveData<String>()
-    private val _pwdConfirmText = MutableLiveData<String>()
-    private val _nameText = MutableLiveData<String>()
+    val emailText = MutableLiveData<String>()
+    val pwdText = MutableLiveData<String>()
+    val pwdConfirmText = MutableLiveData<String>()
+    val nameText = MutableLiveData<String>()
     private val _msgText = MutableLiveData<String>()
 
     val joinStatus: LiveData<Boolean>
@@ -31,18 +31,6 @@ class JoinViewModel : ViewModel() {
     val joinAvailable: LiveData<Boolean>
         get() = _joinAvailable
 
-    val nameText: LiveData<String>
-        get() = _nameText
-
-    val emailText: LiveData<String>
-        get() = _emailText
-
-    val pwdText: LiveData<String>
-        get() = _pwdText
-
-    val pwdConfirmText: LiveData<String>
-        get() = _pwdConfirmText
-
     val msgText: LiveData<String>
         get() = _msgText
 
@@ -50,25 +38,25 @@ class JoinViewModel : ViewModel() {
         updateJoinAvailable()
         _isLoading.value = true
         val user = UserJoin(
-            _emailText.value!!, _nameText.value!!, _pwdText.value!!, _pwdConfirmText.value!!
+            emailText.value!!, nameText.value!!, pwdText.value!!, pwdConfirmText.value!!
         )
 
         SignRepository.userJoin(user, success = {
             _msgText.value = ResourceUtil.getString(R.string.join_success)
             _joinStatus.value = true
             _isLoading.value = false
-        }, failed = { _, _ ->
-            _msgText.value = ResourceUtil.getString(R.string.msg_network_err)
+        }, failed = { _, msg ->
+            _msgText.value = msg
             _isLoading.value = false
         })
     }
 
     fun updateJoinAvailable() {
         _joinAvailable.value = InputValidator.isJoinInfoValid(
-            _nameText.value,
-            _emailText.value,
-            _pwdText.value,
-            _pwdConfirmText.value
+            nameText.value,
+            emailText.value,
+            pwdText.value,
+            pwdConfirmText.value
         )
     }
 }

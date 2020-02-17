@@ -38,13 +38,13 @@ fun loadUrlImg(imageView: ImageView, url: String?) {
 
 @BindingAdapter("onSingleClick")
 fun onSingleClick(button: Button, listener: View.OnClickListener) {
-    button.setOnClickListener {
+    button.setOnClickListener(
         OnSingleClickListener.convertToViewClickListener(object : OnSingleClickListener<View>() {
             override fun onSingleClick(item: View) {
                 listener.onClick(item) // 중복 클릭 방지
             }
         })
-    }
+    )
 }
 
 @BindingAdapter("setPaddingVertical")

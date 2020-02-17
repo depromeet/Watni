@@ -11,7 +11,8 @@
   <string name="join_email">이메일</string>
   <string name="join_pwd">비밀번호</string>
   <string name="join_pwd_confirm">비밀번호 확인</string>
-  <string name="join_fail_email">이미 사용중인 이메일입니다.</string>
+  <string name="join_fail_email">\@를 포함해 입력해주세요.</string>
+  <string name="join_already_used_email">이미 사용중인 이메일입니다. 다른 이메일을 사용해주세요.</string>
   <string name="join_fail_pwd">비밀번호를 6~12자 사이로 입력해주세요.</string>
   <string name="join_fail_name">이름을 2~10자 사이로 입력해주세요.</string>
   <string name="join_fail_pwd_confirm">비밀번호가 일치하지 않습니다.</string>

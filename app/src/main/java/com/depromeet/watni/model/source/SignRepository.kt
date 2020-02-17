@@ -18,8 +18,8 @@ object SignRepository {
         sign.userJoin(user).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 when (it.code()) {
-                    SUCCESS_CODE -> run(success)
-                    FAIL_CODE -> failed(TAG, ALREADY_USED_EMAIL_MSG)
+                    RES_SUCCESS -> run(success)
+                    RES_FAIL -> failed(TAG, ALREADY_USED_EMAIL_MSG)
                 }
             }
             throwable?.let {

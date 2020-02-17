@@ -16,11 +16,11 @@ class JoinViewModel : ViewModel() {
     private val _joinStatus = MutableLiveData<Boolean>()
     private val _isLoading = MutableLiveData<Boolean>()
     private val _joinAvailable = MutableLiveData<Boolean>()
+    private val _msgText = MutableLiveData<String>()
     val emailText = MutableLiveData<String>()
     val pwdText = MutableLiveData<String>()
     val pwdConfirmText = MutableLiveData<String>()
     val nameText = MutableLiveData<String>()
-    private val _msgText = MutableLiveData<String>()
 
     val joinStatus: LiveData<Boolean>
         get() = _joinStatus

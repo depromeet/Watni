@@ -15,9 +15,7 @@ object SharedPrefUtil {
     private const val KEY_REFRESH_TOKEN = "key_refresh_token"
 
     private val sharedPref: SharedPreferences by lazy {
-        MainApplication.getContext().getSharedPreferences(
-            SharedPrefUtil::class.java.name, Activity.MODE_PRIVATE
-        )
+        MainApplication.getContext().getSharedPreferences(SharedPrefUtil::class.java.name, Activity.MODE_PRIVATE)
     }
 
     fun isFirstLaunch(): Boolean {

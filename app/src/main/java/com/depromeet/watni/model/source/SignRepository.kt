@@ -4,35 +4,41 @@ import android.util.Log
 import com.depromeet.watni.model.request.UserJoin
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.network.*
+import com.depromeet.watni.util.NetworkUtil
 import com.depromeet.watni.util.SharedPrefUtil
 
-object SignRepository {
+class SignRepository : SignDataSource {
+    private val tag = SignRepository::class.java.simpleName
     private val sign: SignApi = RetrofitBuilder.service
-    private val TAG = SignRepository::class.java.simpleName
 
-    fun userJoin(
+    override fun userJoin(
         user: UserJoin,
         success: () -> Unit,
         failed: (String, String?) -> Unit
     ) {
         sign.userJoin(user).enqueue(retrofitCallback { response, throwable ->
             response?.let {
-                when (it.code()) {
-                    RES_SUCCESS -> run(success)
-                    RES_FAIL -> failed(TAG, ALREADY_USED_EMAIL_MSG)
+                if (it.isSuccessful) {
+                    run(success)
+                } else {
+                    val errorDescription = NetworkUtil.parseErrorDescription(it.errorBody())
+                    val msg = if (errorDescription == ALREADY_USED_EMAIL_DESC) ALREADY_USED_EMAIL_MSG else NETWORK_ERROR_MSG
+                    failed(tag, msg)
                 }
             }
             throwable?.let {
-                Log.e(TAG, throwable.message, throwable)
-                failed(TAG, NETWORK_ERROR_MSG)
+                Log.e(tag, throwable.message, throwable)
+                failed(tag, NETWORK_ERROR_MSG)
             }
         })
     }
 
-    fun issueToken(
-        issueToken: UserLogin
+    override fun userLogin(
+        user: UserLogin,
+        success: () -> Unit,
+        failed: (String, String?) -> Unit
     ) {
-        sign.issueToken(issueToken).enqueue(retrofitCallback { response, throwable ->
+        sign.issueToken(user).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (response.isSuccessful) {
                     SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
@@ -40,7 +46,7 @@ object SignRepository {
                 }
             }
             throwable?.let {
-                Log.d(TAG, it.message ?: "issueToken error")
+                Log.d(tag, it.message ?: "issueToken error")
             }
         })
     }

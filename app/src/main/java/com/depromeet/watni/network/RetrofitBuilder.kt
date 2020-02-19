@@ -10,6 +10,11 @@ object RetrofitBuilder {
     private const val BASE_URL = "http://ec2-52-78-36-242.ap-northeast-2.compute.amazonaws.com"
     private const val TIME_OUT_SEC = 5L
 
+    val basicRetrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
     val service: SignApi by lazy {
         val interceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

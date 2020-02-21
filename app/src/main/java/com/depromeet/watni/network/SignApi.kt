@@ -6,12 +6,13 @@ import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.response.IssueTokenResponse
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.HeaderMap
 import retrofit2.http.POST
 
 interface SignApi {
 
     @POST("/oauth/token")
-    fun issueToken(@Body user: UserLogin): Call<IssueTokenResponse>
+    fun issueToken(@Body user: UserLogin, @HeaderMap headers: Map<String, String>): Call<IssueTokenResponse>
 
     @POST("/oauth/token")
     fun refreshToken(@Body token: RefreshToken): Call<IssueTokenResponse>

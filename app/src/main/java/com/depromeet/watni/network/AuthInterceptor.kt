@@ -13,11 +13,11 @@ class AuthInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response = with(chain) {
         val token = SharedPrefUtil.getAccessToken()
         val headerValue = if (token.isNullOrEmpty()) {
-            authHeader.base64Encoding()
+            "Basic $authHeader"
         } else {
             "Bearer $token"
         }
 
-        proceed(request().newBuilder().addHeader(HEADER_NAME, headerValue).build())
+        proceed(this.request().newBuilder().addHeader(HEADER_AUTH, headerValue).build())
     }
 }

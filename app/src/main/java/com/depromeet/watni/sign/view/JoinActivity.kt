@@ -59,12 +59,8 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>(R.layout.activity_join) {
                 )
                 updateJoinAvailable()
             })
-            joinStatus.observe(this@JoinActivity, Observer {
-                finish()
-            })
-            msgText.observe(this@JoinActivity, Observer {
-                showToast(it)
-            })
+            joinStatus.observe(this@JoinActivity, Observer { finish() })
+            msgText.observe(this@JoinActivity, Observer { showToast(it) })
         }
     }
 

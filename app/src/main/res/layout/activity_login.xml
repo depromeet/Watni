@@ -4,8 +4,13 @@
 
   <data>
 
+    <import type="android.view.View" />
+
     <import type="android.app.Activity" />
 
+    <variable
+      name="viewModel"
+      type="com.depromeet.watni.sign.LoginViewModel" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +69,9 @@
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:text="@={viewModel.emailText}"
+            android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +93,9 @@
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:text="@={viewModel.pwdText}"
+            android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +108,9 @@
           android:padding="10dp"
           android:text="@string/login_title"
           android:textColor="@color/color_gray"
-          android:textStyle="bold" />
+          android:textStyle="bold"
+          app:onSingleClick="@{() -> viewModel.attemptLogin()}"
+          app:setEnable="@{viewModel.loginAvailable}" />
 
         <Button
           android:id="@+id/btn_join_forgot_pwd"
@@ -123,16 +134,17 @@
           android:textColor="@android:color/black"
           android:textStyle="bold" />
       </LinearLayout>
-  </ScrollView>
+    </ScrollView>
 
-  <ProgressBar
-    android:id="@+id/join_progress"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+      android:id="@+id/join_progress"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:progressTint="@color/colorPrimary"
+      android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.INVISIBLE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

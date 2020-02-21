@@ -6,6 +6,13 @@
   <string name="close">닫기</string>
   <string name="back">뒤로가기</string>
 
+  <string-array name="onboarding_msg">
+    <item>저 왔어요!</item>
+    <item>말할 필요 없이</item>
+    <item>찰칵!</item>
+    <item>출석 완료</item>
+  </string-array>
+
   <string name="join_title">회원가입</string>
   <string name="join_name">이름</string>
   <string name="join_email">이메일</string>

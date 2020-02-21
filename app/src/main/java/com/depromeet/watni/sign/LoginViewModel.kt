@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.source.SignDataSource
 import com.depromeet.watni.model.source.SignRepository
+import com.depromeet.watni.network.GRANT_TYPE_PWD
 
 /**
  * Created by yunji on 2020-01-28
@@ -34,7 +35,7 @@ class LoginViewModel : ViewModel() {
         get() = _msgText
 
     fun attemptLogin() {
-        val user = UserLogin(emailText.value!!, pwdText.value!!)
+        val user = UserLogin(GRANT_TYPE_PWD, pwdText.value!!, emailText.value!!)
         signRepository.userLogin(user, success = {
             _loginStatus.value = true
             _isLoading.value = false

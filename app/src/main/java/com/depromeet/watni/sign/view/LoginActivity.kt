@@ -31,7 +31,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
             binding.btnJoin.setOnClickListener { startActivity(JoinActivity.getIntent(this@LoginActivity)) }
             emailText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
             pwdText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
-            loginStatus.observe(this@LoginActivity, Observer { finish() })
+            loginStatus.observe(this@LoginActivity, Observer {
+                // TODO : 모임 화면으로 이동
+            })
             msgText.observe(this@LoginActivity, Observer { showToast(it) })
         }
     }

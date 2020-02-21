@@ -38,11 +38,14 @@ class SignRepository : SignDataSource {
         success: () -> Unit,
         failed: (String, String?) -> Unit
     ) {
-        sign.issueToken(user).enqueue(retrofitCallback { response, throwable ->
+        sign.issueToken(user, HeaderProvider.createIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (response.isSuccessful) {
+                    run(success)
                     SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
                     SharedPrefUtil.saveRefreshToken(response.body()?.refreshToken ?: "")
+                } else {
+                    failed(tag, LOGIN_FAILED_MSG)
                 }
             }
             throwable?.let {

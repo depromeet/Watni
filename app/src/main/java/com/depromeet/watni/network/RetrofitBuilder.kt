@@ -22,7 +22,6 @@ object RetrofitBuilder {
 
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            .addInterceptor(AuthInterceptor())
             .connectTimeout(TIME_OUT_SEC, TimeUnit.SECONDS)
             .build()
 

@@ -18,12 +18,10 @@ object SharedPrefUtil {
         MainApplication.getContext().getSharedPreferences(SharedPrefUtil::class.java.name, Activity.MODE_PRIVATE)
     }
 
-    fun isFirstLaunch(): Boolean {
-        val isFirst = sharedPref.getBoolean(KEY_IS_FIRST_LAUNCH, true)
-        if (isFirst) {
-            sharedPref.edit { putBoolean(KEY_IS_FIRST_LAUNCH, false) }
-        }
-        return isFirst
+    fun isFirstLaunch(): Boolean = sharedPref.getBoolean(KEY_IS_FIRST_LAUNCH, true)
+
+    fun setSplashIsLoaded() {
+        sharedPref.edit { putBoolean(KEY_IS_FIRST_LAUNCH, false) }
     }
 
     fun saveUserInfo(user: UserLogin) {

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tool="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="user"
+      type="com.depromeet.watni.model.request.User" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end"
+      android:text="@string/logout"
+      android:textColor="@color/color_gray" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="50dp"
+      android:layout_marginBottom="32dp"
+      android:fontFamily="@font/spoqa_han_sans_bold"
+      android:text="@{@string/group_welcome(user.name)}"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      tool:text="승화님! \n반갑습니다." />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/color_f8f8f8">
+
+      <Button
+        android:id="@+id/btn_group_create"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shape_rect_white_button"
+        android:drawableStart="@drawable/ic_create_group"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:drawablePadding="30dp"
+        android:gravity="start|center_vertical"
+        android:padding="32dp"
+        android:text="@string/group_create"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <Button
+        android:id="@+id/btn_group_enter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/shape_rect_white_button"
+        android:drawableStart="@drawable/ic_enter_group"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:drawablePadding="30dp"
+        android:gravity="start|center_vertical"
+        android:padding="32dp"
+        android:text="@string/group_enter"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_group_create" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </LinearLayout>
+</layout>

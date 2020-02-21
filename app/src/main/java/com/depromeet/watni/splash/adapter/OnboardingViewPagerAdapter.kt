@@ -4,15 +4,23 @@ import androidx.annotation.LayoutRes
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseRecyclerView
 import com.depromeet.watni.databinding.ItemOnboardingBinding
+import com.depromeet.watni.ui.model.OnboardingItem
+import com.depromeet.watni.util.ResourceUtil
 import okhttp3.internal.immutableListOf
 
 class OnboardingViewPagerAdapter(
     @LayoutRes private val layoutResId: Int,
     bindingVariableId: Int
-) : BaseRecyclerView<ItemOnboardingBinding, Int>(layoutResId, bindingVariableId) {
+) : BaseRecyclerView<ItemOnboardingBinding, OnboardingItem>(layoutResId, bindingVariableId) {
 
     init {
-        // TODO : 온보딩 일러스트 아이디로 변경
-        setItems(immutableListOf(R.drawable.test, R.drawable.test, R.drawable.test))
+        val msgArray = ResourceUtil.getStringArray(R.array.onboarding_msg)
+        setItems(
+            immutableListOf(
+                OnboardingItem("splash1.json", msgArray[0], msgArray[1]),
+                OnboardingItem("splash2.json", msgArray[2], msgArray[3]),
+                OnboardingItem("splash2.json", "", "")
+            )
+        )
     }
 }

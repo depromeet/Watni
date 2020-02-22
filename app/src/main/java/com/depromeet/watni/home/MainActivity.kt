@@ -1,4 +1,4 @@
-package com.depromeet.watni.view
+package com.depromeet.watni.home
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityMainBinding
-import com.depromeet.watni.splash.view.OnboardingActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
@@ -17,6 +16,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     companion object {
         fun getIntent(context: Context?): Intent? =
-            Intent(context, OnboardingActivity::class.java)
+            Intent(context, MainActivity::class.java)
     }
 }

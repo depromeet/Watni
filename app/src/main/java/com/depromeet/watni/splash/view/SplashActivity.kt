@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.group.view.GroupActivity
-import com.depromeet.watni.home.MainActivity
+import com.depromeet.watni.home.view.MainActivity
 import com.depromeet.watni.sign.view.LoginActivity
 import com.depromeet.watni.splash.SplashViewModel
 

@@ -36,7 +36,7 @@ object SharedPrefUtil {
     }
 
     fun saveGroupId(groupId: Int) {
-        sharedPref.edit { putString(KEY_GROUP_ID, Gson().toJson(groupId)) }
+        sharedPref.edit { putInt(KEY_GROUP_ID, groupId) }
     }
 
     fun getGroupId() = sharedPref.getInt(KEY_GROUP_ID, -1)

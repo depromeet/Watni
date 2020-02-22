@@ -47,6 +47,9 @@
   <string name="msg_network_auth">인증 에러가 발생했습니다. 다시 시도해주세요.</string>
   <string name="msg_network_err">네트워크 에러가 발생했습니다. 다시 시도해주세요.</string>
 
+  <string name="conference_title">일정</string>
+  <string name="history_title">출석 기록</string>
+
   <string-array name="profile_icon_random">
     <item>😊️</item>
     <item>😍</item>

@@ -23,7 +23,7 @@
       </intent-filter>
     </activity>
     <activity android:name=".splash.view.OnboardingActivity" />
-    <activity android:name=".home.MainActivity" />
+    <activity android:name=".home.view.MainActivity" />
     <activity android:name=".sign.view.LoginActivity" />
     <activity android:name=".sign.view.JoinActivity" />
     <activity android:name=".group.view.GroupActivity" />

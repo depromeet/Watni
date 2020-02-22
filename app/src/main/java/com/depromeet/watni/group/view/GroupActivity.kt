@@ -10,7 +10,7 @@ import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.base.onSingleClick
 import com.depromeet.watni.databinding.ActivityGroupBinding
 import com.depromeet.watni.group.GroupViewModel
-import com.depromeet.watni.home.MainActivity
+import com.depromeet.watni.home.view.MainActivity
 import com.depromeet.watni.sign.view.LoginActivity
 import com.depromeet.watni.util.SharedPrefUtil
 

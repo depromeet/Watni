@@ -17,6 +17,7 @@ class AuthInterceptor : Interceptor {
         } else {
             "Bearer $token"
         }
+        println("token " + token)
 
         proceed(
             this.request().newBuilder()

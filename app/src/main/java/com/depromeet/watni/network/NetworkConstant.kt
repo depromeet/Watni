@@ -14,6 +14,7 @@ val NETWORK_ERROR_MSG = ResourceUtil.getString(R.string.msg_network_err)
 val ALREADY_USED_EMAIL_MSG = ResourceUtil.getString(R.string.join_already_used_email)
 val LOGIN_FAILED_MSG = ResourceUtil.getString(R.string.login_fail_msg)
 val LOAD_USER_INFO_FAIL_MSG = ResourceUtil.getString(R.string.load_user_info_fail_msg)
+val ALREADY_USED_CODE_MSG = ResourceUtil.getString(R.string.group_already_used_code)
 
 // error description
 const val GRANT_TYPE_PWD = "password"

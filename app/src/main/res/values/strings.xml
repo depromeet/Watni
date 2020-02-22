@@ -33,7 +33,7 @@
   <string name="login_fail_email">가입되지 않은 이메일입니다.</string>
   <string name="login_fail_pwd">비밀번호가 일치하지 않습니다.</string>
   <string name="login_fail_msg">로그인에 실패했습니다. 이메일 또는 비밀번호를 확인해주세요.</string>
-  <string name="load_user_info_fail_msg">나의 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
+  <string name="load_user_info_fail_msg">내 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
 
   <string name="group_welcome">%s님!\n반갑습니다.</string>
   <string name="group_create">모임 만들기</string>

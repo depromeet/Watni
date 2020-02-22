@@ -4,6 +4,7 @@ import com.depromeet.watni.model.request.ApplyGroup
 import com.depromeet.watni.model.request.CreateGroup
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.response.GroupResponse
+import com.depromeet.watni.model.response.SearchGroupResponse
 
 interface GroupDataSource {
 
@@ -15,7 +16,7 @@ interface GroupDataSource {
 
     fun createGroup(
         createGroup: CreateGroup,
-        success: () -> Unit,
+        success: (response: SearchGroupResponse) -> Unit,
         failed: (String, String?) -> Unit
     )
 

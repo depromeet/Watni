@@ -25,4 +25,7 @@ interface ServiceApi {
 
     @POST("/api/group")
     fun createGroup(@Body createGroup: CreateGroup): Call<SearchGroupResponse>
+
+    @POST("/api/group/{groupId}/apply-way/check")
+    fun checkCode(@Body applyGroup: ApplyGroup): Call<Void>
 }

@@ -43,16 +43,17 @@ class SignRepository : SignDataSource {
         service.issueToken(user, HeaderProvider.createIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (response.isSuccessful) {
-                    run(success)
                     SharedPrefUtil.saveUserLoginInfo(user)
                     SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
                     SharedPrefUtil.saveRefreshToken(response.body()?.refreshToken ?: "")
+                    run(success)
                 } else {
                     failed(tag, LOGIN_FAILED_MSG)
                 }
             }
             throwable?.let {
                 Log.e(tag, it.message ?: "issueToken error")
+                failed(tag, NETWORK_ERROR_MSG)
             }
         })
     }
@@ -67,6 +68,7 @@ class SignRepository : SignDataSource {
                 }
                 throwable?.let {
                     Log.e(tag, it.message ?: "refreshToken error")
+                    failed(tag, NETWORK_ERROR_MSG)
                 }
             })
     }
@@ -83,6 +85,7 @@ class SignRepository : SignDataSource {
             }
             throwable?.let {
                 Log.e(tag, it.message ?: "getUserInfo error")
+                failed(tag, NETWORK_ERROR_MSG)
             }
         })
     }

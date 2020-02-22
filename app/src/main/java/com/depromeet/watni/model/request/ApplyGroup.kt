@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ApplyGroup(
     @SerializedName("applyType")
-    val applyType: String,
+    val applyType: String = "CODE",
     @SerializedName("content")
     val content: String
 )

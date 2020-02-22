@@ -1,6 +1,8 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
+import com.depromeet.watni.model.request.RefreshToken
+import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserJoin
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.network.*
@@ -9,14 +11,14 @@ import com.depromeet.watni.util.SharedPrefUtil
 
 class SignRepository : SignDataSource {
     private val tag = SignRepository::class.java.simpleName
-    private val sign: SignApi = RetrofitBuilder.service
+    private val service: ServiceApi = RetrofitBuilder.service
 
     override fun userJoin(
         user: UserJoin,
         success: () -> Unit,
         failed: (String, String?) -> Unit
     ) {
-        sign.userJoin(user).enqueue(retrofitCallback { response, throwable ->
+        service.userJoin(user).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (it.isSuccessful) {
                     run(success)
@@ -38,10 +40,11 @@ class SignRepository : SignDataSource {
         success: () -> Unit,
         failed: (String, String?) -> Unit
     ) {
-        sign.issueToken(user, HeaderProvider.createIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
+        service.issueToken(user, HeaderProvider.createIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (response.isSuccessful) {
                     run(success)
+                    SharedPrefUtil.saveUserLoginInfo(user)
                     SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
                     SharedPrefUtil.saveRefreshToken(response.body()?.refreshToken ?: "")
                 } else {
@@ -49,8 +52,56 @@ class SignRepository : SignDataSource {
                 }
             }
             throwable?.let {
-                Log.d(tag, it.message ?: "issueToken error")
+                Log.e(tag, it.message ?: "issueToken error")
             }
+        })
+    }
+
+    override fun refreshToken(refreshToken: RefreshToken, success: () -> Unit, failed: (String, String?) -> Unit) {
+        service.refreshToken(refreshToken, HeaderProvider.createIssueTokenHeader())
+            .enqueue(retrofitCallback { response, throwable ->
+                response?.let {
+                    SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
+                    SharedPrefUtil.saveRefreshToken(response.body()?.refreshToken ?: "")
+                    run(success)
+                }
+                throwable?.let {
+                    Log.e(tag, it.message ?: "refreshToken error")
+                }
+            })
+    }
+
+    override fun getUserInfo(success: (user: User) -> Unit, failed: (String, String?) -> Unit) {
+        service.getUserInfo().enqueue(retrofitCallback { response, throwable ->
+            response?.let {
+                if (response.isSuccessful && response.body() != null) {
+                    SharedPrefUtil.saveUserInfo(response.body()!!)
+                    success(response.body()!!)
+                } else {
+                    failed(tag, LOAD_USER_INFO_FAIL_MSG)
+                }
+            }
+            throwable?.let {
+                Log.e(tag, it.message ?: "getUserInfo error")
+            }
+        })
+    }
+
+    override fun checkAuthState(success: () -> Unit, failed: (String, String?) -> Unit) {
+        if (SharedPrefUtil.getUserLoginInfo() == null) {
+            failed(tag, "No userLoginInfo")
+            return
+        }
+
+        userLogin(SharedPrefUtil.getUserLoginInfo()!!, {
+            success()
+        }, { _, _ ->
+            refreshToken(RefreshToken(SharedPrefUtil.getRefreshToken()!!, GRANT_TYPE_TOKEN), success = {
+                success()
+            }, failed = { tag, msg ->
+                Log.e(tag, msg ?: "checkAuthState error")
+                failed(tag, msg)
+            })
         })
     }
 }

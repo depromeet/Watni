@@ -1,9 +1,10 @@
-package com.depromeet.watni.model.request
+package com.depromeet.watni.model.response
 
 
+import android.telecom.Conference
 import com.google.gson.annotations.SerializedName
 
-data class Group(
+data class SearchGroupResponse(
     @SerializedName("conferences")
     val conferences: List<Conference>,
     @SerializedName("groupId")

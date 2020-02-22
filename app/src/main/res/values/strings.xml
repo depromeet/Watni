@@ -2,9 +2,11 @@
   <string name="app_name">왔니</string>
   <string name="app_desc">오늘 왔니, 안 왔니?</string>
 
+  <string name="ok">확인</string>
   <string name="start">시작하기</string>
   <string name="close">닫기</string>
   <string name="back">뒤로가기</string>
+  <string name="logout">로그아웃</string>
 
   <string-array name="onboarding_msg">
     <item>저 왔어요!</item>
@@ -31,8 +33,22 @@
   <string name="login_fail_email">가입되지 않은 이메일입니다.</string>
   <string name="login_fail_pwd">비밀번호가 일치하지 않습니다.</string>
   <string name="login_fail_msg">로그인에 실패했습니다. 이메일 또는 비밀번호를 확인해주세요.</string>
+  <string name="load_user_info_fail_msg">내 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
 
+  <string name="group_welcome">%s님!\n반갑습니다.</string>
+  <string name="group_create">모임 만들기</string>
+  <string name="group_enter">모임 들어가기</string>
+  <string name="group_create_name">모임 이름을\n입력해주세요.</string>
+  <string name="group_create_code">초대코드를\n생성해주세요.</string>
+  <string name="group_already_used_code">코드가 중복되었습니다.</string>
+  <string name="group_input_code">초대코드를\n입력해주세요.</string>
+  <string name="group_code_not_exist">존재하지 않는 코드입니다.</string>
+
+  <string name="msg_network_auth">인증 에러가 발생했습니다. 다시 시도해주세요.</string>
   <string name="msg_network_err">네트워크 에러가 발생했습니다. 다시 시도해주세요.</string>
+
+  <string name="conference_title">일정</string>
+  <string name="history_title">출석 기록</string>
 
   <string-array name="profile_icon_random">
     <item>😊️</item>

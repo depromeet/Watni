@@ -15,13 +15,14 @@ object RetrofitBuilder {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service: SignApi by lazy {
+    val service: ServiceApi by lazy {
         val interceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
+            .addInterceptor(AuthInterceptor())
             .connectTimeout(TIME_OUT_SEC, TimeUnit.SECONDS)
             .build()
 
@@ -30,6 +31,6 @@ object RetrofitBuilder {
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
-            .create(SignApi::class.java)
+            .create(ServiceApi::class.java)
     }
 }

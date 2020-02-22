@@ -100,7 +100,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-          android:id="@+id/btn_login"
+          android:id="@+id/btn_ok"
           android:layout_width="match_parent"
           android:layout_height="48dp"
           android:layout_marginTop="42dp"

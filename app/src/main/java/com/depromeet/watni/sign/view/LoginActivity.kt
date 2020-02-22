@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityLoginBinding
+import com.depromeet.watni.group.view.GroupActivity
 import com.depromeet.watni.sign.LoginViewModel
 import com.depromeet.watni.util.showToast
 
@@ -31,10 +32,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
             binding.btnJoin.setOnClickListener { startActivity(JoinActivity.getIntent(this@LoginActivity)) }
             emailText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
             pwdText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
-            loginStatus.observe(this@LoginActivity, Observer {
-                // TODO : 모임 화면으로 이동
-            })
             msgText.observe(this@LoginActivity, Observer { showToast(it) })
+            loginStatus.observe(this@LoginActivity, Observer {
+                startActivity(GroupActivity.getIntent(this@LoginActivity))
+                finish()
+            })
         }
     }
 

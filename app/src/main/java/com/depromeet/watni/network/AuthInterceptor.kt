@@ -17,7 +17,13 @@ class AuthInterceptor : Interceptor {
         } else {
             "Bearer $token"
         }
+        println("token " + token)
 
-        proceed(this.request().newBuilder().addHeader(HEADER_AUTH, headerValue).build())
+        proceed(
+            this.request().newBuilder()
+                .removeHeader(CONTENT_TYPE).addHeader(CONTENT_TYPE, TYPE_JSON)
+                .removeHeader(ACCEPT_TYPE).addHeader(ACCEPT_TYPE, TYPE_JSON)
+                .addHeader(HEADER_AUTH, headerValue).build()
+        )
     }
 }

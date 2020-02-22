@@ -26,6 +26,8 @@
     <activity android:name=".home.MainActivity" />
     <activity android:name=".sign.view.LoginActivity" />
     <activity android:name=".sign.view.JoinActivity" />
+    <activity android:name=".group.view.GroupActivity" />
+    <activity android:name=".group.view.StartGroupActivity" />
   </application>
 
 </manifest>

@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityLoginBinding
-import com.depromeet.watni.group.GroupActivity
+import com.depromeet.watni.group.view.GroupActivity
 import com.depromeet.watni.sign.LoginViewModel
 import com.depromeet.watni.util.showToast
 

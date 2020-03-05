@@ -1,8 +1,8 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
-import com.depromeet.watni.model.request.ApplyGroup
 import com.depromeet.watni.model.request.CreateGroup
+import com.depromeet.watni.model.request.NewGroupCode
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.response.GroupResponse
 import com.depromeet.watni.model.response.SearchGroupResponse
@@ -45,7 +45,7 @@ class GroupRepository : GroupDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun applyGroup(applyGroup: ApplyGroup, success: () -> Unit, failed: (String, String?) -> Unit) {
+    override fun applyGroup(newGroupCode: NewGroupCode, success: () -> Unit, failed: (String, String?) -> Unit) {
 
     }
 }

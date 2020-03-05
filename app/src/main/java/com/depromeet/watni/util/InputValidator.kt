@@ -20,6 +20,6 @@ object InputValidator {
             && !pwdConfirm.isNullOrBlank()
             && (pwd == pwdConfirm)
 
-    fun isJoinInfoValid(name: String?, email: String?, pwd: String?, pwdConfirm: String?) =
+    fun isValidJoinInfo(name: String?, email: String?, pwd: String?, pwdConfirm: String?) =
         isValidName(name) && isValidEmail(email) && isSamePwd(pwd, pwdConfirm)
 }

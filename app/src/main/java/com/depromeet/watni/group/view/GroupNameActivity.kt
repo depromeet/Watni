@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.START_GROUP_SUCCESS
 import com.depromeet.watni.base.BaseActivity
-import com.depromeet.watni.databinding.ActivityGroupNameBinding
+import com.depromeet.watni.databinding.FragmentJoinGroupBinding
 import com.depromeet.watni.group.GroupViewModel
 import com.depromeet.watni.util.showToast
 
@@ -16,7 +16,7 @@ import com.depromeet.watni.util.showToast
 /*
  * Created by yunji on 2020-02-22
  */
-class GroupNameActivity : BaseActivity<ActivityGroupNameBinding>(R.layout.activity_group_name) {
+class GroupNameActivity : BaseActivity<FragmentJoinGroupBinding>(R.layout.fragment_join_group) {
     private lateinit var viewModel: GroupViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

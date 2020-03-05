@@ -59,7 +59,6 @@ class StartGroupActivity : BaseActivity<ActivityStartGroupBinding>(R.layout.acti
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        println("result" + resultCode)
         if (resultCode == START_GROUP_SUCCESS) {
             setResult(START_GROUP_SUCCESS)
             finish()

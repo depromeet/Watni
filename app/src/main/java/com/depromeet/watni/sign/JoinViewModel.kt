@@ -56,7 +56,7 @@ class JoinViewModel : ViewModel() {
     }
 
     fun updateJoinAvailable() {
-        _joinAvailable.value = InputValidator.isJoinInfoValid(
+        _joinAvailable.value = InputValidator.isValidJoinInfo(
             nameText.value,
             emailText.value,
             pwdText.value,

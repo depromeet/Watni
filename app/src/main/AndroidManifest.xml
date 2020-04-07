@@ -27,8 +27,6 @@
     <activity android:name=".sign.view.LoginActivity" />
     <activity android:name=".sign.view.JoinActivity" />
     <activity android:name=".group.view.GroupActivity" />
-    <activity android:name=".group.view.StartGroupActivity" />
-    <activity android:name=".group.view.GroupNameActivity" />
   </application>
 
 </manifest>

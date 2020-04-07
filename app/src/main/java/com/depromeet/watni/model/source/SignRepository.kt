@@ -40,7 +40,7 @@ class SignRepository : SignDataSource {
         success: () -> Unit,
         failed: (String, String?) -> Unit
     ) {
-        service.issueToken(user, HeaderProvider.createIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
+        service.issueToken(user, HeaderProvider.getIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (response.isSuccessful) {
                     SharedPrefUtil.saveUserLoginInfo(user)
@@ -59,7 +59,7 @@ class SignRepository : SignDataSource {
     }
 
     override fun refreshToken(refreshToken: RefreshToken, success: () -> Unit, failed: (String, String?) -> Unit) {
-        service.refreshToken(refreshToken, HeaderProvider.createIssueTokenHeader())
+        service.refreshToken(refreshToken, HeaderProvider.getIssueTokenHeader())
             .enqueue(retrofitCallback { response, throwable ->
                 response?.let {
                     SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")

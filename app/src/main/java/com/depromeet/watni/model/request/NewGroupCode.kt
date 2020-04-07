@@ -3,9 +3,7 @@ package com.depromeet.watni.model.request
 
 import com.google.gson.annotations.SerializedName
 
-data class ApplyGroup(
-    @SerializedName("applyType")
-    val applyType: String = "CODE",
+data class NewGroupCode(
     @SerializedName("content")
     val content: String
-)
+) : GroupCode()

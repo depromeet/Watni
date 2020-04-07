@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <data>
 
@@ -9,142 +9,142 @@
     <import type="android.app.Activity" />
 
     <variable
-      name="viewModel"
-      type="com.depromeet.watni.sign.LoginViewModel" />
+        name="viewModel"
+        type="com.depromeet.watni.sign.LoginViewModel" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@android:color/white"
+      android:orientation="vertical">
 
     <ScrollView
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
       <LinearLayout
-        android:id="@+id/email_login_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+          android:id="@+id/email_login_form"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="16dp">
 
         <ImageButton
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@android:color/transparent"
-          android:contentDescription="@string/back"
-          android:onClick="@{(view)->((Activity)(view.getContext())).finish()}"
-          android:src="@drawable/ic_back" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/back"
+            android:onClick="@{(view)->((Activity)(view.getContext())).finish()}"
+            android:src="@drawable/ic_back" />
 
         <ImageView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="46dp"
-          android:contentDescription="@string/app_name"
-          android:src="@drawable/ic_logo"
-          android:textColor="@android:color/black"
-          android:textSize="25sp"
-          android:textStyle="bold" />
-
-        <TextView
-          android:id="@+id/tv_join_email"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/join_email" />
-
-        <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-          <EditText
-            android:id="@+id/et_join_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="@={viewModel.emailText}"
-            android:textSize="14sp" />
+            android:layout_marginBottom="46dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_logo"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_join_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/join_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+          <EditText
+              android:id="@+id/et_join_email"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:importantForAutofill="no"
+              android:inputType="textEmailAddress"
+              android:maxLines="1"
+              android:singleLine="true"
+              android:text="@={viewModel.emailText}"
+              android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-          android:id="@+id/tv_join_password"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="34dp"
-          android:text="@string/join_pwd" />
+            android:id="@+id/tv_join_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:text="@string/join_pwd" />
 
         <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
           <EditText
-            android:id="@+id/et_join_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="@={viewModel.pwdText}"
-            android:textSize="14sp" />
+              android:id="@+id/et_join_password"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:importantForAutofill="no"
+              android:inputType="textPassword"
+              android:maxLines="1"
+              android:singleLine="true"
+              android:text="@={viewModel.pwdText}"
+              android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-          android:id="@+id/btn_ok"
-          android:layout_width="match_parent"
-          android:layout_height="48dp"
-          android:layout_marginTop="42dp"
-          android:background="@drawable/shape_rect_stroke_gray"
-          android:padding="10dp"
-          android:text="@string/login_title"
-          android:textColor="@color/color_gray"
-          android:textStyle="bold"
-          app:onSingleClick="@{() -> viewModel.attemptLogin()}"
-          app:setEnable="@{viewModel.loginAvailable}" />
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/shape_rect_stroke_gray"
+            android:padding="10dp"
+            android:text="@string/login_title"
+            android:textColor="@color/color_gray"
+            android:textStyle="bold"
+            app:onSingleClick="@{() -> viewModel.attemptLogin()}"
+            app:setEnable="@{viewModel.loginAvailable}" />
 
         <Button
-          android:id="@+id/btn_join_forgot_pwd"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:layout_marginTop="8dp"
-          android:background="@android:color/transparent"
-          android:fontFamily="@font/spoqa_han_sans_regular"
-          android:text="@string/login_forgot_pwd"
-          android:textColor="@color/color_gray" />
+            android:id="@+id/btn_join_forgot_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/spoqa_han_sans_regular"
+            android:text="@string/login_forgot_pwd"
+            android:textColor="@color/color_gray" />
 
         <Button
-          android:id="@+id/btn_join"
-          android:layout_width="match_parent"
-          android:layout_height="48dp"
-          android:layout_marginTop="42dp"
-          android:background="@drawable/shape_rect_solid_black"
-          android:padding="10dp"
-          android:text="@string/join_title"
-          android:textColor="@android:color/black"
-          android:textStyle="bold" />
+            android:id="@+id/btn_join"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/shape_rect_solid_black"
+            android:padding="10dp"
+            android:text="@string/join_title"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
       </LinearLayout>
     </ScrollView>
 
     <ProgressBar
-      android:id="@+id/join_progress"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:progressTint="@color/colorPrimary"
-      android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.INVISIBLE}"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/join_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/colorPrimary"
+        android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.INVISIBLE}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

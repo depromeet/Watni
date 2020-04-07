@@ -3,7 +3,7 @@ package com.depromeet.watni.util
 import android.widget.Toast
 import com.depromeet.watni.MainApplication
 
-fun showToast(text: String) {
+fun showToast(text: String?) {
     Toast.makeText(MainApplication.getContext(), text, Toast.LENGTH_SHORT).show()
 }
 

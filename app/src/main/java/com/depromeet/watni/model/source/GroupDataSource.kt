@@ -1,7 +1,7 @@
 package com.depromeet.watni.model.source
 
-import com.depromeet.watni.model.request.ApplyGroup
 import com.depromeet.watni.model.request.CreateGroup
+import com.depromeet.watni.model.request.NewGroupCode
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.response.GroupResponse
 import com.depromeet.watni.model.response.SearchGroupResponse
@@ -27,7 +27,7 @@ interface GroupDataSource {
     )
 
     fun applyGroup(
-        applyGroup: ApplyGroup,
+        newGroupCode: NewGroupCode,
         success: () -> Unit,
         failed: (String, String?) -> Unit
     )

@@ -5,14 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.depromeet.watni.*
+import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.base.onSingleClick
 import com.depromeet.watni.databinding.ActivityGroupBinding
+import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel
-import com.depromeet.watni.home.view.MainActivity
 import com.depromeet.watni.sign.view.LoginActivity
 import com.depromeet.watni.util.SharedPrefUtil
+import com.depromeet.watni.util.addNewFragment
 
 
 /*
@@ -33,8 +34,8 @@ class GroupActivity : BaseActivity<ActivityGroupBinding>(R.layout.activity_group
 
     private fun initView() {
         with(binding) {
-            onSingleClick(btnGroupCreate, View.OnClickListener { startGroupActivity(false) })
-            onSingleClick(btnGroupEnter, View.OnClickListener { startGroupActivity(true) })
+            onSingleClick(btnGroupCreate, View.OnClickListener { startFragment(GroupState.CREATE_NAME) })
+            onSingleClick(btnGroupEnter, View.OnClickListener { startFragment(GroupState.JOIN) })
             btnLogout.setOnClickListener {
                 startActivity(LoginActivity.getIntent(this@GroupActivity))
                 SharedPrefUtil.clearAll()
@@ -43,18 +44,12 @@ class GroupActivity : BaseActivity<ActivityGroupBinding>(R.layout.activity_group
         }
     }
 
-    private fun startGroupActivity(isEntering: Boolean) {
-        val intent = StartGroupActivity.getIntent(this@GroupActivity)
-        intent.putExtra(EXTRA_IS_ENTERING, isEntering)
-        startActivityForResult(intent, if (isEntering) START_GROUP_ENTER else START_GROUP_CREATE)
+    fun startFragment(groupState: GroupState) {
+        supportFragmentManager.addNewFragment(R.id.container, GroupFragment.newInstance(groupState), GroupFragment.TAG)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == START_GROUP_SUCCESS) {
-            startActivity(MainActivity.getIntent(this))
-            finish()
-        }
+    fun closeCurrentFragment() {
+        supportFragmentManager.popBackStack()
     }
 
     companion object {

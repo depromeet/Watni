@@ -24,6 +24,7 @@ const val ALREADY_USED_EMAIL_DESC = "Already exists Email"
 
 // request header setting
 const val HEADER_AUTH = "Authorization"
+const val APPLY_TYPE = "CODE"
 const val CONTENT_TYPE = "Content-Type"
 const val ACCEPT_TYPE = "Accept"
 const val TYPE_JSON = "application/json"

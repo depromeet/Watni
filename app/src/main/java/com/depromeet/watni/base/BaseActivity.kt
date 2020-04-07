@@ -8,6 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.depromeet.watni.util.addNewFragment
+import com.depromeet.watni.util.replaceFragment
 
 abstract class BaseActivity<B : ViewDataBinding>(
     @LayoutRes val layoutId: Int
@@ -23,6 +24,10 @@ abstract class BaseActivity<B : ViewDataBinding>(
 
     open fun startNewFragment(containerId: Int, fragment: Fragment, tag: String? = null) {
         supportFragmentManager.addNewFragment(containerId, fragment, tag)
+    }
+
+    open fun replaceFragment(containerId: Int, fragment: Fragment, tag: String? = null) {
+        supportFragmentManager.replaceFragment(containerId, fragment, tag)
     }
 
     open fun removeCurrentFragment() {

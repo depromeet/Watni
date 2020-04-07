@@ -2,6 +2,7 @@ package com.depromeet.watni.group.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
@@ -10,13 +11,16 @@ import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel
 import com.depromeet.watni.group.GroupViewModelFactory
 import com.depromeet.watni.model.source.GroupRepository
+import com.depromeet.watni.util.showToast
 
 /*
  * Created by yunji on 2020-03-05
  */
-class GroupFragment : BaseFragment<FragmentGroupBinding>(R.layout.fragment_group) {
+class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(R.layout.fragment_group) {
     private lateinit var groupState: GroupState
-    private val viewModel: GroupViewModel by lazy {
+    private lateinit var groupActivity: GroupActivity
+
+    override val viewModel: GroupViewModel by lazy {
         ViewModelProvider(this, GroupViewModelFactory(groupState, GroupRepository))[GroupViewModel::class.java]
     }
 
@@ -37,6 +41,7 @@ class GroupFragment : BaseFragment<FragmentGroupBinding>(R.layout.fragment_group
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        groupActivity = activity as GroupActivity
         arguments?.let {
             groupState = GroupState.of(it.getInt(KEY_GROUP_STATE))
         }
@@ -46,16 +51,32 @@ class GroupFragment : BaseFragment<FragmentGroupBinding>(R.layout.fragment_group
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        observeUiData()
     }
 
     private fun initView() {
         with(binding) {
             tvGroupMsg.text = groupState.getMessage()
-            ibGroupBack.setOnClickListener { finish() }
+
+            ibGroupBack.setOnClickListener { groupActivity.removeCurrentFragment() }
+            btnOk.setOnClickListener { handleNextEvent() }
         }
     }
 
-    private fun finish() {
-        (activity as GroupActivity).closeCurrentFragment()
+    private fun handleNextEvent() {
+        when (groupState) {
+            GroupState.JOIN -> viewModel.joinGroup()
+            GroupState.CREATE_CODE -> {
+                viewModel.createGroup("", "")
+            }
+            GroupState.CREATE_NAME -> groupActivity.startGroupFragment(GroupState.CREATE_CODE)
+        }
+    }
+
+    private fun observeUiData() {
+        with(viewModel) {
+            msgTextId.observe(viewLifecycleOwner, Observer { showToast(it) })
+            inputValue.observe(viewLifecycleOwner, Observer { checkOkButtonEnable() })
+        }
     }
 }

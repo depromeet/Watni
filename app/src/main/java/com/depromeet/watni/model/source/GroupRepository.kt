@@ -12,7 +12,7 @@ import com.depromeet.watni.util.SharedPrefUtil
 /*
  * Created by yunji on 2020-02-22
  */
-class GroupRepository : GroupDataSource {
+object GroupRepository : GroupDataSource {
     private val tag = GroupRepository::class.java.simpleName
     private val service: ServiceApi = RetrofitBuilder.service
 

@@ -11,31 +11,28 @@ import com.depromeet.watni.util.SharedPrefUtil
 /*
  * Created by yunji on 2020-02-22
  */
-class GroupViewModel : ViewModel() {
-    private val groupRepository = GroupRepository()
+class GroupViewModel(
+    private val groupState: GroupState,
+    private val groupRepository: GroupRepository
+) : ViewModel() {
+
     private val _status = MutableLiveData<Boolean>()
+    val status: LiveData<Boolean> get() = _status
+
     private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
     private val _nextBtnAvailable = MutableLiveData<Boolean>()
+    val nextBtnAvailable: LiveData<Boolean> get() = _nextBtnAvailable
+
     private val _okBtnAvailable = MutableLiveData<Boolean>()
+    val okBtnAvailable: LiveData<Boolean> get() = _okBtnAvailable
+
     private val _msgText = MutableLiveData<String>()
+    val msgText: LiveData<String> get() = _msgText
 
     val invitationCode = MutableLiveData<String>("")
     val groupName = MutableLiveData<String>("")
-
-    val status: LiveData<Boolean>
-        get() = _status
-
-    val isLoading: LiveData<Boolean>
-        get() = _isLoading
-
-    val nextBtnAvailable: LiveData<Boolean>
-        get() = _nextBtnAvailable
-
-    val okBtnAvailable: LiveData<Boolean>
-        get() = _okBtnAvailable
-
-    val msgText: LiveData<String>
-        get() = _msgText
 
     fun getUserName(): String = SharedPrefUtil.getUserInfo()?.name ?: ""
 

@@ -2,16 +2,23 @@ package com.depromeet.watni.group.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.databinding.FragmentGroupBinding
 import com.depromeet.watni.group.GroupState
+import com.depromeet.watni.group.GroupViewModel
+import com.depromeet.watni.group.GroupViewModelFactory
+import com.depromeet.watni.model.source.GroupRepository
 
 /*
  * Created by yunji on 2020-03-05
  */
 class GroupFragment : BaseFragment<FragmentGroupBinding>(R.layout.fragment_group) {
     private lateinit var groupState: GroupState
+    private val viewModel: GroupViewModel by lazy {
+        ViewModelProvider(this, GroupViewModelFactory(groupState, GroupRepository))[GroupViewModel::class.java]
+    }
 
     companion object {
         val TAG = GroupFragment::class.java.name

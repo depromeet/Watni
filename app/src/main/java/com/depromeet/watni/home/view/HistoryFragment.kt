@@ -1,5 +1,7 @@
 package com.depromeet.watni.home.view
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
@@ -19,5 +21,10 @@ class HistoryFragment private constructor() :
     companion object {
 
         fun getInstance() = HistoryFragment()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding = FragmentHistoryBinding.bind(view)
+        initBinding()
     }
 }

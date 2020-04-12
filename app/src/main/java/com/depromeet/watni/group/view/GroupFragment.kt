@@ -38,18 +38,12 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(R.layou
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        groupActivity = activity as GroupActivity
-        arguments?.let {
-            groupState = GroupState.of(it.getInt(KEY_GROUP_STATE))
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        groupActivity = activity as GroupActivity
+        arguments?.let { groupState = GroupState.of(it.getInt(KEY_GROUP_STATE)) }
+        binding = FragmentGroupBinding.bind(view)
 
+        initBinding()
         initView()
         observeUiData()
     }

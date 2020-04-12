@@ -1,5 +1,7 @@
 package com.depromeet.watni.home.view
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
@@ -21,5 +23,8 @@ class ConferenceFragment private constructor() :
         fun getInstance() = ConferenceFragment()
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding = FragmentConferenceBinding.bind(view)
+        initBinding()
+    }
 }

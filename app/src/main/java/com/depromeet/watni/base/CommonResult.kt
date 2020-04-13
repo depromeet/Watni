@@ -10,7 +10,7 @@ data class CommonResult<ITEM>(
 ) {
 
     companion object {
-        fun <T> success(data: T?): CommonResult<T> =
+        fun <T> success(data: T): CommonResult<T> =
             CommonResult(CommonStatus.SUCCESS, data, CommonStatus.SUCCESS.toString())
 
         fun <T> error(msg: String, data: T? = null): CommonResult<T> =

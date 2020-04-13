@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#EA1C00</color>
-  <color name="colorPrimaryDark">#000000</color>
-  <color name="colorAccent">#D81B60</color>
-  <color name="color_light_gray">#EEEEEE</color>
-  <color name="color_dot_gray">#33000000</color>
-  <color name="color_gray">#80000000</color>
+    <color name="colorPrimary">#EA1C00</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="color_light_gray">#EEEEEE</color>
+    <color name="color_dot_gray">#33000000</color>
+    <color name="color_gray">#80000000</color>
 
-  <color name="color_f8f8f8">#F8F8F8</color>
+    <color name="color_f8f8f8">#F8F8F8</color>
 </resources>

@@ -5,6 +5,10 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.depromeet.watni.ext.addNewFragment
+import com.depromeet.watni.ext.replaceFragment
 
 abstract class BaseActivity<B : ViewDataBinding>(
     @LayoutRes val layoutId: Int
@@ -16,5 +20,21 @@ abstract class BaseActivity<B : ViewDataBinding>(
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, layoutId)
+    }
+
+    open fun startNewFragment(containerId: Int, fragment: Fragment, tag: String? = null) {
+        supportFragmentManager.addNewFragment(containerId, fragment, tag)
+    }
+
+    open fun replaceFragment(containerId: Int, fragment: Fragment, tag: String? = null) {
+        supportFragmentManager.replaceFragment(containerId, fragment, tag)
+    }
+
+    open fun removeCurrentFragment() {
+        supportFragmentManager.popBackStack()
+    }
+
+    open fun removeAllFragment() {
+        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 }

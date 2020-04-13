@@ -5,10 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
-import com.depromeet.watni.databinding.ActivityMainBinding
+import com.depromeet.watni.databinding.ActivityHomeBinding
 import com.depromeet.watni.home.adapter.HomeViewPagerAdapter
 
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
     private val viewPagerAdapter = HomeViewPagerAdapter(supportFragmentManager)
 
@@ -28,7 +28,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     companion object {
-        fun getIntent(context: Context?): Intent? =
-            Intent(context, MainActivity::class.java)
+        fun getIntent(context: Context): Intent? = Intent(context, HomeActivity::class.java)
     }
 }

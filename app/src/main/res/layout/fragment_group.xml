@@ -54,7 +54,7 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@={viewModel.invitationCode}"
+                android:text="@={viewModel.inputValue}"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -68,7 +68,7 @@
             android:padding="10dp"
             android:text="@string/ok"
             android:textColor="@color/color_gray"
-            app:setEnable="@{viewModel.nextBtnAvailable}" />
+            app:setEnable="@{viewModel.okBtnAvailable}" />
 
     </LinearLayout>
 </layout>

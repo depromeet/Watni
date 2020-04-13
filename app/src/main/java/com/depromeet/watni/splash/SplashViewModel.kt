@@ -20,7 +20,7 @@ class SplashViewModel : ViewModel() {
 
     fun isLoggedIn() = SharedPrefUtil.isLoggedIn()
 
-    fun hasGroup() = SharedPrefUtil.getGroupId() != -1
+    fun hasGroup() = SharedPrefUtil.getUserInfo()?.memberDetails?.isNotEmpty() ?: false
 
     fun checkAuthStatus() {
         signRepository.checkAuthState(success = {

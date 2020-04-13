@@ -21,6 +21,8 @@ const val GRANT_TYPE_PWD = "password"
 const val GRANT_TYPE_TOKEN = "refresh_token"
 const val NO_ERROR_DESC = "No error description"
 const val ALREADY_USED_EMAIL_DESC = "Already exists Email"
+const val ALREADY_USED_CODE_DESC = "Already Code Apply Exist"
+const val NOT_EXIST_CODE = "NOT EXIST CODE"
 
 // request header setting
 const val HEADER_AUTH = "Authorization"

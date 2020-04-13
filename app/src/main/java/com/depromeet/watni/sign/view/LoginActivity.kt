@@ -9,6 +9,8 @@ import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityLoginBinding
 import com.depromeet.watni.group.view.GroupActivity
+import com.depromeet.watni.home.view.HomeActivity
+import com.depromeet.watni.model.request.User
 import com.depromeet.watni.sign.LoginViewModel
 import com.depromeet.watni.util.showToast
 
@@ -33,11 +35,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
             emailText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
             pwdText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
             msgText.observe(this@LoginActivity, Observer { showToast(it) })
-            loginStatus.observe(this@LoginActivity, Observer {
-                startActivity(GroupActivity.getIntent(this@LoginActivity))
-                finish()
-            })
+            loginStatus.observe(this@LoginActivity, Observer { startNextActivity(it) })
         }
+    }
+
+    private fun startNextActivity(user: User) {
+        val intent = if (user.memberDetails.isEmpty()) GroupActivity.getIntent(this) else HomeActivity.getIntent(this)
+        startActivity(intent)
+        finish()
     }
 
     companion object {

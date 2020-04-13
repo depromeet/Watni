@@ -1,6 +1,7 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.depromeet.watni.model.request.RefreshToken
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserJoin
@@ -9,7 +10,7 @@ import com.depromeet.watni.network.*
 import com.depromeet.watni.util.NetworkUtil
 import com.depromeet.watni.util.SharedPrefUtil
 
-class SignRepository : SignDataSource {
+object SignRepository : SignDataSource {
     private val tag = SignRepository::class.java.simpleName
     private val service: ServiceApi = RetrofitBuilder.service
 
@@ -58,7 +59,11 @@ class SignRepository : SignDataSource {
         })
     }
 
-    override fun refreshToken(refreshToken: RefreshToken, success: () -> Unit, failed: (String, String?) -> Unit) {
+    override fun refreshToken(
+        refreshToken: RefreshToken,
+        success: () -> Unit,
+        failed: (String, String?) -> Unit
+    ) {
         service.refreshToken(refreshToken, HeaderProvider.getIssueTokenHeader())
             .enqueue(retrofitCallback { response, throwable ->
                 response?.let {
@@ -73,7 +78,21 @@ class SignRepository : SignDataSource {
             })
     }
 
-    override fun getUserInfo(success: (user: User) -> Unit, failed: (String, String?) -> Unit) {
+    fun getUserInfo(): MutableLiveData<User> {
+        val result = MutableLiveData<User>()
+        getUserInfo(
+            success = {
+                result.value = it
+            }, failed = { _, _ ->
+                result.value = null
+            })
+        return result
+    }
+
+    override fun getUserInfo(
+        success: (user: User) -> Unit,
+        failed: (String, String?) -> Unit
+    ) {
         service.getUserInfo().enqueue(retrofitCallback { response, throwable ->
             response?.let {
                 if (response.isSuccessful && response.body() != null) {
@@ -90,7 +109,10 @@ class SignRepository : SignDataSource {
         })
     }
 
-    override fun checkAuthState(success: () -> Unit, failed: (String, String?) -> Unit) {
+    override fun checkAuthState(
+        success: () -> Unit,
+        failed: (String, String?) -> Unit
+    ) {
         if (SharedPrefUtil.getUserLoginInfo() == null) {
             failed(tag, "No userLoginInfo")
             return
@@ -99,12 +121,14 @@ class SignRepository : SignDataSource {
         userLogin(SharedPrefUtil.getUserLoginInfo()!!, {
             success()
         }, { _, _ ->
-            refreshToken(RefreshToken(SharedPrefUtil.getRefreshToken()!!, GRANT_TYPE_TOKEN), success = {
-                success()
-            }, failed = { tag, msg ->
-                Log.e(tag, msg ?: "checkAuthState error")
-                failed(tag, msg)
-            })
+            refreshToken(
+                RefreshToken(SharedPrefUtil.getRefreshToken()!!, GRANT_TYPE_TOKEN),
+                success = { success() },
+                failed = { tag, msg ->
+                    Log.e(tag, msg ?: "checkAuthState error")
+                    failed(tag, msg)
+                }
+            )
         })
     }
 }

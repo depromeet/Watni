@@ -11,7 +11,7 @@ import com.depromeet.watni.util.SharedPrefUtil
  */
 class SplashViewModel : ViewModel() {
     private val _authStatus = MutableLiveData<Boolean>()
-    private val signRepository = SignRepository()
+    private val signRepository = SignRepository
 
     val authStatus: LiveData<Boolean>
         get() = _authStatus

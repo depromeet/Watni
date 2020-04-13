@@ -15,7 +15,6 @@ object SharedPrefUtil {
     private const val KEY_IS_FIRST_LAUNCH = "key_is_first_launch"
     private const val KEY_ACCESS_TOKEN = "key_access_token"
     private const val KEY_REFRESH_TOKEN = "key_refresh_token"
-    private const val KEY_GROUP_ID = "key_group_id"
 
     private val sharedPref: SharedPreferences by lazy {
         MainApplication.getContext().getSharedPreferences(SharedPrefUtil::class.java.name, Activity.MODE_PRIVATE)
@@ -34,12 +33,6 @@ object SharedPrefUtil {
     fun saveUserLoginInfo(userLogin: UserLogin) {
         sharedPref.edit { putString(KEY_USER_LOGIN_INFO, Gson().toJson(userLogin)) }
     }
-
-    fun saveGroupId(groupId: Int) {
-        sharedPref.edit { putInt(KEY_GROUP_ID, groupId) }
-    }
-
-    fun getGroupId() = sharedPref.getInt(KEY_GROUP_ID, -1)
 
     fun isLoggedIn() = getUserLoginInfo() != null
 

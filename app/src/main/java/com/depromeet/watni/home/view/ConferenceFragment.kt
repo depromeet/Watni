@@ -2,14 +2,19 @@ package com.depromeet.watni.home.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
+import com.depromeet.watni.base.CommonStatus
 import com.depromeet.watni.databinding.FragmentConferenceBinding
 import com.depromeet.watni.home.HomeViewModel
 import com.depromeet.watni.home.HomeViewModelFactory
+import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
+import com.depromeet.watni.util.ResourceUtil
+import com.depromeet.watni.util.showToast
 
 /*
  * Created by yunji on 2020-02-22
@@ -29,5 +34,35 @@ class ConferenceFragment private constructor() :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentConferenceBinding.bind(view)
         initBinding()
+        initView()
+        observeUiData()
+    }
+
+    private fun initView() {
+        viewModel.loadUserInfo()
+    }
+
+    private fun bindUserDetailInfo(user: User?) {
+        if (user == null) {
+            return
+        }
+
+        binding.apply {
+            tvWelcome.text = ResourceUtil.getRandomWelcomeString(user.name)
+        }
+    }
+
+    private fun observeUiData() {
+        viewModel.userInfo.observe(viewLifecycleOwner, Observer {
+            when (it.status) {
+                CommonStatus.SUCCESS -> {
+                    showToast(it.item.toString())
+                    bindUserDetailInfo(it.item)
+                }
+                else -> {
+                    // do nothing
+                }
+            }
+        })
     }
 }

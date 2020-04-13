@@ -17,6 +17,7 @@ import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
 import com.depromeet.watni.network.NETWORK_ERROR_MSG
+import com.depromeet.watni.util.showToast
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
@@ -47,8 +48,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.tabMain.apply {
             setupWithViewPager(binding.viewpagerMain)
         }
-
-        viewModel.loadUserInfo()
     }
 
     private fun bindUserDetailInfo(user: User?) {
@@ -80,6 +79,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
                 }
             }
         })
+        viewModel.msgTextId.observe(this, Observer { showSnack(it) })
+        viewModel.toastTextId.observe(this, Observer { showToast(it) })
+    }
+
+    private fun showSnack(resId: Int) {
+        binding.layoutHomeMain.showSnack(resId)
     }
 
     companion object {

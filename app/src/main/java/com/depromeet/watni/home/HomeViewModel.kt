@@ -23,6 +23,9 @@ class HomeViewModel(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
+    private val _isRefreshing = MutableLiveData<Boolean>()
+    val isRefreshing: LiveData<Boolean> get() = _isRefreshing
+
     private val _msgTextId = MutableLiveData<Int>()
     val msgTextId: LiveData<Int> get() = _msgTextId
 
@@ -31,6 +34,7 @@ class HomeViewModel(
 
     fun loadUserInfo() {
         _isLoading.value = true
+        _isRefreshing.value = true
 
         signRepository.getUserInfo(
             success = {
@@ -40,5 +44,7 @@ class HomeViewModel(
                 _userInfo.value = CommonResult.error(errDesc ?: NETWORK_ERROR_MSG)
                 _isLoading.value = false
             })
+
+        _isRefreshing.value = false
     }
 }

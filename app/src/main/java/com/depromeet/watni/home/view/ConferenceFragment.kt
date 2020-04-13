@@ -14,7 +14,6 @@ import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
 import com.depromeet.watni.util.ResourceUtil
-import com.depromeet.watni.util.showToast
 
 /*
  * Created by yunji on 2020-02-22
@@ -56,7 +55,6 @@ class ConferenceFragment private constructor() :
         viewModel.userInfo.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 CommonStatus.SUCCESS -> {
-                    showToast(it.item.toString())
                     bindUserDetailInfo(it.item)
                 }
                 else -> {

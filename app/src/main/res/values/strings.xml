@@ -48,6 +48,8 @@
     <string name="msg_create_group_err">그룹 생성에 실패했습니다. 다시 시도해주세요.</string>
     <string name="msg_join_group_err">그룹 가입에 실패했습니다. 다시 시도해주세요.</string>
 
+    <string name="msg_load_my_info_err">내 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
+
     <string name="unknown">알 수 없는 동작입니다.</string>
     <string name="unknown_user">UNKNOWN</string>
     <string name="msg_network_auth">인증 에러가 발생했습니다. 다시 시도해주세요.</string>

@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.depromeet.watni.home.HomeViewModel" />
@@ -16,6 +18,7 @@
         android:background="@android:color/white">
 
         <LinearLayout
+            android:id="@+id/layout_home_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
@@ -27,8 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
+                android:paddingBottom="8dp"
                 android:textColor="@android:color/black"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 tool:text="모임명" />
 
@@ -43,6 +47,11 @@
                 app:tabSelectedTextColor="@android:color/black"
                 app:tabTextColor="@android:color/darker_gray" />
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/color_light_gray" />
+
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager_main"
                 android:layout_width="match_parent"
@@ -54,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.INVISIBLE}"
             android:progressTint="@color/colorPrimary" />
     </FrameLayout>
 </layout>

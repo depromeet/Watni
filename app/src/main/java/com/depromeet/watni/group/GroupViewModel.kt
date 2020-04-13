@@ -36,7 +36,7 @@ class GroupViewModel(
     private val _toastTextId = MutableLiveData<Int>()
     val toastTextId: LiveData<Int> get() = _toastTextId
 
-    val inputValue = MutableLiveData("")
+    val inputValue = MutableLiveData("") // two-way data binding
 
     fun getUserName() = SharedPrefUtil.getUserInfo()?.name ?: ResourceUtil.getString(R.string.unknown_user)
 

@@ -6,20 +6,22 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.depromeet.watni.BR
+import com.depromeet.watni.listener.OnItemClickListener
 
-abstract class BaseViewHolder<out B : ViewDataBinding, T>(
+abstract class BaseViewHolder<B : ViewDataBinding, T>(
     @LayoutRes layoutResId: Int,
-    parent: ViewGroup?,
-    private val bindingVariableId: Int
+    parent: ViewGroup?
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent?.context).inflate(layoutResId, parent, false)
 ) {
     private val binding: B = DataBindingUtil.bind(itemView)!!
 
-    fun bind(item: T) {
+    fun bind(item: T, listener: OnItemClickListener<T>) {
         try {
             binding.run {
-                setVariable(bindingVariableId, item)
+                setVariable(BR.item, item)
+                // setVariable(BR.listener, listener)
                 executePendingBindings()
             }
         } catch (e: Exception) {

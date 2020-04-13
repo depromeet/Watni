@@ -9,7 +9,7 @@ import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityLoginBinding
 import com.depromeet.watni.group.view.GroupActivity
-import com.depromeet.watni.home.view.MainActivity
+import com.depromeet.watni.home.view.HomeActivity
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.sign.LoginViewModel
 import com.depromeet.watni.util.showToast
@@ -40,7 +40,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     private fun startNextActivity(user: User) {
-        val intent = if (user.memberDetails.isEmpty()) GroupActivity.getIntent(this) else MainActivity.getIntent(this)
+        val intent = if (user.memberDetails.isEmpty()) GroupActivity.getIntent(this) else HomeActivity.getIntent(this)
         startActivity(intent)
         finish()
     }

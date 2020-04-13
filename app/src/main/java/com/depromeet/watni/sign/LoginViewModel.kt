@@ -3,6 +3,7 @@ package com.depromeet.watni.sign
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.source.SignDataSource
 import com.depromeet.watni.model.source.SignRepository
@@ -15,7 +16,7 @@ class LoginViewModel : ViewModel() {
     private val signRepository: SignDataSource = SignRepository()
 
     private val _isLoading = MutableLiveData<Boolean>()
-    private val _loginStatus = MutableLiveData<Boolean>()
+    private val _loginStatus = MutableLiveData<User>()
     private val _loginAvailable = MutableLiveData<Boolean>()
     private val _msgText = MutableLiveData<String>()
 
@@ -25,7 +26,7 @@ class LoginViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    val loginStatus: LiveData<Boolean>
+    val loginStatus: LiveData<User>
         get() = _loginStatus
 
     val loginAvailable: LiveData<Boolean>
@@ -46,7 +47,7 @@ class LoginViewModel : ViewModel() {
 
     private fun getUserInfo() {
         signRepository.getUserInfo(success = {
-            _loginStatus.value = true
+            _loginStatus.value = it
             _isLoading.value = false
         }, failed = { _, msg ->
             _msgText.value = msg

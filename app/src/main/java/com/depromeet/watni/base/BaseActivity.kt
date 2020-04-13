@@ -7,8 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.depromeet.watni.util.addNewFragment
-import com.depromeet.watni.util.replaceFragment
+import com.depromeet.watni.ext.addNewFragment
+import com.depromeet.watni.ext.replaceFragment
 
 abstract class BaseActivity<B : ViewDataBinding>(
     @LayoutRes val layoutId: Int

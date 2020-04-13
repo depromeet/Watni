@@ -41,7 +41,7 @@ object SharedPrefUtil {
 
     fun getGroupId() = sharedPref.getInt(KEY_GROUP_ID, -1)
 
-    fun isLoggedIn() = getUserInfo() != null
+    fun isLoggedIn() = getUserLoginInfo() != null
 
     fun getUserInfo(): User? = Gson().fromJson<User>(
         sharedPref.getString(KEY_USER_INFO, ""), User::class.java

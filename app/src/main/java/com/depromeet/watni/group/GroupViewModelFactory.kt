@@ -13,5 +13,5 @@ class GroupViewModelFactory(
     private val groupRepository: GroupRepository
 ) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T = GroupViewModelFactory(groupState, groupRepository) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = GroupViewModel(groupState, groupRepository) as T
 }

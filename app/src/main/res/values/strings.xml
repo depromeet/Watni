@@ -7,6 +7,9 @@
     <string name="close">닫기</string>
     <string name="back">뒤로가기</string>
     <string name="logout">로그아웃</string>
+    <string name="date">날짜</string>
+    <string name="time">시간</string>
+    <string name="place">장소</string>
 
     <string-array name="onboarding_msg">
         <item>저 왔어요!</item>
@@ -49,6 +52,11 @@
     <string name="msg_join_group_err">그룹 가입에 실패했습니다. 다시 시도해주세요.</string>
 
     <string name="msg_load_my_info_err">내 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
+    <string name="conference_check">왔어요!</string>
+    <string name="conference_d_day">출석 D-%d</string>
+    <string name="conference_complete">출석 완료</string>
+    <string name="conference_complete_msg">%s님 반갑습니다!😍</string>
+    <string name="conference_complete_date">%s\n출석 완료 되었습니다.</string>
 
     <string name="unknown">알 수 없는 동작입니다.</string>
     <string name="unknown_user">UNKNOWN</string>

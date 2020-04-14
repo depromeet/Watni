@@ -3,6 +3,7 @@ package com.depromeet.watni.home.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
@@ -18,6 +19,7 @@ import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
 import com.depromeet.watni.network.NETWORK_ERROR_MSG
 import com.depromeet.watni.util.showToast
+
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
@@ -72,7 +74,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
                     bindUserDetailInfo(it.item)
                 }
                 CommonStatus.ERROR -> {
-                    binding.layoutHomeMain.showSnack(it.msg ?: NETWORK_ERROR_MSG)
+                    showSnack(it.msg ?: NETWORK_ERROR_MSG)
                 }
                 else -> {
                     // do nothing
@@ -83,8 +85,21 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         viewModel.toastTextId.observe(this, Observer { showToast(it) })
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun showSnack(resId: Int) {
         binding.layoutHomeMain.showSnack(resId)
+    }
+
+    private fun showSnack(message: String) {
+        binding.layoutHomeMain.showSnack(message)
     }
 
     companion object {

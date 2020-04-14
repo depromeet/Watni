@@ -50,11 +50,11 @@
           app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
 
       <include
-          android:id="@+id/include_conference_manager"
+          android:id="@+id/no_conference_manager"
           layout="@layout/layout_conference_manager" />
 
       <include
-          android:id="@+id/include_conference_member"
+          android:id="@+id/no_conference_member"
           layout="@layout/layout_conference_member" />
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

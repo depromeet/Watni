@@ -17,44 +17,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_smile"
-            android:layout_marginBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tv_msg" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/conference_create_msg1"
-            android:textColor="@android:color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btn_conference_create"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/shape_round_stroke_white"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"
-            android:text="@string/conference_create"
-            android:textSize="15sp"
-            android:textStyle="bold"
+            android:layout_marginTop="11dp"
+            android:text="@string/conference_empty_msg1"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_msg" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_character" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:text="@string/conference_create_msg2"
+            android:layout_marginTop="17dp"
+            android:text="@string/conference_empty_msg2"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_conference_create" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_msg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

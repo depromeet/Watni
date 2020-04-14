@@ -31,7 +31,7 @@ fun ImageView.loadDrawableImg(drawableResId: Int) {
 fun ImageView.loadUrlImg(url: String?) {
     Glide.with(context)
         .load(url)
-        .placeholder(ColorDrawable(ResourceUtil.getColor(R.color.color_gray)))
+        .placeholder(ColorDrawable(ResourceUtil.getColor(R.color.color_light_gray)))
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }

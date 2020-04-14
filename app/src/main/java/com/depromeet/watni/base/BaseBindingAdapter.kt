@@ -14,31 +14,31 @@ import com.depromeet.watni.util.ResourceUtil
 
 @Suppress("UNCHECKED_CAST")
 @BindingAdapter("bindItem")
-fun bindItems(rv: RecyclerView, data: List<Any>) {
-    (rv.adapter as BaseRecyclerView<*, Any>).setItems(data)
+fun RecyclerView.bindItems(data: List<Any>) {
+    (adapter as BaseRecyclerView<*, Any>).setItems(data)
 }
 
 @BindingAdapter("loadImage")
-fun loadDrawableImg(imageView: ImageView, drawableResId: Int) {
-    Glide.with(imageView.context)
+fun ImageView.loadDrawableImg(drawableResId: Int) {
+    Glide.with(context)
         .load(ResourceUtil.getDrawable(drawableResId))
-        .placeholder(ColorDrawable(ResourceUtil.getColor(R.color.color_gray)))
+        .placeholder(ColorDrawable(ResourceUtil.getColor(R.color.color_light_gray)))
         .transition(DrawableTransitionOptions.withCrossFade())
-        .into(imageView)
+        .into(this)
 }
 
 @BindingAdapter("loadImage")
-fun loadUrlImg(imageView: ImageView, url: String?) {
-    Glide.with(imageView.context)
+fun ImageView.loadUrlImg(url: String?) {
+    Glide.with(context)
         .load(url)
         .placeholder(ColorDrawable(ResourceUtil.getColor(R.color.color_gray)))
         .transition(DrawableTransitionOptions.withCrossFade())
-        .into(imageView)
+        .into(this)
 }
 
 @BindingAdapter("onSingleClick")
-fun onSingleClick(button: Button, listener: View.OnClickListener) {
-    button.setOnClickListener(
+fun Button.onSingleClick(listener: View.OnClickListener) {
+    setOnClickListener(
         OnSingleClickListener.convertToViewClickListener(object : OnSingleClickListener<View>() {
             override fun onSingleClick(item: View) {
                 listener.onClick(item) // 중복 클릭 방지
@@ -48,11 +48,11 @@ fun onSingleClick(button: Button, listener: View.OnClickListener) {
 }
 
 @BindingAdapter("setPaddingVertical")
-fun setPaddingVertical(view: View, padding: Int) {
-    view.setPadding(view.paddingLeft, padding, view.paddingRight, padding)
+fun View.setPaddingVertical(padding: Int) {
+    setPadding(paddingLeft, padding, paddingRight, padding)
 }
 
 @BindingAdapter("setPaddingHorizontal")
-fun setPaddingHorizontal(view: View, padding: Int) {
-    view.setPadding(padding, view.paddingTop, padding, view.paddingBottom)
+fun View.setPaddingHorizontal(padding: Int) {
+    setPadding(padding, paddingTop, padding, paddingBottom)
 }

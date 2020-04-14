@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.depromeet.watni.util.DateTimeUtil" />
+
+        <variable
+            name="item"
+            type="com.depromeet.watni.model.request.Conference" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_conference_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{item.name}"
+                android:textColor="@android:color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toStartOf="@+id/ib_conference_menu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="모임 이름" />
+
+            <ImageButton
+                android:id="@+id/ib_conference_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_dots"
+                app:layout_constraintBottom_toBottomOf="@id/tv_conference_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_conference"
+                android:layout_width="0dp"
+                android:layout_height="227dp"
+                android:layout_marginTop="16dp"
+                android:visibility="@{(item.photoUrl == null) ? View.GONE : View.VISIBLE}"
+                android:background="@color/color_light_gray"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_conference_title"
+                app:loadImage="@{item.photoUrl}" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="@color/color_gray"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_date_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_date_content" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textColor="@color/color_gray"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_time_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_time_content" />
+
+            <TextView
+                android:id="@+id/tv_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/place"
+                android:textColor="@color/color_gray"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_place_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_place_content" />
+
+            <TextView
+                android:id="@+id/tv_date_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:text="@{DateTimeUtil.INSTANCE.getReadableDateString(item.startAt)}"
+                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintTop_toBottomOf="@id/iv_conference"
+                tool:text="2019.12.10 (토)" />
+
+            <TextView
+                android:id="@+id/tv_time_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@{DateTimeUtil.INSTANCE.getReadableTimeRange(item.startAt, item.endAt)}"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_date_content"
+                tool:text="2019.12.10 (토)" />
+
+            <TextView
+                android:id="@+id/tv_place_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@{item.locationInfo}"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_time_content"
+                tool:text="공덕 창업허브" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/shape_round_stroke_red"
+                android:drawableStart="@drawable/ic_camera"
+                android:drawablePadding="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="@string/conference_check"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tv_place_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_date_content" />
+
+            <View
+                android:id="@+id/view_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:visibility="@{item.description.empty ? View.GONE : View.VISIBLE}"
+                android:background="@color/color_light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_place_content" />
+
+            <TextView
+                android:id="@+id/tv_conference_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{item.description}"
+                android:visibility="@{item.description.empty ? View.GONE : View.VISIBLE}"
+                android:textColor="@color/color_gray"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_divider"
+                tool:text="디프만 모임 첫날입니다! 오실 때 디프만 모임 첫날입니다! 오실 때 디프만 모임 첫날입니다! 오실 때" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

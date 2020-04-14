@@ -13,7 +13,7 @@ import com.depromeet.watni.network.GRANT_TYPE_PWD
  * Created by yunji on 2020-01-28
  */
 class LoginViewModel : ViewModel() {
-    private val signRepository: SignDataSource = SignRepository()
+    private val signRepository: SignDataSource = SignRepository
 
     private val _isLoading = MutableLiveData<Boolean>()
     private val _loginStatus = MutableLiveData<User>()

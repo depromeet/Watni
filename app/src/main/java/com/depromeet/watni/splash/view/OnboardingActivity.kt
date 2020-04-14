@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.depromeet.watni.BR
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityOnboardingBinding
@@ -16,9 +15,7 @@ import com.depromeet.watni.util.SharedPrefUtil
 
 class OnboardingActivity :
     BaseActivity<ActivityOnboardingBinding>(R.layout.activity_onboarding) {
-    private val pagerAdapter by lazy {
-        OnboardingViewPagerAdapter(R.layout.item_onboarding, BR.item)
-    }
+    private val pagerAdapter by lazy { OnboardingViewPagerAdapter(R.layout.item_onboarding) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

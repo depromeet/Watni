@@ -16,7 +16,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(
 
     protected abstract val viewModel: VM
 
-    protected fun initBinding() {
+    open fun initBinding() {
         binding.lifecycleOwner = this
         binding.setVariable(BR.viewModel, viewModel)
     }

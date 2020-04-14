@@ -37,8 +37,8 @@ class GroupActivity : BaseActivity<ActivityGroupBinding>(R.layout.activity_group
 
     private fun initView() {
         with(binding) {
-            onSingleClick(btnGroupCreate, View.OnClickListener { startGroupFragment(GroupState.CREATE_NAME) })
-            onSingleClick(btnGroupEnter, View.OnClickListener { startGroupFragment(GroupState.JOIN) })
+            btnGroupCreate.onSingleClick(View.OnClickListener { startGroupFragment(GroupState.CREATE_NAME) })
+            btnGroupEnter.onSingleClick(View.OnClickListener { startGroupFragment(GroupState.JOIN) })
             btnLogout.setOnClickListener {
                 startActivity(LoginActivity.getIntent(this@GroupActivity))
                 SharedPrefUtil.clearAll()

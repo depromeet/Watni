@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.depromeet.watni.listener.OnItemClickListener
 
 abstract class BaseRecyclerView<B : ViewDataBinding, T : Any>(
-    @LayoutRes private val layoutResId: Int,
-    private val bindingVariableId: Int
+    @LayoutRes private val layoutResId: Int
 ) : RecyclerView.Adapter<BaseViewHolder<B, T>>() {
     protected val items = mutableListOf<T>()
 

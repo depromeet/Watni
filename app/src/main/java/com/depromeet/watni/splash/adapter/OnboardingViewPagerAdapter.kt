@@ -9,9 +9,8 @@ import com.depromeet.watni.util.ResourceUtil
 import okhttp3.internal.immutableListOf
 
 class OnboardingViewPagerAdapter(
-    @LayoutRes private val layoutResId: Int,
-    bindingVariableId: Int
-) : BaseRecyclerView<ItemOnboardingBinding, OnboardingItem>(layoutResId, bindingVariableId) {
+    @LayoutRes private val layoutResId: Int
+) : BaseRecyclerView<ItemOnboardingBinding, OnboardingItem>(layoutResId) {
 
     init {
         val msgArray = ResourceUtil.getStringArray(R.array.onboarding_msg)

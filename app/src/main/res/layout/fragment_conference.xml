@@ -17,11 +17,10 @@
       app:refreshing="@{viewModel.isRefreshing}">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_conference_exist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_f8f8f8"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:background="@color/color_f8f8f8">
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -29,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:textColor="@android:color/black"
+        android:layout_marginStart="16dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,15 +37,22 @@
         tool:text="OO님 왔나요?" />
 
       <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/tv_conference"
+          android:id="@+id/rv_conference"
           android:layout_width="0dp"
           android:layout_height="0dp"
           android:layout_marginTop="32dp"
+          android:overScrollMode="never"
+          app:bindConferenceItems="@{viewModel.userInfo.item}"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/layout_no_conference_manager"
+        layout="@layout/layout_conference_manager" />
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

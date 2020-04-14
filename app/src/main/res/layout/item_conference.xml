@@ -5,6 +5,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="com.depromeet.watni.util.DateTimeUtil" />
+
         <variable
             name="item"
             type="com.depromeet.watni.model.request.Conference" />
@@ -13,16 +17,16 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="4dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="12dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="16dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/tv_conference_title"
@@ -53,6 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="227dp"
                 android:layout_marginTop="16dp"
+                android:visibility="@{(item.photoUrl == null) ? View.GONE : View.VISIBLE}"
                 android:background="@color/color_light_gray"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -98,9 +103,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
+                android:text="@{DateTimeUtil.INSTANCE.getReadableDateString(item.startAt)}"
                 app:layout_constraintStart_toEndOf="@id/tv_date"
                 app:layout_constraintTop_toBottomOf="@id/iv_conference"
                 tool:text="2019.12.10 (토)" />
@@ -110,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="11dp"
+                android:text="@{DateTimeUtil.INSTANCE.getReadableTimeRange(item.startAt, item.endAt)}"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@id/tv_date"
@@ -122,7 +128,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="11dp"
                 android:text="@{item.locationInfo}"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
@@ -150,6 +155,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="11dp"
+                android:visibility="@{item.description.empty ? View.GONE : View.VISIBLE}"
                 android:background="@color/color_light_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,6 +169,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="@{item.description}"
+                android:visibility="@{item.description.empty ? View.GONE : View.VISIBLE}"
                 android:textColor="@color/color_gray"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -19,6 +19,8 @@ data class CommonResult<ITEM>(
         fun <T> loading(data: T? = null): CommonResult<T> =
             CommonResult(CommonStatus.LOADING, data, CommonStatus.LOADING.toString())
     }
+
+    fun isSuccessful() = (status == CommonStatus.SUCCESS) && (item != null)
 }
 
 enum class CommonStatus {

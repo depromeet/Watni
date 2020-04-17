@@ -2,8 +2,10 @@ package com.depromeet.watni.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.depromeet.watni.base.CommonResult
+import com.depromeet.watni.model.request.Conference
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
@@ -19,6 +21,15 @@ class HomeViewModel(
 
     private val _userInfo = MutableLiveData<CommonResult<User>>()
     val userInfo: LiveData<CommonResult<User>> get() = _userInfo
+
+    val conferenceList: LiveData<List<Conference>> = Transformations.map(userInfo) {
+        val user = it.item
+        if (it.isSuccessful() && user!!.hasConference()) {
+            user.memberDetails[0].group.conferences
+        } else {
+            listOf<Conference>()
+        }
+    }
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading

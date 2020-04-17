@@ -24,7 +24,10 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(R.layou
     private lateinit var groupActivity: GroupActivity
 
     override val viewModel: GroupViewModel by lazy {
-        ViewModelProvider(this, GroupViewModelFactory(groupState, GroupRepository))[GroupViewModel::class.java]
+        ViewModelProvider(
+            getViewModelStoreOwner(),
+            GroupViewModelFactory(groupState, GroupRepository)
+        )[GroupViewModel::class.java]
     }
 
     companion object {

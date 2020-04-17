@@ -38,8 +38,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     }
 
     private fun initBinding() {
-        binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
     }
 
     private fun initView() {
@@ -57,13 +57,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
             return
         }
 
-        if (user.memberDetails.isEmpty()) {
+        if (!user.hasConference()) {
             return
-        }
-
-        val groupInfo = user.memberDetails[0].group
-        binding.apply {
-            tvHomeTitle.text = groupInfo.name
         }
     }
 

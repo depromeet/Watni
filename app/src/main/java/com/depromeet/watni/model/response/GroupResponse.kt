@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName
 
 data class GroupResponse(
     @SerializedName("conferences")
-    val conferences: List<Conference>,
+    val conferences: List<Conference> = listOf(),
     @SerializedName("groupId")
-    val groupId: Int,
+    val groupId: Int = -1,
     @SerializedName("name")
-    val name: String
+    val name: String = ""
 )

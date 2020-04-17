@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.base.CommonStatus
-import com.depromeet.watni.base.bindItems
 import com.depromeet.watni.databinding.FragmentConferenceBinding
 import com.depromeet.watni.home.HomeViewModel
 import com.depromeet.watni.home.HomeViewModelFactory
@@ -25,7 +24,10 @@ class ConferenceFragment private constructor() :
     private val conferenceAdapter = ConferenceRecyclerAdapter()
 
     override val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(this, HomeViewModelFactory(SignRepository, GroupRepository))[HomeViewModel::class.java]
+        ViewModelProvider(
+            getViewModelStoreOwner(),
+            HomeViewModelFactory(SignRepository, GroupRepository)
+        )[HomeViewModel::class.java]
     }
 
     companion object {
@@ -60,7 +62,6 @@ class ConferenceFragment private constructor() :
 
         binding.apply {
             tvWelcome.text = ResourceUtil.getRandomWelcomeString(user.name)
-            rvConference.bindItems(groupInfo.conferences)
 
             if (groupInfo.conferences.isNotEmpty()) {
                 layoutConferenceExist.visibility = View.VISIBLE

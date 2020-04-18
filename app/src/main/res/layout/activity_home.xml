@@ -57,12 +57,15 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_main"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar_home"
                 app:tabIndicator="@color/colorPrimary"
-                app:tabIndicatorColor="@null"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="3dp"
                 app:tabMode="scrollable"
                 app:tabRippleColor="@null"
                 app:tabSelectedTextColor="@android:color/black"
@@ -71,7 +74,7 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/color_light_gray"
+                android:background="@color/color_33A0A0A0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tab_main" />
@@ -106,6 +109,7 @@
             android:fitsSystemWindows="true">
 
             <include
+                android:id="@+id/include_drawer_home"
                 layout="@layout/drawer_home"
                 app:viewModel="@{viewModel}" />
         </com.google.android.material.navigation.NavigationView>

@@ -13,16 +13,14 @@
         android:clickable="true"
         android:focusable="true"
         android:paddingStart="24dp"
-        android:paddingTop="15dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="15dp">
+        android:paddingTop="12dp"
+        android:paddingEnd="24dp">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tool:text="안녕" />
@@ -39,6 +37,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_count"
             android:layout_width="0dp"
+            android:layout_marginTop="4dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,12 +47,11 @@
                 android:id="@+id/tv_check_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
+                android:fontFamily="sans-serif"
                 android:text="0"
                 android:textColor="@android:color/black"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/tv_coming"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -63,13 +61,12 @@
                 android:id="@+id/tv_no_check_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:fontFamily="monospace"
+                android:layout_marginStart="40dp"
+                android:fontFamily="sans-serif"
                 android:text="0"
                 android:textColor="@android:color/black"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_check_count"
                 app:layout_constraintTop_toTopOf="parent"
                 tool:text="0" />
@@ -80,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/conference_coming"
                 android:textSize="12sp"
+                android:textColor="@color/color_gray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_check_count" />
 
@@ -88,10 +86,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/conference_not_coming"
+                android:textColor="@color/color_gray"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_no_check_count"
                 app:layout_constraintStart_toStartOf="@id/tv_no_check_count"
                 app:layout_constraintTop_toTopOf="@id/tv_coming" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/color_light_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_count" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

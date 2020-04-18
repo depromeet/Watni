@@ -74,10 +74,10 @@
     <string name="conference_coming">왔어요</string>
     <string name="conference_not_coming">안 왔어요</string>
 
-    <string name="menu_add_status">출석 현황</string>
+    <string name="menu_check_status">출석 현황</string>
     <string name="menu_add_conference">일정 등록</string>
-    <string name="menu_add_edit">모임명 변경</string>
-    <string name="menu_add_manage">회원 관리</string>
+    <string name="menu_edit_name">모임명 변경</string>
+    <string name="menu_user_manage">회원 관리</string>
     <string name="menu_setting">설정</string>
 
     <string name="unknown">알 수 없는 동작입니다.</string>

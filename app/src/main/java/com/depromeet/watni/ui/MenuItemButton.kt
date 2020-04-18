@@ -21,19 +21,19 @@ class MenuItemButton @JvmOverloads constructor(
     var arrowVisibility = true
         set(value) {
             field = value
-            binding.ivArrow.visibility = if (arrowVisibility) View.VISIBLE else View.GONE
+            binding.ivArrow.visibility = if (field) View.VISIBLE else View.GONE
             invalidate()
         }
     var countViewVisibility = false
         set(value) {
             field = value
-            binding.layoutCount.visibility = if (arrowVisibility) View.VISIBLE else View.GONE
+            binding.layoutCount.visibility = if (field) View.VISIBLE else View.GONE
             invalidate()
         }
     var text: String? = ""
         set(value) {
             field = value ?: "NO TEXT"
-            binding.tvTitle.text = value
+            binding.tvTitle.text = field
             invalidate()
         }
 

@@ -103,6 +103,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:fitsSystemWindows="true" />
+            android:fitsSystemWindows="true">
+
+            <include
+                layout="@layout/drawer_home"
+                app:viewModel="@{viewModel}" />
+        </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

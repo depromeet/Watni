@@ -8,6 +8,7 @@ import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.base.CommonStatus
 import com.depromeet.watni.databinding.FragmentHistoryBinding
+import com.depromeet.watni.ext.getViewModelStoreOwner
 import com.depromeet.watni.home.HomeViewModel
 import com.depromeet.watni.home.HomeViewModelFactory
 import com.depromeet.watni.model.request.User
@@ -17,7 +18,7 @@ import com.depromeet.watni.model.source.SignRepository
 /*
  * Created by yunji on 2020-02-22
  */
-class HistoryFragment private constructor() :
+class HistoryFragment :
     BaseFragment<FragmentHistoryBinding, HomeViewModel>(R.layout.fragment_history) {
 
     override val viewModel: HomeViewModel by lazy {

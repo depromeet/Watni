@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.databinding.FragmentGroupBinding
+import com.depromeet.watni.ext.getViewModelStoreOwner
 import com.depromeet.watni.ext.hideMessage
 import com.depromeet.watni.ext.showMessage
 import com.depromeet.watni.group.GroupState

@@ -1,23 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.depromeet.watni.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/flContentRoot"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <com.google.android.material.navigation.NavigationView
+        <TextView
+            android:id="@+id/tv_status"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end" />
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@drawable/shape_round_stroke_gray"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/manager"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_profile"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/shape_circle_solid_light_gray"
+            android:gravity="center"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_status"
+            tool:text="응" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:fontFamily="serif-monospace"
+            android:padding="0dp"
+            android:textStyle="bold"
+            android:text="@{viewModel.userInfo.item.name}"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile"
+            tool:text="백승화" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:fontFamily="monospace"
+            android:text="@{viewModel.userInfo.item.email}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tool:text="mysung3285@naver.com" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/color_light_gray"
+            app:layout_constraintBottom_toTopOf="@id/btn_check_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.depromeet.watni.ui.MenuItemButton
+            android:id="@+id/btn_check_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            app:arrowVisibility="true"
+            app:countViewVisibility="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_email"
+            app:text="@string/menu_check_status" />
+
+        <com.depromeet.watni.ui.MenuItemButton
+            android:id="@+id/btn_add_conference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:arrowVisibility="false"
+            app:countViewVisibility="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_check_status"
+            app:text="@string/menu_add_conference" />
+
+        <com.depromeet.watni.ui.MenuItemButton
+            android:id="@+id/btn_user_manage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:arrowVisibility="true"
+            app:countViewVisibility="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_conference"
+            app:text="@string/menu_user_manage" />
+
+        <com.depromeet.watni.ui.MenuItemButton
+            android:id="@+id/btn_edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:arrowVisibility="true"
+            app:countViewVisibility="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_user_manage"
+            app:text="@string/menu_edit_name" />
+
+        <com.depromeet.watni.ui.MenuItemButton
+            android:id="@+id/btn_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:arrowVisibility="true"
+            app:countViewVisibility="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_edit_name"
+            app:text="@string/menu_setting" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/color_light_gray"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btn_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_review"
+                android:textColor="@color/color_b3222222" />
+
+            <Button
+                android:id="@+id/btn_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_version"
+                android:textColor="@color/color_b3222222" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

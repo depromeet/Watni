@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">왔니</string>
     <string name="app_desc">오늘 왔니, 안 왔니?</string>
+    <string name="app_version">앱 버전 1.0.0</string>
+    <string name="app_review">왔니 앱 평가하기</string>
 
     <string name="ok">확인</string>
     <string name="start">시작하기</string>
@@ -10,6 +12,8 @@
     <string name="date">날짜</string>
     <string name="time">시간</string>
     <string name="place">장소</string>
+    <string name="manager">관리자</string>
+    <string name="user">회원</string>
 
     <string-array name="onboarding_msg">
         <item>저 왔어요!</item>
@@ -67,6 +71,14 @@
     <string name="conference_empty_msg2">조금만 기다려주세요 🌿</string>
     <string name="conference_create_msg1">일정을 등록해주세요!</string>
     <string name="conference_create_msg2">우측 상단 메뉴에서도 일정 등록이 가능합니다.</string>
+    <string name="conference_coming">왔어요</string>
+    <string name="conference_not_coming">안 왔어요</string>
+
+    <string name="menu_check_status">출석 현황</string>
+    <string name="menu_add_conference">일정 등록</string>
+    <string name="menu_edit_name">모임명 변경</string>
+    <string name="menu_user_manage">회원 관리</string>
+    <string name="menu_setting">설정</string>
 
     <string name="unknown">알 수 없는 동작입니다.</string>
     <string name="unknown_user">UNKNOWN</string>

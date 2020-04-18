@@ -8,6 +8,7 @@ import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.base.CommonStatus
 import com.depromeet.watni.databinding.FragmentConferenceBinding
+import com.depromeet.watni.ext.getViewModelStoreOwner
 import com.depromeet.watni.home.HomeViewModel
 import com.depromeet.watni.home.HomeViewModelFactory
 import com.depromeet.watni.home.adapter.ConferenceRecyclerAdapter
@@ -19,7 +20,7 @@ import com.depromeet.watni.util.ResourceUtil
 /*
  * Created by yunji on 2020-02-22
  */
-class ConferenceFragment private constructor() :
+class ConferenceFragment :
     BaseFragment<FragmentConferenceBinding, HomeViewModel>(R.layout.fragment_conference) {
     private val conferenceAdapter = ConferenceRecyclerAdapter()
 

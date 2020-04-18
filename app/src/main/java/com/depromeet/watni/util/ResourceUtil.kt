@@ -21,4 +21,6 @@ object ResourceUtil {
         val msgArray = getStringArray(R.array.msg_welcome_random)
         return String.format(msgArray.random(), name)
     }
+
+    fun getRandomProfile() = getStringArray(R.array.profile_icon_random).random()
 }

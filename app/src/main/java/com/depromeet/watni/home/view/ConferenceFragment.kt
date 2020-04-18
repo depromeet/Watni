@@ -59,12 +59,11 @@ class ConferenceFragment :
         }
 
         val isManager = user.memberDetails[0].manager
-        val groupInfo = user.memberDetails[0].group
 
         binding.apply {
             tvWelcome.text = ResourceUtil.getRandomWelcomeString(user.name)
 
-            if (groupInfo.conferences.isNotEmpty()) {
+            if (user.hasConference()) {
                 layoutConferenceExist.visibility = View.VISIBLE
                 noConferenceManager.layoutNoConference.visibility = View.GONE
                 noConferenceMember.layoutNoConference.visibility = View.GONE

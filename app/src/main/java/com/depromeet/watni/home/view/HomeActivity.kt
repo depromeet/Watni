@@ -3,7 +3,7 @@ package com.depromeet.watni.home.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
@@ -50,6 +50,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.tabMain.apply {
             setupWithViewPager(binding.viewpagerMain)
         }
+        binding.ibHomeMenu.setOnClickListener { binding.drawerHome.openDrawer(GravityCompat.END) }
     }
 
     private fun bindUserDetailInfo(user: User?) {
@@ -80,13 +81,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         viewModel.toastTextId.observe(this, Observer { showToast(it) })
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-            }
+    override fun onBackPressed() {
+        if (binding.drawerHome.isDrawerOpen(GravityCompat.END)) {
+            binding.drawerHome.closeDrawer(GravityCompat.END)
+        } else {
+            super.onBackPressed()
         }
-
-        return super.onOptionsItemSelected(item)
     }
 
     private fun showSnack(resId: Int) {

@@ -13,6 +13,7 @@
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,6 +34,7 @@
                 <TextView
                     android:id="@+id/tv_home_title"
                     android:layout_width="wrap_content"
+                    android:text="@{viewModel.groupInfo.name}"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
@@ -40,6 +42,16 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tool:text="모임명" />
+
+                <ImageButton
+                    android:id="@+id/ib_home_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_menu" />
             </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.tabs.TabLayout

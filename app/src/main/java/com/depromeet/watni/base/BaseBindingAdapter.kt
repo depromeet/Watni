@@ -14,8 +14,9 @@ import com.depromeet.watni.util.ResourceUtil
 
 @Suppress("UNCHECKED_CAST")
 @BindingAdapter("bindItem")
-fun RecyclerView.bindItems(data: List<Any>) {
-    (adapter as BaseRecyclerView<*, Any>).setItems(data)
+fun RecyclerView.bindItems(items: List<Any>?) {
+    val defaultList = items ?: listOf()
+    (adapter as BaseRecyclerView<*, Any>).setItems(defaultList)
 }
 
 @BindingAdapter("loadImage")

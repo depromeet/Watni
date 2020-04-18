@@ -4,6 +4,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStoreOwner
 import com.depromeet.watni.BR
 
 /*
@@ -19,5 +20,11 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(
     open fun initBinding() {
         binding.lifecycleOwner = this
         binding.setVariable(BR.viewModel, viewModel)
+    }
+
+    protected fun getViewModelStoreOwner(): ViewModelStoreOwner = try {
+        requireActivity()
+    } catch (e: IllegalStateException) {
+        this
     }
 }

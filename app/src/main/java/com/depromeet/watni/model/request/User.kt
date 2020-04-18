@@ -10,4 +10,7 @@ data class User(
     val memberDetails: List<MemberDetail>,
     @SerializedName("name")
     val name: String
-)
+) {
+
+    fun hasConference() = memberDetails.isNotEmpty() && memberDetails[0].group.conferences.isNotEmpty()
+}

@@ -21,7 +21,10 @@ class HistoryFragment private constructor() :
     BaseFragment<FragmentHistoryBinding, HomeViewModel>(R.layout.fragment_history) {
 
     override val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(this, HomeViewModelFactory(SignRepository, GroupRepository))[HomeViewModel::class.java]
+        ViewModelProvider(
+            getViewModelStoreOwner(),
+            HomeViewModelFactory(SignRepository, GroupRepository)
+        )[HomeViewModel::class.java]
     }
 
     companion object {

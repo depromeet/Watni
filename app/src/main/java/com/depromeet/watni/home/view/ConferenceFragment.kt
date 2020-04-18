@@ -58,8 +58,6 @@ class ConferenceFragment :
             return
         }
 
-        val isManager = user.memberDetails[0].manager
-
         binding.apply {
             tvWelcome.text = ResourceUtil.getRandomWelcomeString(user.name)
 
@@ -69,8 +67,8 @@ class ConferenceFragment :
                 noConferenceMember.layoutNoConference.visibility = View.GONE
             } else {
                 layoutConferenceExist.visibility = View.GONE
-                noConferenceManager.layoutNoConference.visibility = if (isManager) View.VISIBLE else View.GONE
-                noConferenceMember.layoutNoConference.visibility = if (!isManager) View.VISIBLE else View.GONE
+                noConferenceManager.layoutNoConference.visibility = if (user.isManager()) View.VISIBLE else View.GONE
+                noConferenceMember.layoutNoConference.visibility = if (user.isManager()) View.GONE else View.VISIBLE
             }
         }
     }

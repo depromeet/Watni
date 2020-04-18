@@ -6,4 +6,9 @@
         <attr name="defaultPosition" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="MenuItemButton">
+        <attr name="arrowVisibility" format="boolean" />
+        <attr name="countViewVisibility" format="boolean" />
+        <attr name="text" format="string" />
+    </declare-styleable>
 </resources>

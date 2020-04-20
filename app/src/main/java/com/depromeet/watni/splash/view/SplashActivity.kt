@@ -25,13 +25,25 @@ class SplashActivity : AppCompatActivity() {
             startActivity(OnboardingActivity.getIntent(this))
             finish()
         } else if (viewModel.isLoggedIn()) {
-            startActivity(if (viewModel.hasGroup()) HomeActivity.getIntent(this) else GroupActivity.getIntent(this))
+            startActivity(getIntentByLoginStatus())
             finish()
         }
 
         viewModel.authStatus.observe(this, Observer {
-            startActivity(if (it) HomeActivity.getIntent(this) else LoginActivity.getIntent(this))
+            startActivity(getIntentByAuthStatus(it))
             finish()
         })
+    }
+
+    private fun getIntentByLoginStatus() = if (viewModel.hasGroup()) {
+        HomeActivity.getIntent(this)
+    } else {
+        GroupActivity.getIntent(this)
+    }
+
+    private fun getIntentByAuthStatus(authStatus: Boolean) = if (authStatus) {
+        HomeActivity.getIntent(this)
+    } else {
+        LoginActivity.getIntent(this)
     }
 }

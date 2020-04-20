@@ -7,7 +7,7 @@ import com.depromeet.watni.R
 import com.depromeet.watni.model.request.UserJoin
 import com.depromeet.watni.model.source.SignDataSource
 import com.depromeet.watni.model.source.SignRepository
-import com.depromeet.watni.util.InputValidator
+import com.depromeet.watni.util.JoinInputValidator
 import com.depromeet.watni.util.ResourceUtil
 
 /**
@@ -57,7 +57,7 @@ class JoinViewModel(
     }
 
     fun updateJoinAvailable() {
-        _joinAvailable.value = InputValidator.isValidJoinInfo(
+        _joinAvailable.value = JoinInputValidator.isValidJoinInfo(
             nameText.value,
             emailText.value,
             pwdText.value,

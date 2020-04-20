@@ -5,6 +5,8 @@
 
   <data>
 
+    <import type="com.depromeet.watni.util.ResourceUtil" />
+
     <variable
         name="viewModel"
         type="com.depromeet.watni.home.HomeViewModel" />
@@ -30,6 +32,7 @@
         android:textColor="@android:color/black"
         android:layout_marginStart="16dp"
         android:textSize="20sp"
+        android:text="@{ResourceUtil.INSTANCE.getRandomWelcomeString(viewModel.userInfo.item.name)}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,14 +51,14 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
-
-      <include
-          android:id="@+id/no_conference_manager"
-          layout="@layout/layout_conference_manager" />
-
-      <include
-          android:id="@+id/no_conference_member"
-          layout="@layout/layout_conference_member" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/no_conference_manager"
+        layout="@layout/layout_conference_manager" />
+
+    <include
+        android:id="@+id/no_conference_member"
+        layout="@layout/layout_conference_member" />
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

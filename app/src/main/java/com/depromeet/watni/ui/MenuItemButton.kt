@@ -3,10 +3,14 @@ package com.depromeet.watni.ui
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.LinearLayout
 import com.depromeet.watni.R
 import com.depromeet.watni.databinding.BtnMenuItemBinding
+import com.depromeet.watni.listener.OnItemClickListener
+import com.depromeet.watni.listener.OnSingleClickListener
+import com.depromeet.watni.util.showToast
 
 
 /*
@@ -16,8 +20,12 @@ class MenuItemButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ConstraintLayout(context, attrs, defStyleAttr) {
+) : LinearLayout(context, attrs, defStyleAttr) {
     val binding: BtnMenuItemBinding = BtnMenuItemBinding.inflate(LayoutInflater.from(context))
+    var clickListener: OnItemClickListener<View>? = null
+        set(value) {
+            field = if (value != null) OnSingleClickListener.wrap(value) else null
+        }
     var arrowVisibility = true
         set(value) {
             field = value
@@ -38,6 +46,8 @@ class MenuItemButton @JvmOverloads constructor(
         }
 
     init {
+        isClickable = true
+        isFocusable = true
         addView(binding.root.apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         })
@@ -58,5 +68,15 @@ class MenuItemButton @JvmOverloads constructor(
             }
         }
         typedArray.recycle()
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_UP) {
+            clickListener?.onClick(this)
+            if (clickListener == null) {
+                showToast("개발 안됐어요 ㅎㅎ")
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 }

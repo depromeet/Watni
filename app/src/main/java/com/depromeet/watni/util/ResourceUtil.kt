@@ -17,8 +17,11 @@ object ResourceUtil {
 
     fun getStringArray(@ArrayRes resId: Int): Array<String> = MainApplication.getContext().resources.getStringArray(resId)
 
-    fun getRandomWelcomeString(name: String): String {
-        val msgArray = getStringArray(R.array.msg_welcome_random)
-        return String.format(msgArray.random(), name)
+    fun getRandomWelcomeString(name: String?): String = if (name.isNullOrBlank()) {
+        getString(R.string.msg_network_err)
+    } else {
+        String.format(getStringArray(R.array.msg_welcome_random).random(), name)
     }
+
+    fun getRandomProfile() = getStringArray(R.array.profile_icon_random).random()
 }

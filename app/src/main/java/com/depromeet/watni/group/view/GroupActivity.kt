@@ -4,16 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.base.onSingleClick
 import com.depromeet.watni.databinding.ActivityGroupBinding
+import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel
-import com.depromeet.watni.group.GroupViewModelFactory
 import com.depromeet.watni.home.view.HomeActivity
-import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.sign.view.LoginActivity
 import com.depromeet.watni.util.SharedPrefUtil
 
@@ -23,9 +22,7 @@ import com.depromeet.watni.util.SharedPrefUtil
  */
 class GroupActivity : BaseActivity<ActivityGroupBinding>(R.layout.activity_group) {
 
-    val viewModel: GroupViewModel by lazy {
-        ViewModelProvider(this, GroupViewModelFactory(GroupState.NONE, GroupRepository))[GroupViewModel::class.java]
-    }
+    val viewModel: GroupViewModel by viewModels { getViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

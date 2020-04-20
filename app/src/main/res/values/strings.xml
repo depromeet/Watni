@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">왔니</string>
     <string name="app_desc">오늘 왔니, 안 왔니?</string>
-    <string name="app_version">앱 버전 1.0.0</string>
+    <string name="app_version">앱 버전 1.0.0-alpha</string>
     <string name="app_review">왔니 앱 평가하기</string>
 
     <string name="ok">확인</string>

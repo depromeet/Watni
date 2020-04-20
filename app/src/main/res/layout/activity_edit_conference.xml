@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="@string/enrollment"
-                android:textColor="@color/color_gray"
+                android:textColor="@color/color_4D000000"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -142,17 +142,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <com.depromeet.watni.ui.TimeRangeEditText
                         android:id="@+id/et_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/color_1A000000"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/bottom_line_gray"
                         android:importantForAutofill="no"
                         android:inputType="time"
                         android:maxLines="1"
+                        android:paddingBottom="8dp"
                         android:singleLine="true"
-                        android:textSize="@dimen/et_font_size"
-                        android:translationY="@dimen/et_trans_y" />
+                        android:textSize="@dimen/et_font_size" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -212,6 +213,7 @@
                     android:layout_height="222dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
+                    android:background="@color/color_1A000000"
                     android:src="@drawable/ic_add_image" />
             </LinearLayout>
         </ScrollView>

@@ -1,7 +1,7 @@
 package com.depromeet.watni.util
 
 
-object InputValidator {
+object JoinInputValidator {
     private const val NAME_LENGTH_MIN = 2
     private const val NAME_LENGTH_MAX = 10
     private const val PWD_LENGTH_MIN = 6

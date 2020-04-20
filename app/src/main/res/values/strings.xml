@@ -6,6 +6,7 @@
 
     <!-- 공용으로 쓰이는 문자 -->
     <string name="ok">확인</string>
+    <string name="cancel">취소</string>
     <string name="start">시작하기</string>
     <string name="close">닫기</string>
     <string name="back">뒤로가기</string>
@@ -62,8 +63,10 @@
     <string name="msg_create_group_err">그룹 생성에 실패했습니다. 다시 시도해주세요.</string>
     <string name="msg_join_group_err">그룹 가입에 실패했습니다. 다시 시도해주세요.</string>
 
-    <string name="msg_load_my_info_err">내 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
+    <string name="msg_load_my_info_err">내 정보를 불러오는데 실패했습니다.\n다시 시도해주세요.</string>
     <string name="conference_img_example">인증샷 예시</string>
+    <string name="conference_start_time">시작 시간</string>
+    <string name="conference_end_time">종료 시간</string>
     <string name="conference_upload">인증샷 예시 올리기</string>
     <string name="conference_upload_type1">앨범</string>
     <string name="conference_upload_type2">카메라</string>

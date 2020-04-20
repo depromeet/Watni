@@ -52,7 +52,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.ibHomeMenu.setOnClickListener { openDrawer() }
         binding.includeDrawerHome.btnAddConference.clickListener = object : OnItemClickListener<View> {
             override fun onClick(item: View) {
-                closeDrawer()
                 startActivity(ConferenceEditActivity.getIntent(this@HomeActivity))
             }
         }

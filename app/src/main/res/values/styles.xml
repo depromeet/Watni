@@ -1,40 +1,40 @@
 <resources>
 
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
-    <item name="android:textViewStyle">@style/TextViewStyle</item>
-    <item name="android:buttonStyle">@style/ButtonStyle</item>
-    <item name="android:editTextStyle">@style/EditTextStyle</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
 
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorPrimary</item>
-  </style>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
 
-  <style name="SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <item name="android:windowBackground">@drawable/back_splash</item>
-  </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/back_splash</item>
+    </style>
 
-  <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
-    <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
-  </style>
+    <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
+    </style>
 
-  <style name="ButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
-    <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
-  </style>
+    <style name="ButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
+    </style>
 
-  <style name="EditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
-    <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
-    <item name="android:colorAccent">@color/colorPrimary</item>
-  </style>
+    <style name="EditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
+        <item name="android:colorAccent">@color/colorPrimary</item>
+    </style>
 
-  <style name="RadioButtonStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
-    <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
-  </style>
+    <style name="RadioButtonStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
+    </style>
 
-  <style name="CheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
-    <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
-  </style>
+    <style name="CheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
+    </style>
 
     <style name="DialogStyle" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorAccent">@android:color/black</item>

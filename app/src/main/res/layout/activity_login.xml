@@ -67,6 +67,7 @@
               android:text="@={viewModel.emailText}"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:backgroundTint="@color/color_1A000000"
               android:textSize="@dimen/et_font_size"
               android:importantForAutofill="no"
               android:inputType="textEmailAddress"
@@ -89,6 +90,7 @@
 
           <EditText
               android:id="@+id/et_join_password"
+              android:backgroundTint="@color/color_1A000000"
               android:textSize="@dimen/et_font_size"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"

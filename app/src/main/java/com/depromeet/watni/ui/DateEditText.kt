@@ -28,17 +28,23 @@ class DateEditText @JvmOverloads constructor(
     }
 
     override fun onClick(v: View?) {
+        createDatePickerDialog().show()
+    }
+
+    private fun createDatePickerDialog(): DatePickerDialog {
         val calendar: Calendar = Calendar.getInstance()
-        DatePickerDialog(
+        return DatePickerDialog(
             context,
             R.style.DialogStyle,
             OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                 currentDate = Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
                 setText(DateTimeUtil.getTodayString(currentDate))
-            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)
-        ).run {
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ).apply {
             datePicker.minDate = System.currentTimeMillis() - 1000
-            show()
         }
     }
 }

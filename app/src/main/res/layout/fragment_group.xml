@@ -50,12 +50,13 @@
                 android:id="@+id/et_group_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/color_1A000000"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text="@={viewModel.inputValue}"
-                android:textSize="14sp" />
+                android:textSize="@dimen/et_font_size" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

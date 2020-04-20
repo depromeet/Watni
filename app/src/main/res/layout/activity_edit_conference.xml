@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="@string/enrollment"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -91,11 +91,13 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:backgroundTint="@color/color_1A000000"
                         android:id="@+id/et_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="text"
+                        android:translationY="@dimen/et_trans_y"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textSize="@dimen/et_font_size" />
@@ -113,10 +115,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <com.depromeet.watni.ui.DateEditText
                         android:id="@+id/et_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/bottom_line_gray"
+                        android:paddingBottom="8dp"
                         android:importantForAutofill="no"
                         android:inputType="date"
                         android:maxLines="1"
@@ -137,8 +142,10 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:backgroundTint="@color/color_1A000000"
                         android:id="@+id/et_time"
                         android:layout_width="match_parent"
+                        android:translationY="@dimen/et_trans_y"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="time"
@@ -160,9 +167,11 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:backgroundTint="@color/color_1A000000"
                         android:id="@+id/et_place"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:translationY="@dimen/et_trans_y"
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:maxLines="1"

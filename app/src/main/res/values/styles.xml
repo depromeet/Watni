@@ -36,4 +36,7 @@
     <item name="android:fontFamily">@font/spoqa_han_sans_regular</item>
   </style>
 
+    <style name="DialogStyle" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">@android:color/black</item>
+    </style>
 </resources>

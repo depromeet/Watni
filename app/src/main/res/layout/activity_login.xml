@@ -64,14 +64,15 @@
 
           <EditText
               android:id="@+id/et_join_email"
+              android:text="@={viewModel.emailText}"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:textSize="@dimen/et_font_size"
               android:importantForAutofill="no"
               android:inputType="textEmailAddress"
               android:maxLines="1"
               android:singleLine="true"
-              android:text="@={viewModel.emailText}"
-              android:textSize="14sp" />
+              android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,6 +89,7 @@
 
           <EditText
               android:id="@+id/et_join_password"
+              android:textSize="@dimen/et_font_size"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:importantForAutofill="no"
@@ -95,7 +97,7 @@
               android:maxLines="1"
               android:singleLine="true"
               android:text="@={viewModel.pwdText}"
-              android:textSize="14sp" />
+              android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

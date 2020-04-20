@@ -2,18 +2,16 @@ package com.depromeet.watni.group.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.databinding.FragmentGroupBinding
-import com.depromeet.watni.ext.getViewModelStoreOwner
+import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.ext.hideMessage
 import com.depromeet.watni.ext.showMessage
 import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel
-import com.depromeet.watni.group.GroupViewModelFactory
-import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.util.ResourceUtil
 import com.depromeet.watni.util.showToast
 
@@ -24,12 +22,7 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(R.layou
     private lateinit var groupState: GroupState
     private lateinit var groupActivity: GroupActivity
 
-    override val viewModel: GroupViewModel by lazy {
-        ViewModelProvider(
-            getViewModelStoreOwner(),
-            GroupViewModelFactory(groupState, GroupRepository)
-        )[GroupViewModel::class.java]
-    }
+    override val viewModel: GroupViewModel by activityViewModels { getViewModelFactory(groupState) }
 
     companion object {
         val TAG = GroupFragment::class.java.name

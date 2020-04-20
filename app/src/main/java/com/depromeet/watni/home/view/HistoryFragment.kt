@@ -2,18 +2,15 @@ package com.depromeet.watni.home.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.base.CommonStatus
 import com.depromeet.watni.databinding.FragmentHistoryBinding
-import com.depromeet.watni.ext.getViewModelStoreOwner
+import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.home.HomeViewModel
-import com.depromeet.watni.home.HomeViewModelFactory
 import com.depromeet.watni.model.request.User
-import com.depromeet.watni.model.source.GroupRepository
-import com.depromeet.watni.model.source.SignRepository
 
 /*
  * Created by yunji on 2020-02-22
@@ -21,12 +18,7 @@ import com.depromeet.watni.model.source.SignRepository
 class HistoryFragment :
     BaseFragment<FragmentHistoryBinding, HomeViewModel>(R.layout.fragment_history) {
 
-    override val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(
-            getViewModelStoreOwner(),
-            HomeViewModelFactory(SignRepository, GroupRepository)
-        )[HomeViewModel::class.java]
-    }
+    override val viewModel: HomeViewModel by activityViewModels { getViewModelFactory() }
 
     companion object {
 

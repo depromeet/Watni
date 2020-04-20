@@ -3,29 +3,28 @@ package com.depromeet.watni.home.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.base.CommonStatus
+import com.depromeet.watni.conference.ConferenceEditActivity
 import com.depromeet.watni.databinding.ActivityHomeBinding
+import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.ext.showSnack
 import com.depromeet.watni.home.HomeViewModel
-import com.depromeet.watni.home.HomeViewModelFactory
 import com.depromeet.watni.home.adapter.HomeViewPagerAdapter
+import com.depromeet.watni.listener.OnItemClickListener
 import com.depromeet.watni.model.request.User
-import com.depromeet.watni.model.source.GroupRepository
-import com.depromeet.watni.model.source.SignRepository
 import com.depromeet.watni.network.NETWORK_ERROR_MSG
 import com.depromeet.watni.util.showToast
 
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-    val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(this, HomeViewModelFactory(SignRepository, GroupRepository))[HomeViewModel::class.java]
-    }
+    val viewModel: HomeViewModel by viewModels { getViewModelFactory() }
 
     private val viewPagerAdapter = HomeViewPagerAdapter(supportFragmentManager)
 
@@ -50,7 +49,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.tabMain.apply {
             setupWithViewPager(binding.viewpagerMain)
         }
-        binding.ibHomeMenu.setOnClickListener { binding.drawerHome.openDrawer(GravityCompat.END) }
+        binding.ibHomeMenu.setOnClickListener { openDrawer() }
+        binding.includeDrawerHome.btnAddConference.clickListener = object : OnItemClickListener<View> {
+            override fun onClick(item: View) {
+                closeDrawer()
+                startActivity(ConferenceEditActivity.getIntent(this@HomeActivity))
+            }
+        }
+        viewModel.loadUserInfo()
     }
 
     private fun bindUserDetailInfo(user: User?) {
@@ -83,10 +89,18 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
     override fun onBackPressed() {
         if (binding.drawerHome.isDrawerOpen(GravityCompat.END)) {
-            binding.drawerHome.closeDrawer(GravityCompat.END)
+            closeDrawer()
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun closeDrawer() {
+        binding.drawerHome.closeDrawer(GravityCompat.END)
+    }
+
+    private fun openDrawer() {
+        binding.drawerHome.openDrawer(GravityCompat.END)
     }
 
     private fun showSnack(resId: Int) {

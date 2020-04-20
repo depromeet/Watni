@@ -15,11 +15,11 @@ class DateTimeUtilTest {
 
     @Test
     fun getReadableTimeString() {
-        assertEquals(DateTimeUtil.getReadableTimeString(158721362), "오전 10:16")
+        assertEquals(DateTimeUtil.getReadableTimeString(158721362), "10:16")
     }
 
     @Test
     fun getReadableTimeRange() {
-        assertEquals(DateTimeUtil.getReadableTimeRange(1587213622, 1587213693), "오후 9:40 - 오후 9:41")
+        assertEquals(DateTimeUtil.getReadableTimeRange(1587213622, 1587213693), "오후 9:40 - 9:41")
     }
 }

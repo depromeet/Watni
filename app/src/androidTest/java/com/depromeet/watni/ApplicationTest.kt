@@ -10,7 +10,7 @@ import org.junit.Test
 /*
  * Created by yunji on 18/04/2020
  */
-class ExampleInstrumentedTest {
+class ApplicationTest {
 
     @Test
     fun useInstrumentationContext() {

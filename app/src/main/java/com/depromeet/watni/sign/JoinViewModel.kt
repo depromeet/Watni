@@ -13,8 +13,9 @@ import com.depromeet.watni.util.ResourceUtil
 /**
  * Created by yunji on 2020-01-28
  */
-class JoinViewModel : ViewModel() {
+class JoinViewModel(
     private val signRepository: SignDataSource = SignRepository
+) : ViewModel() {
 
     private val _joinStatus = MutableLiveData<Boolean>()
     private val _isLoading = MutableLiveData<Boolean>()

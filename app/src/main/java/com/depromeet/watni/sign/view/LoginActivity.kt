@@ -3,11 +3,12 @@ package com.depromeet.watni.sign.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityLoginBinding
+import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.group.view.GroupActivity
 import com.depromeet.watni.home.view.HomeActivity
 import com.depromeet.watni.model.request.User
@@ -18,9 +19,7 @@ import com.depromeet.watni.util.showToast
  * Created by yunji on 2020-01-28
  */
 class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
-    private val viewModel by lazy {
-        ViewModelProvider(this)[LoginViewModel::class.java]
-    }
+    private val viewModel: LoginViewModel by viewModels { getViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

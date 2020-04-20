@@ -33,15 +33,44 @@ interface ServiceApi {
     fun createGroup(@Body createGroup: CreateGroup): Call<SearchGroupResponse>
 
     @POST("/api/group/{groupId}/apply-way")
-    fun createGroupCode(@Path("groupId") groupId: Int, @Body groupCode: NewGroupCode): Call<GroupCodeResponse>
+    fun createGroupCode(
+        @Path("groupId") groupId: Int,
+        @Body groupCode: NewGroupCode
+    ): Call<GroupCodeResponse>
 
     @GET("/api/group/{groupId}/apply-way")
-    fun getGroupCode(@Path("groupId") groupId: Int, @Body groupCode: GroupCode): Call<GroupCodeResponse>
+    fun getGroupCode(
+        @Path("groupId") groupId: Int,
+        @Body groupCode: GroupCode
+    ): Call<GroupCodeResponse>
 
     @GET("/api/group/{groupId}/apply-way/check")
-    fun checkGroupCode(@Path("groupId") groupId: Int, @Body groupCode: NewGroupCode): Call<Void>
+    fun checkGroupCode(
+        @Path("groupId") groupId: Int,
+        @Body groupCode: NewGroupCode
+    ): Call<Void>
 
     // 그룹 가입
     @POST("/api/group/accession")
     fun joinGroup(@Body joinGroup: JoinGroup): Call<JoinGroupResponse>
+
+    // (관리자) 모임 관리
+    @POST("/api/group/{groupId}/conference")
+    fun createConference(
+        @Path("groupId") groupId: Int,
+        @Body conference: CreateConference
+    ): Call<Conference>
+
+    @PATCH("/api/group/{groupId}/conference/{conferenceId}")
+    fun updateConference(
+        @Path("groupId") groupId: Int,
+        @Path("conferenceId") conferenceId: Int,
+        @Body conference: CreateConference
+    ): Call<Conference>
+
+    @DELETE("/api/group/{groupId}/conference/{conferenceId}")
+    fun deleteConference(
+        @Path("groupId") groupId: Int,
+        @Path("conferenceId") conferenceId: Int
+    ): Call<Void>
 }

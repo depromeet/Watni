@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">왔니</string>
     <string name="app_desc">오늘 왔니, 안 왔니?</string>
-    <string name="app_version">앱 버전 1.0.0</string>
+    <string name="app_version">앱 버전 1.0.0-alpha</string>
     <string name="app_review">왔니 앱 평가하기</string>
 
+    <!-- 공용으로 쓰이는 문자 -->
     <string name="ok">확인</string>
     <string name="start">시작하기</string>
     <string name="close">닫기</string>
@@ -12,8 +13,14 @@
     <string name="date">날짜</string>
     <string name="time">시간</string>
     <string name="place">장소</string>
+    <string name="conference">일정</string>
+    <string name="title">제목</string>
+    <string name="notice">공지</string>
     <string name="manager">관리자</string>
     <string name="user">회원</string>
+    <string name="delete">삭제</string>
+    <string name="enrollment">등록</string>
+    <string name="edit">수정</string>
 
     <string-array name="onboarding_msg">
         <item>저 왔어요!</item>
@@ -56,6 +63,12 @@
     <string name="msg_join_group_err">그룹 가입에 실패했습니다. 다시 시도해주세요.</string>
 
     <string name="msg_load_my_info_err">내 정보를 불러오는데 실패했습니다. 다시 시도해주세요.</string>
+    <string name="conference_img_example">인증샷 예시</string>
+    <string name="conference_upload">인증샷 예시 올리기</string>
+    <string name="conference_upload_type1">앨범</string>
+    <string name="conference_upload_type2">카메라</string>
+    <string name="conference_delete_confirm">이 일정을 삭제하시겠습니까?</string>
+    <string name="conference_delete_cancel">계속 수정</string>
     <string name="conference_check">왔어요!</string>
     <string name="conference_d_day">출석 D-%d</string>
     <string name="conference_complete">출석 완료</string>
@@ -83,7 +96,7 @@
     <string name="unknown">알 수 없는 동작입니다.</string>
     <string name="unknown_user">UNKNOWN</string>
     <string name="msg_network_auth">인증 에러가 발생했습니다. 다시 시도해주세요.</string>
-    <string name="msg_network_err">네트워크 에러가 발생했습니다. 다시 시도해주세요.</string>
+    <string name="msg_network_err">네트워크 에러가 발생했습니다.\n다시 시도해주세요.</string>
 
     <string-array name="home_tab_titles">
         <item>일정</item>

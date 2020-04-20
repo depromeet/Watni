@@ -11,7 +11,7 @@ import com.depromeet.watni.databinding.ActivityJoinBinding
 import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.ext.updateStatus
 import com.depromeet.watni.sign.JoinViewModel
-import com.depromeet.watni.util.InputValidator
+import com.depromeet.watni.util.JoinInputValidator
 import com.depromeet.watni.util.showToast
 
 /**
@@ -33,28 +33,28 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>(R.layout.activity_join) {
         with(viewModel) {
             emailText.observe(this@JoinActivity, Observer {
                 binding.layoutJoinEmail.updateStatus(
-                    InputValidator.isValidEmail(it),
+                    JoinInputValidator.isValidEmail(it),
                     R.string.join_fail_email
                 )
                 updateJoinAvailable()
             })
             nameText.observe(this@JoinActivity, Observer {
                 binding.layoutJoinName.updateStatus(
-                    InputValidator.isValidName(it),
+                    JoinInputValidator.isValidName(it),
                     R.string.join_fail_name
                 )
                 updateJoinAvailable()
             })
             pwdText.observe(this@JoinActivity, Observer {
                 binding.layoutJoinPassword.updateStatus(
-                    InputValidator.isValidName(it),
+                    JoinInputValidator.isValidName(it),
                     R.string.join_fail_pwd
                 )
                 updateJoinAvailable()
             })
             pwdConfirmText.observe(this@JoinActivity, Observer {
                 binding.layoutJoinPasswordConfirm.updateStatus(
-                    InputValidator.isSamePwd(pwdText.value, it),
+                    JoinInputValidator.isSamePwd(pwdText.value, it),
                     R.string.login_fail_pwd
                 )
                 updateJoinAvailable()

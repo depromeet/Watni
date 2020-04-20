@@ -20,8 +20,8 @@
         android:layout_marginStart="14dp"
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="6dp"
-        app:cardElevation="2dp"
         app:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,9 +58,9 @@
                 android:layout_width="0dp"
                 android:layout_height="227dp"
                 android:layout_marginTop="16dp"
-                android:visibility="@{(item.photoUrl == null) ? View.GONE : View.VISIBLE}"
                 android:background="@color/color_light_gray"
                 android:scaleType="centerCrop"
+                android:visibility="@{(item.photoUrl == null) ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_conference_title"
@@ -95,7 +95,6 @@
                 android:text="@string/place"
                 android:textColor="@color/color_gray"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_place_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_place_content" />
 
@@ -105,9 +104,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
+                android:text="@{DateTimeUtil.INSTANCE.getReadableDateString(item.startAt)}"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
-                android:text="@{DateTimeUtil.INSTANCE.getReadableDateString(item.startAt)}"
                 app:layout_constraintStart_toEndOf="@id/tv_date"
                 app:layout_constraintTop_toBottomOf="@id/iv_conference"
                 tool:text="2019.12.10 (토)" />
@@ -126,17 +125,19 @@
 
             <TextView
                 android:id="@+id/tv_place_content"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:gravity="start"
                 android:text="@{item.locationInfo}"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintEnd_toEndOf="@id/btn_check"
+                app:layout_constraintStart_toStartOf="@id/tv_date_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_time_content"
-                tool:text="공덕 창업허브" />
+                tool:text="공덕 창업허브공덕창업허브공덕창업허브공" />
 
             <Button
+                android:id="@+id/btn_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_round_stroke_red"
@@ -146,17 +147,16 @@
                 android:paddingEnd="14dp"
                 android:text="@string/conference_check"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@id/tv_place_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_date_content" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_time_content"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <View
                 android:id="@+id/view_divider"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="11dp"
-                android:visibility="@{item.description.empty ? View.GONE : View.VISIBLE}"
                 android:background="@color/color_light_gray"
+                android:visibility="@{item.notice.empty ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_place_content" />
@@ -168,10 +168,10 @@
                 android:layout_marginTop="11dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="@{item.description}"
-                android:visibility="@{item.description.empty ? View.GONE : View.VISIBLE}"
+                android:text="@{item.notice}"
                 android:textColor="@color/color_gray"
                 android:textSize="15sp"
+                android:visibility="@{item.notice.empty ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_divider"

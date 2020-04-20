@@ -9,6 +9,7 @@ import java.util.*
 object DateTimeUtil {
     private const val UNIX_TRANS_NUM = 1000
     private val dateFormat = SimpleDateFormat("yyyy.M.d (EEE)", Locale.KOREA)
+    private val dateKorFormat = SimpleDateFormat("yyyy년 M월 d일 (EEE)", Locale.KOREA)
     private val timeFormat = SimpleDateFormat("K:mm", Locale.KOREA)
     private val ampmFormat = SimpleDateFormat("a ", Locale.KOREA)
 
@@ -29,4 +30,10 @@ object DateTimeUtil {
 
         return "$startTimeString - $endTimeString"
     }
+
+    fun getTodayString(): String = dateKorFormat.format(Calendar.getInstance().time).toString()
+
+    fun getTodayString(date: Date): String = dateKorFormat.format(date).toString()
+
+    fun getTodayString(calendar: Calendar): String = dateKorFormat.format(calendar.time).toString()
 }

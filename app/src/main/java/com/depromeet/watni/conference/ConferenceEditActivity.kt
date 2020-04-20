@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityEditConferenceBinding
+import com.depromeet.watni.listener.OnTimeRangeSelectedListener
 import com.depromeet.watni.ui.TimeRangePickerDialog
 
 /*
@@ -23,7 +24,11 @@ class ConferenceEditActivity : BaseActivity<ActivityEditConferenceBinding>(R.lay
         binding.lifecycleOwner = this
         binding.etTitle.requestFocus()
         binding.etTime.setOnClickListener {
-            TimeRangePickerDialog.newInstance().show(supportFragmentManager)
+            TimeRangePickerDialog.newInstance(object : OnTimeRangeSelectedListener {
+                override fun onTimeSelected(startHour: Int, startMin: Int, endHour: Int, endMin: Int) {
+                    binding.etTime.setTimeText(startHour, startMin, endHour, endMin)
+                }
+            }).show(supportFragmentManager)
         }
     }
 }

@@ -214,6 +214,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/color_1A000000"
+                    android:contentDescription="@string/conference_img_example"
                     android:src="@drawable/ic_add_image" />
             </LinearLayout>
         </ScrollView>

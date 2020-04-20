@@ -2,9 +2,12 @@ package com.depromeet.watni.conference
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.databinding.ActivityEditConferenceBinding
+import com.depromeet.watni.listener.OnTimeRangeSelectedListener
+import com.depromeet.watni.ui.TimeRangePickerDialog
 
 /*
  * Created by yunji on 19/04/2020
@@ -13,5 +16,19 @@ class ConferenceEditActivity : BaseActivity<ActivityEditConferenceBinding>(R.lay
 
     companion object {
         fun getIntent(context: Context): Intent? = Intent(context, ConferenceEditActivity::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding.lifecycleOwner = this
+        binding.etTitle.requestFocus()
+        binding.etTime.setOnClickListener {
+            TimeRangePickerDialog.newInstance(object : OnTimeRangeSelectedListener {
+                override fun onTimeSelected(startHour: Int, startMin: Int, endHour: Int, endMin: Int) {
+                    binding.etTime.setTimeText(startHour, startMin, endHour, endMin)
+                }
+            }).show(supportFragmentManager)
+        }
     }
 }

@@ -31,6 +31,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     private fun initView() {
         with(viewModel) {
             binding.btnJoin.setOnClickListener { startActivity(JoinActivity.getIntent(this@LoginActivity)) }
+            binding.btnJoinForgotPwd.setOnClickListener { showToast("개발 중입니다") }
             emailText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
             pwdText.observe(this@LoginActivity, Observer { updateLoginAvailable() })
             msgText.observe(this@LoginActivity, Observer { showToast(it) })

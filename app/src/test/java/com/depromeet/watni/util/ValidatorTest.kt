@@ -8,34 +8,34 @@ class ValidatorTest {
 
     @Test
     fun testEmailValidation() {
-        assertTrue(InputValidator.isValidEmail("abc@abc.com"))
-        assertFalse(InputValidator.isValidEmail("a.a"))
-        assertFalse(InputValidator.isValidEmail(""))
+        assertTrue(JoinInputValidator.isValidEmail("abc@abc.com"))
+        assertFalse(JoinInputValidator.isValidEmail("a.a"))
+        assertFalse(JoinInputValidator.isValidEmail(""))
     }
 
     @Test
     fun testNameValidation() {
-        assertTrue(InputValidator.isValidName("yunji"))
-        assertFalse(InputValidator.isValidName("aldlkwandwa"))
-        assertFalse(InputValidator.isValidName(" "))
+        assertTrue(JoinInputValidator.isValidName("yunji"))
+        assertFalse(JoinInputValidator.isValidName("aldlkwandwa"))
+        assertFalse(JoinInputValidator.isValidName(" "))
     }
 
     @Test
     fun testPwdValidation() {
-        assertTrue(InputValidator.isValidPwd("adkAx123"))
-        assertFalse(InputValidator.isValidPwd("kadkaw219231ldj2109"))
-        assertFalse(InputValidator.isValidPwd("jdiwa"))
+        assertTrue(JoinInputValidator.isValidPwd("adkAx123"))
+        assertFalse(JoinInputValidator.isValidPwd("kadkaw219231ldj2109"))
+        assertFalse(JoinInputValidator.isValidPwd("jdiwa"))
     }
 
     @Test
     fun testIsSamePwd() {
-        assertTrue(InputValidator.isSamePwd("abcd123", "abcd123"))
+        assertTrue(JoinInputValidator.isSamePwd("abcd123", "abcd123"))
     }
 
     @Test
     fun testIsValidJoinInfo() {
         assertTrue(
-            InputValidator.isValidJoinInfo("yunji", "yunji@naver.com", "abcd123", "abcd123")
+            JoinInputValidator.isValidJoinInfo("yunji", "yunji@naver.com", "abcd123", "abcd123")
         )
     }
 }

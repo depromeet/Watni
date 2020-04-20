@@ -66,13 +66,15 @@
               android:id="@+id/et_join_name"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:backgroundTint="@color/color_1A000000"
               android:importantForAutofill="no"
               android:inputType="text"
               android:labelFor="@id/tv_join_name"
               android:maxLines="1"
               android:singleLine="true"
               android:text="@={viewModel.nameText}"
-              android:textSize="14sp" />
+              android:textSize="@dimen/et_font_size"
+              android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,12 +94,14 @@
               android:id="@+id/et_join_email"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:backgroundTint="@color/color_1A000000"
               android:importantForAutofill="no"
               android:inputType="textEmailAddress"
               android:maxLines="1"
               android:singleLine="true"
               android:text="@={viewModel.emailText}"
-              android:textSize="14sp" />
+              android:textSize="@dimen/et_font_size"
+              android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,12 +121,14 @@
               android:id="@+id/et_join_password"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:backgroundTint="@color/color_1A000000"
               android:importantForAutofill="no"
               android:inputType="textPassword"
               android:maxLines="1"
               android:singleLine="true"
               android:text="@={viewModel.pwdText}"
-              android:textSize="14sp" />
+              android:textSize="@dimen/et_font_size"
+              android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,12 +148,14 @@
               android:id="@+id/et_join_password_confirm"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:backgroundTint="@color/color_1A000000"
               android:importantForAutofill="no"
               android:inputType="textPassword"
               android:maxLines="1"
               android:singleLine="true"
               android:text="@={viewModel.pwdConfirmText}"
-              android:textSize="14sp" />
+              android:textSize="@dimen/et_font_size"
+              android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -26,5 +26,5 @@ fun Button.bindBasicContent(basicButtonContent: BasicButtonContent?) {
     }
 
     text = basicButtonContent.text
-    setOnClickListener { basicButtonContent.onClick }
+    setOnClickListener { run(basicButtonContent.onClick) }
 }

@@ -9,8 +9,8 @@ import android.view.View
 import android.widget.LinearLayout
 import com.depromeet.watni.R
 import com.depromeet.watni.databinding.BtnMenuItemBinding
+import com.depromeet.watni.ext.disableDoubleClick
 import com.depromeet.watni.listener.OnItemClickListener
-import com.depromeet.watni.listener.OnSingleClickListener
 import com.depromeet.watni.util.showToast
 
 
@@ -25,7 +25,7 @@ class MenuItemButton @JvmOverloads constructor(
     val binding: BtnMenuItemBinding = BtnMenuItemBinding.inflate(LayoutInflater.from(context))
     var clickListener: OnItemClickListener<View>? = null
         set(value) {
-            field = if (value != null) OnSingleClickListener.wrap(value) else null
+            field = value?.disableDoubleClick()
         }
     var arrowVisibility = true
         set(value) {

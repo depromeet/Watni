@@ -2,14 +2,11 @@ package com.depromeet.watni.ui
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.depromeet.watni.R
 import com.depromeet.watni.databinding.BtnBottomSheetItemBinding
-import com.depromeet.watni.listener.OnItemClickListener
-import com.depromeet.watni.listener.OnSingleClickListener
 
 
 /*
@@ -19,20 +16,14 @@ class BottomSheetItemButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), View.OnClickListener {
-    val binding = BtnBottomSheetItemBinding.inflate(LayoutInflater.from(context))
+) : LinearLayout(context, attrs, defStyleAttr) {
+    private val binding = BtnBottomSheetItemBinding.inflate(LayoutInflater.from(context))
     var btnText: String? = ""
         set(value) {
             field = value
             binding.btnCenter.text = value
-            if (value.isNullOrEmpty()) {
-                visibility = GONE
-            }
+            visibility = if (value.isNullOrEmpty()) View.GONE else View.VISIBLE
             invalidate()
-        }
-    var clickListener: OnItemClickListener<View>? = null
-        set(value) {
-            field = if (value != null) OnSingleClickListener.wrap(value) else null
         }
 
     init {
@@ -42,7 +33,10 @@ class BottomSheetItemButton @JvmOverloads constructor(
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         })
         setTypeArray(context, attrs)
-        setOnClickListener(this)
+    }
+
+    fun setBtnClickListener(onClick: (view: View) -> Unit) {
+        binding.btnCenter.setOnClickListener { run(onClick) }
     }
 
     private fun setTypeArray(context: Context, attrs: AttributeSet?) {
@@ -54,14 +48,5 @@ class BottomSheetItemButton @JvmOverloads constructor(
             }
         }
         typedArray.recycle()
-    }
-
-    override fun onClick(v: View) {
-        Log.w(TAG, "OnClickListener is not set.")
-        clickListener?.onClick(v)
-    }
-
-    companion object {
-        val TAG = BottomSheetItemButton::class.java.name
     }
 }

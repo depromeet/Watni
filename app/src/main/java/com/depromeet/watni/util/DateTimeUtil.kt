@@ -33,8 +33,8 @@ object DateTimeUtil {
         @IntRange(from = HOUR_MIN, to = HOUR_MAX) endHour: Int,
         @IntRange(from = MINUTES_MIN, to = MINUTES_MAX - 1) endMin: Int
     ): String {
-        val startTime = if (startHour >= 12) startHour - 12 else startHour
-        val endTime = if (endHour >= 12) endHour - 12 else endHour
+        val startTime = if (startHour > 12) startHour - 12 else startHour
+        val endTime = if (endHour > 12) endHour - 12 else endHour
         return timeTextFormat.format(
             getAmPm(startHour), startTime, startMin, getAmPm(endHour), endTime, endMin
         )

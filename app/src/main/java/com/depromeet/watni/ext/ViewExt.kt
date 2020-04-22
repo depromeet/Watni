@@ -6,6 +6,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.depromeet.watni.R
 import com.depromeet.watni.util.ResourceUtil
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 
 /*
@@ -29,4 +30,33 @@ fun View.showSnack(
         setAction(ResourceUtil.getString(R.string.ok)) { dismiss() }
         show()
     }
+}
+
+fun View.expandBottomSheet() {
+    try {
+        val bottomSheetBehavior = BottomSheetBehavior.from(this)
+        if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+    } catch (e: IllegalArgumentException) {
+        e.printStackTrace()
+    }
+}
+
+fun View.hideBottomSheet() {
+    try {
+        val bottomSheetBehavior = BottomSheetBehavior.from(this)
+        if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+    } catch (e: IllegalArgumentException) {
+        e.printStackTrace()
+    }
+}
+
+fun View.isExpanded() = try {
+    BottomSheetBehavior.from(this).state == BottomSheetBehavior.STATE_EXPANDED
+} catch (e: IllegalArgumentException) {
+    e.printStackTrace()
+    false
 }

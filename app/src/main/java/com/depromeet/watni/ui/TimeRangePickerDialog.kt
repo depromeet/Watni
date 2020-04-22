@@ -8,8 +8,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.depromeet.watni.R
 import com.depromeet.watni.databinding.TimeRangePickerDialogBinding
-import com.depromeet.watni.ext.getDisplayedMinutes
-import com.depromeet.watni.ext.setTimeInterval
 import com.depromeet.watni.ext.setUsable
 import com.depromeet.watni.listener.OnTimeRangeSelectedListener
 import com.depromeet.watni.util.DateTimeUtil
@@ -33,8 +31,6 @@ class TimeRangePickerDialog : DialogFragment() {
     private fun initView() {
         with(binding) {
             btnOk.setUsable(false)
-            tpStart.setTimeInterval()
-            tpEnd.setTimeInterval()
             tpStart.setOnTimeChangedListener { _, hourOfDay, _ ->
                 btnOk.setUsable(
                     DateTimeUtil.isCorrectSequence(

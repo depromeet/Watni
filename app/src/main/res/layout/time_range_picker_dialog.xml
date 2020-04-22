@@ -32,7 +32,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TimePicker
+                        <com.depromeet.watni.ui.RangeTimePicker
                             android:id="@+id/tp_start"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TimePicker
+                        <com.depromeet.watni.ui.RangeTimePicker
                             android:id="@+id/tp_end"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

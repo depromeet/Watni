@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.depromeet.watni.R
+import com.depromeet.watni.ext.convertToViewClickListener
 import com.depromeet.watni.listener.OnSingleClickListener
 import com.depromeet.watni.util.ResourceUtil
 
@@ -39,13 +40,13 @@ fun ImageView.loadUrlImg(url: String?) {
 
 @BindingAdapter("onSingleClick")
 fun Button.onSingleClick(listener: View.OnClickListener) {
-    setOnClickListener(
-        OnSingleClickListener.convertToViewClickListener(object : OnSingleClickListener<View>() {
+    setOnClickListener {
+        object : OnSingleClickListener<View>() {
             override fun onSingleClick(item: View) {
-                listener.onClick(item) // 중복 클릭 방지
+                listener.onClick(it) // 중복 클릭 방지
             }
-        })
-    )
+        }.convertToViewClickListener()
+    }
 }
 
 @BindingAdapter("setPaddingVertical")

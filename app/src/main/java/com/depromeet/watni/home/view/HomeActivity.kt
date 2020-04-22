@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.base.CommonStatus
-import com.depromeet.watni.conference.ConferenceEditActivity
+import com.depromeet.watni.conference.EditMode
+import com.depromeet.watni.conference.view.ConferenceEditActivity
 import com.depromeet.watni.databinding.ActivityHomeBinding
 import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.ext.showSnack
@@ -52,7 +53,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.ibHomeMenu.setOnClickListener { openDrawer() }
         binding.includeDrawerHome.btnAddConference.clickListener = object : OnItemClickListener<View> {
             override fun onClick(item: View) {
-                startActivity(ConferenceEditActivity.getIntent(this@HomeActivity))
+                val intent = ConferenceEditActivity.getIntent(this@HomeActivity).apply {
+                    putExtra(EditMode.TAG, EditMode.NEW.code)
+                }
+                startActivity(intent)
             }
         }
         viewModel.loadUserInfo()

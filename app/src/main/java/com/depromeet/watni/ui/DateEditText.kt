@@ -28,12 +28,12 @@ class DateEditText @JvmOverloads constructor(
     }
 
     override fun onClick(v: View?) {
-        createDatePickerDialog().show()
+        showDatePickerDialog()
     }
 
-    private fun createDatePickerDialog(): DatePickerDialog {
+    private fun showDatePickerDialog() {
         val calendar: Calendar = Calendar.getInstance()
-        return DatePickerDialog(
+        DatePickerDialog(
             context,
             R.style.DialogStyle,
             OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -44,7 +44,7 @@ class DateEditText @JvmOverloads constructor(
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         ).apply {
-            datePicker.minDate = System.currentTimeMillis() - 1000
-        }
+            datePicker.minDate = System.currentTimeMillis()
+        }.show()
     }
 }

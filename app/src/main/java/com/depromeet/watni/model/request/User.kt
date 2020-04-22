@@ -12,7 +12,9 @@ data class User(
     val name: String
 ) {
 
-    fun hasConference() = memberDetails.isNotEmpty() && memberDetails[0].group.conferences.isNotEmpty()
+    fun hasGroup() = memberDetails.isNotEmpty()
+
+    fun hasConference() = hasGroup() && memberDetails[0].group.conferences.isNotEmpty()
 
     fun isManager() = memberDetails.isNotEmpty() && memberDetails[0].manager
 }

@@ -24,9 +24,6 @@ class SplashActivity : AppCompatActivity() {
         if (viewModel.isFirstLaunch()) {
             startActivity(OnboardingActivity.getIntent(this))
             finish()
-        } else if (viewModel.isLoggedIn()) {
-            startActivity(getIntentByLoginStatus())
-            finish()
         }
 
         viewModel.authStatus.observe(this, Observer {
@@ -42,7 +39,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun getIntentByAuthStatus(authStatus: Boolean) = if (authStatus) {
-        HomeActivity.getIntent(this)
+        getIntentByLoginStatus()
     } else {
         LoginActivity.getIntent(this)
     }

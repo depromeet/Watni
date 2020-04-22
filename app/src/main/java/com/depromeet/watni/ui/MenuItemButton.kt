@@ -2,6 +2,7 @@ package com.depromeet.watni.ui
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -72,11 +73,16 @@ class MenuItemButton @JvmOverloads constructor(
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_UP) {
-            clickListener?.onClick(this)
             if (clickListener == null) {
+                Log.w(TAG, "OnClickListener is not set.")
                 showToast("개발 안됐어요 ㅎㅎ")
             }
+            clickListener?.onClick(this)
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    companion object {
+        val TAG = MenuItemButton::class.java.name
     }
 }

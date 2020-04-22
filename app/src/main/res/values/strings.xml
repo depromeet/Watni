@@ -22,6 +22,9 @@
     <string name="delete">삭제</string>
     <string name="enrollment">등록</string>
     <string name="edit">수정</string>
+    <string name="edit_continue">계속 수정</string>
+    <string name="camera">카메라</string>
+    <string name="gallery">앨범</string>
 
     <string-array name="onboarding_msg">
         <item>저 왔어요!</item>
@@ -65,6 +68,7 @@
 
     <string name="msg_load_my_info_err">내 정보를 불러오는데 실패했습니다.\n다시 시도해주세요.</string>
     <string name="conference_img_example">인증샷 예시</string>
+    <string name="conference_img_example_upload">인증샷 예시 올리기</string>
     <string name="conference_start_time">시작 시각</string>
     <string name="conference_end_time">종료 시각</string>
     <string name="conference_time_err">종료 시각은 시작 시각보다 늦게 설정되어야 합니다.</string>

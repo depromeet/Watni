@@ -37,6 +37,8 @@ class LoginViewModel : ViewModel() {
 
     fun attemptLogin() {
         val user = UserLogin(GRANT_TYPE_PWD, pwdText.value!!, emailText.value!!)
+        _isLoading.value = true
+
         signRepository.userLogin(user, success = {
             getUserInfo()
         }, failed = { _, msg ->

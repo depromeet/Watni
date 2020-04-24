@@ -1,5 +1,6 @@
 package com.depromeet.watni.home.view
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.depromeet.watni.conference.EditMode
 import com.depromeet.watni.conference.view.ConferenceEditActivity
 import com.depromeet.watni.databinding.ActivityHomeBinding
 import com.depromeet.watni.ext.getViewModelFactory
+import com.depromeet.watni.ext.requestPermissions
 import com.depromeet.watni.ext.showSnack
 import com.depromeet.watni.home.HomeViewModel
 import com.depromeet.watni.home.adapter.HomeViewPagerAdapter
@@ -32,6 +34,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        requestPermissions()
         initBinding()
         initView()
         observeUiData()
@@ -53,13 +56,17 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.ibHomeMenu.setOnClickListener { openDrawer() }
         binding.includeDrawerHome.btnAddConference.clickListener = object : OnItemClickListener<View> {
             override fun onClick(item: View) {
-                val intent = ConferenceEditActivity.getIntent(this@HomeActivity).apply {
-                    putExtra(EditMode.TAG, EditMode.NEW.code)
-                }
-                startActivity(intent)
+                dispatchEditConference(EditMode.NEW.code)
             }
         }
         viewModel.loadUserInfo()
+    }
+
+    private fun dispatchEditConference(code: Int) {
+        val intent = ConferenceEditActivity.getIntent(this@HomeActivity).apply {
+            putExtra(EditMode.TAG, code)
+        }
+        startActivityForResult(intent, code)
     }
 
     private fun bindUserDetailInfo(user: User?) {
@@ -88,6 +95,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         })
         viewModel.msgTextId.observe(this, Observer { showSnack(it) })
         viewModel.toastTextId.observe(this, Observer { showToast(it) })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == EditMode.NEW.code && resultCode == Activity.RESULT_OK) {
+            viewModel.loadUserInfo()
+            showSnack(R.string.conference_create_success)
+        }
     }
 
     override fun onBackPressed() {

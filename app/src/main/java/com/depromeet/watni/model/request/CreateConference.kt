@@ -8,8 +8,6 @@ data class CreateConference(
     val base64Image: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("endAt")
-    val endAt: Int,
     @SerializedName("locationInfo")
     val locationInfo: String,
     @SerializedName("name")
@@ -17,5 +15,7 @@ data class CreateConference(
     @SerializedName("notice")
     val notice: String,
     @SerializedName("startAt")
-    val startAt: Int
+    val startAt: Long,
+    @SerializedName("endAt")
+    val endAt: Long
 )

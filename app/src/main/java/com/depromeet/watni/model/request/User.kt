@@ -14,6 +14,8 @@ data class User(
 
     fun hasGroup() = memberDetails.isNotEmpty()
 
+    fun getGroupId() = if (hasGroup()) memberDetails[0].group.groupId else -1
+
     fun hasConference() = hasGroup() && memberDetails[0].group.conferences.isNotEmpty()
 
     fun isManager() = memberDetails.isNotEmpty() && memberDetails[0].manager

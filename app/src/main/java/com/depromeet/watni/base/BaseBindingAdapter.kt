@@ -1,6 +1,7 @@
 package com.depromeet.watni.base
 
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -9,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.depromeet.watni.R
-import com.depromeet.watni.ext.convertToViewClickListener
-import com.depromeet.watni.listener.OnSingleClickListener
+import com.depromeet.watni.ext.convertToItemListener
+import com.depromeet.watni.ext.convertToViewListener
+import com.depromeet.watni.ext.disableDoubleClick
+import com.depromeet.watni.ext.setUsableWithColor
 import com.depromeet.watni.util.ResourceUtil
 
 @Suppress("UNCHECKED_CAST")
@@ -38,15 +41,28 @@ fun ImageView.loadUrlImg(url: String?) {
         .into(this)
 }
 
+@BindingAdapter("loadImage")
+fun ImageView.loadUriImg(uri: Uri?) {
+    Glide.with(context)
+        .load(uri)
+        .placeholder(ColorDrawable(ResourceUtil.getColor(R.color.color_light_gray)))
+        .into(this)
+}
+
 @BindingAdapter("onSingleClick")
 fun Button.onSingleClick(listener: View.OnClickListener) {
+    val onItemClickListener = listener.convertToItemListener()
+        .disableDoubleClick()
+        .convertToViewListener()
+
     setOnClickListener {
-        object : OnSingleClickListener<View>() {
-            override fun onSingleClick(item: View) {
-                listener.onClick(it) // 중복 클릭 방지
-            }
-        }.convertToViewClickListener()
+        onItemClickListener.onClick(it)
     }
+}
+
+@BindingAdapter("setUsable")
+fun Button.setUsable(usable: Boolean) {
+    setUsableWithColor(usable)
 }
 
 @BindingAdapter("setPaddingVertical")

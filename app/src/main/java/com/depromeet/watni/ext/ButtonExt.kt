@@ -1,13 +1,14 @@
 package com.depromeet.watni.ext
 
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import com.depromeet.watni.R
 import com.depromeet.watni.base.loadUriImg
 import com.depromeet.watni.ui.model.BasicButtonContent
@@ -18,11 +19,23 @@ import com.depromeet.watni.util.ResourceUtil
  */
 fun Button.setUsableWithColor(
     usable: Boolean,
-    usableColorResId: Int = Color.BLACK,
-    disableColorResId: Int = ResourceUtil.getColor(R.color.color_4D000000)
+    @ColorRes usableTextColorId: Int = android.R.color.black,
+    @ColorRes disableTextColorId: Int = R.color.color_4D000000
 ) {
     isEnabled = usable
-    setTextColor(if (usable) usableColorResId else disableColorResId)
+    setTextColor(ResourceUtil.getColor(if (usable) usableTextColorId else disableTextColorId))
+}
+
+fun Button.setUsableWithBackground(
+    usable: Boolean,
+    @ColorRes usableTextColorId: Int = android.R.color.black,
+    @ColorRes disableTextColorId: Int = R.color.color_4D000000,
+    @DrawableRes usableBackDrawableId: Int = R.drawable.shape_rect_stroke_red,
+    @DrawableRes disableBackDrawableId: Int = R.drawable.shape_rect_stroke_gray
+) {
+    isEnabled = usable
+    setTextColor(ResourceUtil.getColor(if (usable) usableTextColorId else disableTextColorId))
+    setBackgroundResource(if (usable) usableBackDrawableId else disableBackDrawableId)
 }
 
 fun Button.bindBasicContent(basicButtonContent: BasicButtonContent?) {

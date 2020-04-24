@@ -64,15 +64,15 @@
 
           <EditText
               android:id="@+id/et_join_email"
-              android:text="@={viewModel.emailText}"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:backgroundTint="@color/color_1A000000"
-              android:textSize="@dimen/et_font_size"
               android:importantForAutofill="no"
               android:inputType="textEmailAddress"
               android:maxLines="1"
               android:singleLine="true"
+              android:text="@={viewModel.emailText}"
+              android:textSize="@dimen/et_font_size"
               android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,15 +90,15 @@
 
           <EditText
               android:id="@+id/et_join_password"
-              android:backgroundTint="@color/color_1A000000"
-              android:textSize="@dimen/et_font_size"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:backgroundTint="@color/color_1A000000"
               android:importantForAutofill="no"
               android:inputType="textPassword"
               android:maxLines="1"
               android:singleLine="true"
               android:text="@={viewModel.pwdText}"
+              android:textSize="@dimen/et_font_size"
               android:translationY="@dimen/et_trans_y" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,6 +109,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="42dp"
             android:background="@drawable/shape_rect_stroke_gray"
+            android:clickable="@{!viewModel.isLoading()}"
             android:padding="10dp"
             android:text="@string/login_title"
             android:textColor="@color/color_gray"
@@ -123,6 +124,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:background="@android:color/transparent"
+            android:clickable="@{!viewModel.isLoading()}"
             android:fontFamily="@font/spoqa_han_sans_regular"
             android:text="@string/login_forgot_pwd"
             android:textColor="@color/color_gray" />
@@ -133,6 +135,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="42dp"
             android:background="@drawable/shape_rect_solid_black"
+            android:clickable="@{!viewModel.isLoading()}"
             android:padding="10dp"
             android:text="@string/join_title"
             android:textColor="@android:color/black"

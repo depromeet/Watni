@@ -52,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:clickable="@{!viewModel.isLoading()}"
                 android:text="@string/enrollment"
                 android:textColor="@color/color_4D000000"
                 android:textSize="16sp"

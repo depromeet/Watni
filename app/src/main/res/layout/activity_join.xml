@@ -165,6 +165,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_rect_stroke_gray"
+            android:clickable="@{!viewModel.isLoading()}"
             android:fontFamily="@font/spoqa_han_sans_bold"
             android:padding="10dp"
             android:text="@string/join_title"

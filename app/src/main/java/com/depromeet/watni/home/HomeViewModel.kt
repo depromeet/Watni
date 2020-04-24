@@ -24,7 +24,7 @@ class HomeViewModel(
 
     val groupInfo: LiveData<GroupResponse> = Transformations.map(userInfo) {
         val user = it.item
-        if (it.isSuccessful() && user!!.hasConference()) {
+        if (it.isSuccessful() && user!!.hasGroup()) {
             user.memberDetails[0].group
         } else {
             GroupResponse()

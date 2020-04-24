@@ -2,33 +2,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.depromeet.watni">
 
-  <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-  <application
-      android:name=".MainApplication"
-      android:allowBackup="true"
-      android:icon="@drawable/ic_app_icon"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme"
-      android:usesCleartextTraffic="true">
-    <activity
-        android:name=".splash.view.SplashActivity"
-        android:theme="@style/SplashTheme">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <action android:name="android.intent.action.VIEW" />
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".splash.view.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".splash.view.OnboardingActivity" />
-    <activity android:name=".home.view.HomeActivity" />
-    <activity android:name=".sign.view.LoginActivity" />
-    <activity android:name=".sign.view.JoinActivity" />
-    <activity android:name=".group.view.GroupActivity" />
-      <activity android:name=".conference.view.ConferenceEditActivity" />
-  </application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".splash.view.OnboardingActivity" />
+        <activity android:name=".home.view.HomeActivity" />
+        <activity android:name=".sign.view.LoginActivity" />
+        <activity android:name=".sign.view.JoinActivity" />
+        <activity android:name=".group.view.GroupActivity" />
+        <activity android:name=".conference.view.ConferenceEditActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.depromeet.watni.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
 
 </manifest>

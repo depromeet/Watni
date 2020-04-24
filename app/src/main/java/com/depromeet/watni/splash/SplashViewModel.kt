@@ -18,9 +18,7 @@ class SplashViewModel : ViewModel() {
 
     fun isFirstLaunch() = SharedPrefUtil.isFirstLaunch()
 
-    fun isLoggedIn() = SharedPrefUtil.isLoggedIn()
-
-    fun hasGroup() = SharedPrefUtil.getUserInfo()?.memberDetails?.isNotEmpty() ?: false
+    fun hasGroup() = SharedPrefUtil.getUserInfo()?.hasGroup() ?: false
 
     fun checkAuthStatus() {
         signRepository.checkAuthState(success = {

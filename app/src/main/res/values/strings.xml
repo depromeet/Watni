@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">왔니</string>
+    <string name="app_name_eng">watni</string>
     <string name="app_desc">오늘 왔니, 안 왔니?</string>
     <string name="app_version">앱 버전 1.0.0-alpha</string>
     <string name="app_review">왔니 앱 평가하기</string>
@@ -94,6 +95,9 @@
     <string name="conference_create_msg2">우측 상단 메뉴에서도 일정 등록이 가능합니다.</string>
     <string name="conference_coming">왔어요</string>
     <string name="conference_not_coming">안 왔어요</string>
+    <string name="conference_create_success">일정이 생성되었습니다!</string>
+    <string name="conference_title_limit">1~15자 사이로 입력해주세요.</string>
+    <string name="conference_place_limit">장소를 입력해주세요.</string>
 
     <string name="menu_check_status">출석 현황</string>
     <string name="menu_add_conference">일정 등록</string>

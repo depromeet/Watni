@@ -15,6 +15,26 @@ class TimeRangeEditText @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : AppCompatEditText(context, attrs, defStyleAttr) {
+    var startHour = 0
+        set(value) {
+            field = value
+            setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
+        }
+    var startMin = 0
+        set(value) {
+            field = value
+            setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
+        }
+    var endHour = 0
+        set(value) {
+            field = value
+            setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
+        }
+    var endMin = 0
+        set(value) {
+            field = value
+            setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
+        }
 
     init {
         isClickable = true
@@ -27,6 +47,13 @@ class TimeRangeEditText @JvmOverloads constructor(
         @IntRange(from = DateTimeUtil.HOUR_MIN, to = DateTimeUtil.HOUR_MAX) endHour: Int,
         @IntRange(from = DateTimeUtil.MINUTES_MIN, to = DateTimeUtil.MINUTES_MAX - 1) endMin: Int
     ) {
-        setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
+        this.startHour = startHour
+        this.startMin = startMin
+        this.endHour = endHour
+        this.endMin = endMin
     }
+
+    fun getStartTimestamp() = 1000 * ((startHour * 60) + startMin)
+
+    fun getEndTimestamp() = 1000 * ((endHour * 60) + endHour)
 }

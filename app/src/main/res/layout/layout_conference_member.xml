@@ -9,9 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_no_conference"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@color/color_f8f8f8">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_character"

@@ -27,18 +27,21 @@ object DateTimeUtil {
 
     fun getAmPm(@IntRange(from = HOUR_MIN, to = HOUR_MAX) hour: Int) = if (hour >= 12) PM else AM
 
+    fun getHourForAmPm(hour: Int) = when {
+        hour == 0 -> 12
+        hour > 12 -> hour - 12
+        else -> hour
+    }
+
     fun getReadableTimeString(
         @IntRange(from = HOUR_MIN, to = HOUR_MAX) startHour: Int,
         @IntRange(from = MINUTES_MIN, to = MINUTES_MAX - 1) startMin: Int,
         @IntRange(from = HOUR_MIN, to = HOUR_MAX) endHour: Int,
         @IntRange(from = MINUTES_MIN, to = MINUTES_MAX - 1) endMin: Int
-    ): String {
-        val startTime = if (startHour > 12) startHour - 12 else startHour
-        val endTime = if (endHour > 12) endHour - 12 else endHour
-        return timeTextFormat.format(
-            getAmPm(startHour), startTime, startMin, getAmPm(endHour), endTime, endMin
-        )
-    }
+    ): String = timeTextFormat.format(
+        getAmPm(startHour), getHourForAmPm(startHour), startMin,
+        getAmPm(endHour), getHourForAmPm(endHour), endMin
+    )
 
     fun getReadableTimeString(timestamp: Long): String = timeFormat.format(Date(timestamp * UNIX_TRANS_NUM))
 
@@ -85,7 +88,6 @@ object DateTimeUtil {
         } else if (startHour > endHour) {
             return false
         }
-
         return startMin < endMin
     }
 }

@@ -31,6 +31,8 @@ class DateEditText @JvmOverloads constructor(
         showDatePickerDialog()
     }
 
+    fun getTimestamp() = currentDate.time.time
+
     private fun showDatePickerDialog() {
         val calendar: Calendar = Calendar.getInstance()
         DatePickerDialog(

@@ -1,5 +1,7 @@
 package com.depromeet.watni.listener
 
+import com.depromeet.watni.ext.MIN_CLICK_DELAY_MS
+
 abstract class OnSingleClickListener<T>(
     private val clickDelayMilliSeconds: Long = MIN_CLICK_DELAY_MS
 ) : OnItemClickListener<T> {
@@ -15,8 +17,4 @@ abstract class OnSingleClickListener<T>(
     }
 
     abstract fun onSingleClick(item: T)
-
-    companion object {
-        const val MIN_CLICK_DELAY_MS = 500L
-    }
 }

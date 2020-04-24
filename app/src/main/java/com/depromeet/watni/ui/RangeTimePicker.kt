@@ -34,6 +34,7 @@ class RangeTimePicker @JvmOverloads constructor(
 
     init {
         setInterval()
+        minute = 0
     }
 
     @SuppressLint("PrivateApi")

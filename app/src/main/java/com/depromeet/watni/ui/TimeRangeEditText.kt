@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.IntRange
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.math.MathUtils
 import com.depromeet.watni.util.DateTimeUtil
 
 
@@ -18,22 +17,22 @@ class TimeRangeEditText @JvmOverloads constructor(
 ) : AppCompatEditText(context, attrs, defStyleAttr) {
     var startHour = 0
         set(value) {
-            field = MathUtils.clamp(value, 1, 12)
+            field = value
             setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
         }
     var startMin = 0
         set(value) {
-            field = MathUtils.clamp(value, 1, 60)
+            field = value
             setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
         }
     var endHour = 0
         set(value) {
-            field = MathUtils.clamp(value, 1, 12)
+            field = value
             setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
         }
     var endMin = 0
         set(value) {
-            field = MathUtils.clamp(value, 1, 60)
+            field = value
             setText(DateTimeUtil.getReadableTimeString(startHour, startMin, endHour, endMin))
         }
 

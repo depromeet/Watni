@@ -6,6 +6,7 @@ import androidx.core.content.edit
 import com.depromeet.watni.MainApplication
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserLogin
+import com.depromeet.watni.model.response.IssueTokenResponse
 import com.google.gson.Gson
 
 
@@ -44,15 +45,14 @@ object SharedPrefUtil {
         sharedPref.getString(KEY_USER_LOGIN_INFO, ""), UserLogin::class.java
     )
 
-    fun saveAccessToken(token: String) {
-        sharedPref.edit { putString(KEY_ACCESS_TOKEN, token) }
+    fun saveToken(token: IssueTokenResponse) {
+        sharedPref.edit {
+            putString(KEY_ACCESS_TOKEN, token.accessToken)
+            putString(KEY_REFRESH_TOKEN, token.refreshToken)
+        }
     }
 
     fun getAccessToken() = sharedPref.getString(KEY_ACCESS_TOKEN, null)
-
-    fun saveRefreshToken(token: String) {
-        sharedPref.edit { putString(KEY_REFRESH_TOKEN, token) }
-    }
 
     fun getRefreshToken() = sharedPref.getString(KEY_REFRESH_TOKEN, null)
 

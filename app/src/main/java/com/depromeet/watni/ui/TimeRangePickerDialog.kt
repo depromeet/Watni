@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.depromeet.watni.R
+import com.depromeet.watni.base.setUsable
 import com.depromeet.watni.databinding.TimeRangePickerDialogBinding
-import com.depromeet.watni.ext.setUsable
 import com.depromeet.watni.listener.OnTimeRangeSelectedListener
 import com.depromeet.watni.util.DateTimeUtil
 import com.depromeet.watni.util.ResourceUtil

@@ -1,6 +1,7 @@
 package com.depromeet.watni.util
 
 import com.depromeet.watni.model.response.ErrorResponse
+import com.depromeet.watni.network.INVALID_TOKEN_DESC
 import com.depromeet.watni.network.NO_ERROR_DESC
 import com.depromeet.watni.network.RetrofitBuilder
 import okhttp3.ResponseBody
@@ -15,4 +16,7 @@ object NetworkUtil {
         )
         converter.convert(errorBody)?.description
     } ?: NO_ERROR_DESC
+
+    fun isInvalidTokenErr(errorResponse: ResponseBody?): Boolean =
+        parseErrorDescription(errorResponse).startsWith(INVALID_TOKEN_DESC)
 }

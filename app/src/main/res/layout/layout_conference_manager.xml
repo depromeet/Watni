@@ -9,19 +9,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_no_conference"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@color/color_f8f8f8">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_character"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_smile"
             android:layout_marginBottom="11dp"
+            android:src="@drawable/ic_smile"
+            app:layout_constraintBottom_toTopOf="@+id/tv_msg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tv_msg" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_msg"
@@ -29,9 +28,9 @@
             android:layout_height="wrap_content"
             android:text="@string/conference_create_msg1"
             android:textColor="@android:color/black"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -40,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:background="@drawable/shape_round_stroke_white"
+            android:elevation="2dp"
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
             android:text="@string/conference_create"

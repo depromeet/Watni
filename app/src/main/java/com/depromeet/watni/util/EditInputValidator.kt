@@ -9,4 +9,7 @@ object EditInputValidator {
 
     fun isValidTitle(text: String?) =
         text.isNotNullOrBlank() && text!!.length in LENGTH_MIN..TITLE_LENGTH_MAX
+
+    fun isValidConference(titleText: String?, placeText: String?) =
+        isValidTitle(titleText) && placeText.isNotNullOrBlank()
 }

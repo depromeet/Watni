@@ -3,62 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools">
 
-  <data>
+    <data>
 
-    <import type="com.depromeet.watni.util.ResourceUtil" />
+        <import type="com.depromeet.watni.util.ResourceUtil" />
 
-    <variable
-        name="viewModel"
-        type="com.depromeet.watni.home.HomeViewModel" />
-  </data>
+        <variable
+            name="viewModel"
+            type="com.depromeet.watni.home.HomeViewModel" />
+    </data>
 
-  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:onRefreshListener="@{() -> viewModel.loadUserInfo()}"
-      app:refreshing="@{viewModel.isRefreshing}">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_conference_exist"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_f8f8f8">
+        android:background="@color/color_f8f8f8"
+        app:onRefreshListener="@{() -> viewModel.loadUserInfo()}"
+        app:refreshing="@{viewModel.isRefreshing}">
 
-    <TextView
-        android:id="@+id/tv_welcome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:textColor="@android:color/black"
-        android:layout_marginStart="16dp"
-        android:textSize="20sp"
-        android:text="@{ResourceUtil.INSTANCE.getRandomWelcomeString(viewModel.userInfo.item.name)}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginBottom="32dp"
-        tool:text="OO님 왔나요?" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_conference_exist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-      <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/rv_conference"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:layout_marginTop="32dp"
-          android:overScrollMode="never"
-          app:bindItem="@{viewModel.groupInfo.conferences}"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="@{ResourceUtil.INSTANCE.getRandomWelcomeString(viewModel.userInfo.item.name)}"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginBottom="32dp"
+                tool:text="OO님 왔나요?" />
 
-    <include
-        android:id="@+id/no_conference_manager"
-        layout="@layout/layout_conference_manager" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_conference"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:overScrollMode="never"
+                app:bindItem="@{viewModel.groupInfo.conferences}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include
-        android:id="@+id/no_conference_member"
-        layout="@layout/layout_conference_member" />
-  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <include
+            android:id="@+id/no_conference_manager"
+            layout="@layout/layout_conference_manager" />
+
+        <include
+            android:id="@+id/no_conference_member"
+            layout="@layout/layout_conference_member" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

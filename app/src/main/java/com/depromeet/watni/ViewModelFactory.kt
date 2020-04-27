@@ -5,9 +5,11 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.depromeet.watni.conference.ConferenceViewModel
 import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel
 import com.depromeet.watni.home.HomeViewModel
+import com.depromeet.watni.model.source.ConferenceRepository
 import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
 import com.depromeet.watni.sign.JoinViewModel
@@ -22,6 +24,7 @@ class ViewModelFactory constructor(
     owner: SavedStateRegistryOwner,
     private val signRepository: SignRepository,
     private val groupRepository: GroupRepository,
+    private val conferenceRepository: ConferenceRepository,
     private val groupState: GroupState = GroupState.NONE,
     defaultArgs: Bundle? = null
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
@@ -37,6 +40,7 @@ class ViewModelFactory constructor(
             isAssignableFrom(JoinViewModel::class.java) -> JoinViewModel()
             isAssignableFrom(SplashViewModel::class.java) -> SplashViewModel()
             isAssignableFrom(GroupViewModel::class.java) -> GroupViewModel(groupState, groupRepository)
+            isAssignableFrom(ConferenceViewModel::class.java) -> ConferenceViewModel(conferenceRepository)
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     } as T

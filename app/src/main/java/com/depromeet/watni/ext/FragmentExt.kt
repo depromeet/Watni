@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.depromeet.watni.R
 import com.depromeet.watni.ViewModelFactory
 import com.depromeet.watni.group.GroupState
+import com.depromeet.watni.model.source.ConferenceRepository
 import com.depromeet.watni.model.source.GroupRepository
 import com.depromeet.watni.model.source.SignRepository
 
@@ -44,7 +45,7 @@ fun Fragment.getViewModelStoreOwner(): ViewModelStoreOwner = try {
 }
 
 fun Fragment.getViewModelFactory(): ViewModelFactory =
-    ViewModelFactory(this, SignRepository, GroupRepository)
+    ViewModelFactory(this, SignRepository, GroupRepository, ConferenceRepository)
 
 fun Fragment.getViewModelFactory(groupState: GroupState): ViewModelFactory =
-    ViewModelFactory(this, SignRepository, GroupRepository, groupState)
+    ViewModelFactory(this, SignRepository, GroupRepository, ConferenceRepository, groupState)

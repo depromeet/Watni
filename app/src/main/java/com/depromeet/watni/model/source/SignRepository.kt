@@ -1,14 +1,15 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import com.depromeet.watni.model.request.RefreshToken
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserJoin
 import com.depromeet.watni.model.request.UserLogin
+import com.depromeet.watni.model.response.IssueTokenResponse
 import com.depromeet.watni.network.*
 import com.depromeet.watni.util.NetworkUtil
 import com.depromeet.watni.util.SharedPrefUtil
+import retrofit2.Response
 
 object SignRepository : SignDataSource {
     private val tag = SignRepository::class.java.simpleName
@@ -43,10 +44,9 @@ object SignRepository : SignDataSource {
     ) {
         service.issueToken(user, HeaderProvider.getIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
             response?.let {
-                if (response.isSuccessful) {
+                if (response.isSuccessful && response.body() != null) {
                     SharedPrefUtil.saveUserLoginInfo(user)
-                    SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
-                    SharedPrefUtil.saveRefreshToken(response.body()?.refreshToken ?: "")
+                    SharedPrefUtil.saveToken(response.body()!!)
                     run(success)
                 } else {
                     failed(tag, LOGIN_FAILED_MSG)
@@ -59,34 +59,17 @@ object SignRepository : SignDataSource {
         })
     }
 
-    override fun refreshToken(
-        refreshToken: RefreshToken,
-        success: () -> Unit,
-        failed: (String, String?) -> Unit
-    ) {
-        service.refreshToken(refreshToken, HeaderProvider.getIssueTokenHeader())
-            .enqueue(retrofitCallback { response, throwable ->
-                response?.let {
-                    SharedPrefUtil.saveAccessToken(response.body()?.accessToken ?: "")
-                    SharedPrefUtil.saveRefreshToken(response.body()?.refreshToken ?: "")
-                    run(success)
-                }
-                throwable?.let {
-                    Log.e(tag, it.message ?: "refreshToken error")
-                    failed(tag, NETWORK_ERROR_MSG)
-                }
-            })
-    }
+    override fun refreshToken(): Response<IssueTokenResponse>? {
+        val refreshToken = SharedPrefUtil.getRefreshToken()
+        if (refreshToken.isNullOrEmpty()) {
+            Log.e("refreshToken", "refreshToken is null")
+            return null
+        }
 
-    fun getUserInfo(): MutableLiveData<User> {
-        val result = MutableLiveData<User>()
-        getUserInfo(
-            success = {
-                result.value = it
-            }, failed = { _, _ ->
-                result.value = null
-            })
-        return result
+        return service.refreshToken(
+            RefreshToken(GRANT_TYPE_TOKEN, refreshToken),
+            HeaderProvider.getIssueTokenHeader()
+        ).execute()
     }
 
     override fun getUserInfo(
@@ -119,16 +102,10 @@ object SignRepository : SignDataSource {
         }
 
         userLogin(SharedPrefUtil.getUserLoginInfo()!!, {
-            success()
-        }, { _, _ ->
-            refreshToken(
-                RefreshToken(SharedPrefUtil.getRefreshToken()!!, GRANT_TYPE_TOKEN),
-                success = { success() },
-                failed = { tag, msg ->
-                    Log.e(tag, msg ?: "checkAuthState error")
-                    failed(tag, msg)
-                }
-            )
+            run(success)
+        }, { tag, msg ->
+            Log.e(tag, msg ?: "checkAuthState error")
+            failed(tag, msg)
         })
     }
 }

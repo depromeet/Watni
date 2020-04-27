@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer
 import com.depromeet.watni.R
 import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.base.CommonStatus
+import com.depromeet.watni.conference.EditMode
+import com.depromeet.watni.conference.view.ConferenceEditActivity
 import com.depromeet.watni.databinding.FragmentConferenceBinding
 import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.home.HomeViewModel
@@ -41,7 +43,13 @@ class ConferenceFragment :
     }
 
     private fun initView() {
-
+        binding.noConferenceManager.btnConferenceCreate.setOnClickListener {
+            ConferenceEditActivity.getIntent(requireContext()).apply {
+                putExtra(EditMode.TAG, EditMode.NEW.code)
+            }.also {
+                startActivityForResult(it, EditMode.NEW.code)
+            }
+        }
     }
 
     private fun bindUserDetailInfo(user: User?) {
@@ -50,11 +58,11 @@ class ConferenceFragment :
         }
 
         binding.apply {
-            layoutConferenceExist.visibility = if (user.hasConference()) View.VISIBLE else View.GONE
+            layoutConferenceExist.visibility = View.VISIBLE
             noConferenceManager.layoutNoConference.visibility =
                 if (!user.hasConference() && user.isManager()) View.VISIBLE else View.GONE
             noConferenceMember.layoutNoConference.visibility =
-                if (!user.hasConference() && !user.isManager()) View.VISIBLE else View.VISIBLE
+                if (!user.hasConference() && !user.isManager()) View.VISIBLE else View.GONE
         }
     }
 

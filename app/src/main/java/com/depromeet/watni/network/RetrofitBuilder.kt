@@ -10,27 +10,21 @@ object RetrofitBuilder {
     private const val BASE_URL = "http://ec2-52-78-36-242.ap-northeast-2.compute.amazonaws.com"
     private const val TIME_OUT_SEC = 5L
 
+    private val interceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(interceptor)
+        .addInterceptor(AuthInterceptor())
+        .connectTimeout(TIME_OUT_SEC, TimeUnit.SECONDS)
+        .build()
+
     val basicRetrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
         .build()
 
-    val service: ServiceApi by lazy {
-        val interceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .addInterceptor(AuthInterceptor())
-            .connectTimeout(TIME_OUT_SEC, TimeUnit.SECONDS)
-            .build()
-
-        return@lazy Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-            .create(ServiceApi::class.java)
-    }
+    val service: ServiceApi = basicRetrofit.create(ServiceApi::class.java)
 }

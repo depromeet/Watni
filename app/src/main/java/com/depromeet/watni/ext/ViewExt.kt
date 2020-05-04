@@ -12,6 +12,22 @@ import com.google.android.material.snackbar.Snackbar
 /*
  * Created by yunji on 14/04/2020
  */
+// control visibility
+fun View.setVisibility(visibility: Boolean) {
+    setVisibility(if (visibility) View.VISIBLE else View.GONE)
+}
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    visibility = View.GONE
+}
+
+fun View.isVisible(): Boolean = visibility == View.VISIBLE
+
+// show snackbar
 fun View.showSnack(
     @StringRes resId: Int,
     length: Int = Snackbar.LENGTH_LONG,
@@ -32,6 +48,7 @@ fun View.showSnack(
     }
 }
 
+// control bottom sheet
 fun View.expandBottomSheet() {
     try {
         val bottomSheetBehavior = BottomSheetBehavior.from(this)

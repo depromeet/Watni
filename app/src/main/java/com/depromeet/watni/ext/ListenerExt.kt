@@ -11,28 +11,22 @@ const val MIN_CLICK_DELAY_MS = 500L
 
 fun <T> OnItemClickListener<T>.disableDoubleClick(
     clickDelayMilliSeconds: Long = MIN_CLICK_DELAY_MS
-): OnItemClickListener<T> {
-    return object : OnSingleClickListener<T>(clickDelayMilliSeconds) {
-        override fun onSingleClick(item: T) {
-            this@disableDoubleClick.onClick(item)
-        }
+): OnItemClickListener<T> = object : OnSingleClickListener<T>(clickDelayMilliSeconds) {
+    override fun onSingleClick(item: T) {
+        this@disableDoubleClick.onClick(item)
     }
 }
 
 fun OnItemClickListener<View>.convertToViewListener(
     clickDelayMilliSeconds: Long = MIN_CLICK_DELAY_MS
-): View.OnClickListener {
-    return View.OnClickListener {
-        this.onClick(it)
-    }
+): View.OnClickListener = View.OnClickListener {
+    this.onClick(it)
 }
 
 fun View.OnClickListener.convertToItemListener(
     clickDelayMilliSeconds: Long = MIN_CLICK_DELAY_MS
-): OnItemClickListener<View> {
-    return object : OnItemClickListener<View> {
-        override fun onClick(item: View) {
-            this@convertToItemListener.onClick(item)
-        }
+): OnItemClickListener<View> = object : OnItemClickListener<View> {
+    override fun onClick(item: View) {
+        this@convertToItemListener.onClick(item)
     }
 }

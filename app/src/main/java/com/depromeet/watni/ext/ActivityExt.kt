@@ -7,6 +7,8 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.depromeet.watni.*
 import com.depromeet.watni.conference.view.ConferenceEditActivity
 import com.depromeet.watni.group.GroupState
@@ -18,6 +20,22 @@ import com.depromeet.watni.util.PermissionUtil
 /*
  * Created by yunji on 20/04/2020
  */
+fun AppCompatActivity.startNewFragment(containerId: Int, fragment: Fragment, tag: String? = null) {
+    supportFragmentManager.addNewFragment(containerId, fragment, tag)
+}
+
+fun AppCompatActivity.replaceFragment(containerId: Int, fragment: Fragment, tag: String? = null) {
+    supportFragmentManager.replaceFragment(containerId, fragment, tag)
+}
+
+fun AppCompatActivity.removeCurrentFragment() {
+    supportFragmentManager.popBackStack()
+}
+
+fun AppCompatActivity.removeAllFragment() {
+    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+}
+
 fun AppCompatActivity.getViewModelFactory(): ViewModelFactory =
     ViewModelFactory(this, SignRepository, GroupRepository, ConferenceRepository)
 

@@ -17,15 +17,11 @@ fun <T> OnItemClickListener<T>.disableDoubleClick(
     }
 }
 
-fun OnItemClickListener<View>.convertToViewListener(
-    clickDelayMilliSeconds: Long = MIN_CLICK_DELAY_MS
-): View.OnClickListener = View.OnClickListener {
+fun OnItemClickListener<View>.convertToViewListener() = View.OnClickListener {
     this.onClick(it)
 }
 
-fun View.OnClickListener.convertToItemListener(
-    clickDelayMilliSeconds: Long = MIN_CLICK_DELAY_MS
-): OnItemClickListener<View> = object : OnItemClickListener<View> {
+fun View.OnClickListener.convertToItemListener() = object : OnItemClickListener<View> {
     override fun onClick(item: View) {
         this@convertToItemListener.onClick(item)
     }

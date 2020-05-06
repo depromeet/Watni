@@ -4,19 +4,19 @@ import com.google.android.material.textfield.TextInputLayout
 
 fun TextInputLayout.updateStatus(isValid: Boolean, strResId: Int) {
     if (isValid) {
-        this.hideMessage()
+        hideMessage()
     } else {
-        this.showMessage(strResId)
+        showMessage(strResId)
     }
 }
 
 fun TextInputLayout.showMessage(strResId: Int) {
-    this.apply {
+    apply {
         error = context.getString(strResId)
         requestFocus()
     }
 }
 
 fun TextInputLayout.hideMessage() {
-    this.error = null
+    error = null
 }

@@ -10,6 +10,8 @@ import com.depromeet.watni.base.BaseActivity
 import com.depromeet.watni.base.onSingleClick
 import com.depromeet.watni.databinding.ActivityGroupBinding
 import com.depromeet.watni.ext.getViewModelFactory
+import com.depromeet.watni.ext.replaceFragment
+import com.depromeet.watni.ext.startNewFragment
 import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel
 import com.depromeet.watni.home.view.HomeActivity

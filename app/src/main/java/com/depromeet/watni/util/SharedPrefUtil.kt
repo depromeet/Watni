@@ -2,12 +2,15 @@ package com.depromeet.watni.util
 
 import android.app.Activity
 import android.content.SharedPreferences
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
 import androidx.core.content.edit
 import com.depromeet.watni.MainApplication
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.response.IssueTokenResponse
 import com.google.gson.Gson
+import java.security.KeyPairGenerator
 
 
 object SharedPrefUtil {
@@ -16,6 +19,24 @@ object SharedPrefUtil {
     private const val KEY_IS_FIRST_LAUNCH = "key_is_first_launch"
     private const val KEY_ACCESS_TOKEN = "key_access_token"
     private const val KEY_REFRESH_TOKEN = "key_refresh_token"
+    private const val ALIAS = "encryption_alias"
+
+    private val parameterSpec: KeyGenParameterSpec = KeyGenParameterSpec.Builder(
+        ALIAS,
+        KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
+    ).run {
+        setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
+        build()
+    }
+
+    private val keyPairGenerator: KeyPairGenerator = KeyPairGenerator.getInstance(
+        KeyProperties.KEY_ALGORITHM_EC,
+        "AndroidKeyStore"
+    ).also {
+        it.initialize(parameterSpec)
+    }
+
+    val kp = keyPairGenerator.generateKeyPair()
 
     private val sharedPref: SharedPreferences by lazy {
         MainApplication.getContext().getSharedPreferences(SharedPrefUtil::class.java.name, Activity.MODE_PRIVATE)

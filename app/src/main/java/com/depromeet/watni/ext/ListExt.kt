@@ -14,3 +14,5 @@ fun <T> List<T>.random(): T = get(Random.nextInt(0, size - 1))
 fun <T> Array<T>.random(): T = get(Random.nextInt(0, size - 1))
 
 fun <E> List<E?>.filterNotNull(): List<E> = filterNotNullTo(arrayListOf())
+
+fun <E> List<E?>.isValidIndex(index: Int) = index in 0 until size

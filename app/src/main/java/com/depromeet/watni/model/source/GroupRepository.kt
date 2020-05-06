@@ -1,6 +1,7 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
+import com.depromeet.watni.ext.parseErrorDescription
 import com.depromeet.watni.model.request.CreateGroup
 import com.depromeet.watni.model.request.JoinGroup
 import com.depromeet.watni.model.request.NewGroupCode
@@ -11,7 +12,6 @@ import com.depromeet.watni.network.NETWORK_ERROR_MSG
 import com.depromeet.watni.network.RetrofitBuilder
 import com.depromeet.watni.network.ServiceApi
 import com.depromeet.watni.network.retrofitCallback
-import com.depromeet.watni.util.NetworkUtil
 
 /*
  * Created by yunji on 2020-02-22
@@ -30,7 +30,7 @@ object GroupRepository : GroupDataSource {
                 if (it.isSuccessful) {
                     success(it.body()!!)
                 } else {
-                    Log.e(tag, NetworkUtil.parseErrorDescription(it.errorBody()))
+                    Log.e(tag, it.errorBody().parseErrorDescription())
                     failed(tag, NETWORK_ERROR_MSG)
                 }
             }
@@ -51,7 +51,7 @@ object GroupRepository : GroupDataSource {
                 if (it.isSuccessful) {
                     success(it.body()!!)
                 } else {
-                    val errorBody = NetworkUtil.parseErrorDescription(it.errorBody())
+                    val errorBody = it.errorBody().parseErrorDescription()
                     failed(tag, errorBody)
                 }
             }
@@ -73,7 +73,7 @@ object GroupRepository : GroupDataSource {
                 if (it.isSuccessful) {
                     success(it.body()!!)
                 } else {
-                    val errorBody = NetworkUtil.parseErrorDescription(it.errorBody())
+                    val errorBody = it.errorBody().parseErrorDescription()
                     failed(tag, errorBody)
                 }
             }
@@ -94,7 +94,7 @@ object GroupRepository : GroupDataSource {
                 if (it.isSuccessful) {
                     success(it.body()!!)
                 } else {
-                    val errorBody = NetworkUtil.parseErrorDescription(it.errorBody())
+                    val errorBody = it.errorBody().parseErrorDescription()
                     failed(tag, errorBody)
                 }
             }

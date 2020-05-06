@@ -9,6 +9,7 @@ import com.depromeet.watni.base.BaseFragment
 import com.depromeet.watni.databinding.FragmentGroupBinding
 import com.depromeet.watni.ext.getViewModelFactory
 import com.depromeet.watni.ext.hideMessage
+import com.depromeet.watni.ext.removeCurrentFragment
 import com.depromeet.watni.ext.showMessage
 import com.depromeet.watni.group.GroupState
 import com.depromeet.watni.group.GroupViewModel

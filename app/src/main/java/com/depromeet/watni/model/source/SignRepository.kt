@@ -1,13 +1,14 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
+import com.depromeet.watni.ext.hasUsableBody
+import com.depromeet.watni.ext.parseErrorDescription
 import com.depromeet.watni.model.request.RefreshToken
 import com.depromeet.watni.model.request.User
 import com.depromeet.watni.model.request.UserJoin
 import com.depromeet.watni.model.request.UserLogin
 import com.depromeet.watni.model.response.IssueTokenResponse
 import com.depromeet.watni.network.*
-import com.depromeet.watni.util.NetworkUtil
 import com.depromeet.watni.util.SharedPrefUtil
 import retrofit2.Response
 
@@ -25,7 +26,7 @@ object SignRepository : SignDataSource {
                 if (it.isSuccessful) {
                     run(success)
                 } else {
-                    val errorDescription = NetworkUtil.parseErrorDescription(it.errorBody())
+                    val errorDescription = it.errorBody().parseErrorDescription()
                     val msg = if (errorDescription == ALREADY_USED_EMAIL_DESC) ALREADY_USED_EMAIL_MSG else NETWORK_ERROR_MSG
                     failed(tag, msg)
                 }
@@ -44,7 +45,7 @@ object SignRepository : SignDataSource {
     ) {
         service.issueToken(user, HeaderProvider.getIssueTokenHeader()).enqueue(retrofitCallback { response, throwable ->
             response?.let {
-                if (response.isSuccessful && response.body() != null) {
+                if (response.hasUsableBody()) {
                     SharedPrefUtil.saveUserLoginInfo(user)
                     SharedPrefUtil.saveToken(response.body()!!)
                     run(success)

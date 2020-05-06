@@ -1,13 +1,13 @@
 package com.depromeet.watni.model.source
 
 import android.util.Log
+import com.depromeet.watni.ext.parseErrorDescription
 import com.depromeet.watni.model.request.Conference
 import com.depromeet.watni.model.request.CreateConference
 import com.depromeet.watni.network.NETWORK_ERROR_MSG
 import com.depromeet.watni.network.RetrofitBuilder
 import com.depromeet.watni.network.ServiceApi
 import com.depromeet.watni.network.retrofitCallback
-import com.depromeet.watni.util.NetworkUtil
 
 /*
  * Created by yunji on 24/04/2020
@@ -27,7 +27,7 @@ object ConferenceRepository : ConferenceDataSource {
                 if (it.isSuccessful && it.body() != null) {
                     success(it.body()!!)
                 } else {
-                    Log.e(tag, NetworkUtil.parseErrorDescription(it.errorBody()))
+                    Log.e(tag, it.errorBody().parseErrorDescription())
                     failed(tag, NETWORK_ERROR_MSG)
                 }
             }
@@ -50,7 +50,7 @@ object ConferenceRepository : ConferenceDataSource {
                 if (it.isSuccessful && it.body() != null) {
                     success(it.body()!!)
                 } else {
-                    Log.e(tag, NetworkUtil.parseErrorDescription(it.errorBody()))
+                    Log.e(tag, it.errorBody().parseErrorDescription())
                     failed(tag, NETWORK_ERROR_MSG)
                 }
             }
@@ -67,7 +67,7 @@ object ConferenceRepository : ConferenceDataSource {
                 if (it.isSuccessful && it.body() != null) {
                     run(success)
                 } else {
-                    Log.e(tag, NetworkUtil.parseErrorDescription(it.errorBody()))
+                    Log.e(tag, it.errorBody().parseErrorDescription())
                     failed(tag, NETWORK_ERROR_MSG)
                 }
             }

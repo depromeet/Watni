@@ -20,11 +20,11 @@ object RetrofitBuilder {
         .connectTimeout(TIME_OUT_SEC, TimeUnit.SECONDS)
         .build()
 
-    val basicRetrofit: Retrofit = Retrofit.Builder()
+    val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
 
-    val service: ServiceApi = basicRetrofit.create(ServiceApi::class.java)
+    val service: ServiceApi = retrofit.create(ServiceApi::class.java)
 }

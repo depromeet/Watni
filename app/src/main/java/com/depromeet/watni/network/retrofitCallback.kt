@@ -1,7 +1,9 @@
 package com.depromeet.watni.network
 
+import com.depromeet.watni.ext.hasUsableBody
+import com.depromeet.watni.ext.isInvalidTokenErr
 import com.depromeet.watni.model.source.SignRepository
-import com.depromeet.watni.util.NetworkUtil
+import com.depromeet.watni.util.SharedPrefUtil
 import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,19 +14,16 @@ inline fun <T> retrofitCallback(
 ): Callback<T> {
     return object : Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
-            if (!response.isSuccessful && NetworkUtil.isInvalidTokenErr(response.errorBody())) {
-                val refreshResponse = runBlocking {
-                    SignRepository.refreshToken()
-                }
-                if (refreshResponse == null) {
-                    fn(response, null)
-                    return
-                }
-                if (refreshResponse.isSuccessful && refreshResponse.body() != null) {
-                    call.clone().enqueue(this)
-                    return
+            if (!response.isInvalidTokenErr()) {
+                runBlocking { SignRepository.refreshToken() }?.also {
+                    if (it.hasUsableBody()) {
+                        SharedPrefUtil.saveToken(it.body()!!)
+                        call.clone().enqueue(this) // retry
+                        return
+                    }
                 }
             }
+
             fn(response, null)
         }
 

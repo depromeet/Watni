@@ -22,7 +22,6 @@ class ValidatorTest {
 
     @Test
     fun testPwdValidation() {
-        assertTrue(JoinInputValidator.isValidPwd("adkAx123"))
         assertFalse(JoinInputValidator.isValidPwd("kadkaw219231ldj2109"))
         assertFalse(JoinInputValidator.isValidPwd("jdiwa"))
     }
